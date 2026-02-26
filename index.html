@@ -1,141 +1,180 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERIN SHOP ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --blue-deep: #1C2B45;
-            --blue-main: #2E4A73;
-            --blue-soft: #4E6F9E;
-            --blue-light: #9FB7D6;
-            --blue-bg: #D9E3F2;
-            --white: #ffffff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erin Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue-soft: #e3f2fd; /* ฟ้าพาสเทลอ่อน */
+  --blue-pastel: #bbdefb; /* ฟ้าพาสเทลเข้มขึ้น */
+  --blue-deep: #1a4a6b; /* สีน้ำเงินเข้มสำหรับชื่อร้าน/ข้อความ */
+  --text-main: #2c527a;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --accent: #5bb8e8;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Mitr', sans-serif;
-            background: linear-gradient(160deg, var(--blue-bg) 0%, var(--blue-light) 100%);
-            background-attachment: fixed;
-            color: var(--blue-deep);
-            display: flex; justify-content: center;
-            padding: 30px 15px;
-        }
+body {
+  font-family: 'Mitr', sans-serif;
+  /* พื้นหลังฟ้าพาสเทลไล่ระดับ */
+  background: linear-gradient(160deg, #f0f8ff 0%, #e1f5fe 50%, #b3e5fc 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
 
-        .wrap { width: 100%; max-width: 480px; }
+/* Sparkles */
+.sparkle { position: fixed; pointer-events: none; font-size: 1.2rem; animation: float 6s ease-in-out infinite; z-index: 0; opacity: .6; }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(15deg); } }
+.s1{top:8%;left:4%;}.s2{top:20%;right:6%;}.s4{top:60%;right:4%;}
 
-        /* Header */
-        .header { text-align: center; margin-bottom: 25px; }
-        .logo-container { width: 110px; height: 110px; margin: 0 auto 15px; background: white; border-radius: 50%; padding: 5px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .logo-container img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .shop-name { font-size: 1.6rem; font-weight: 700; color: var(--blue-deep); }
-        .shop-intro { font-size: 0.85rem; color: var(--blue-main); margin-top: 5px; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 15px; }
+.container { max-width: 480px; margin: 0 auto; padding: 20px 16px; position: relative; z-index: 1; }
 
-        /* Category Header */
-        .cat-head { font-size: 1.1rem; font-weight: 600; color: var(--blue-main); margin: 30px 0 15px; padding-left: 15px; border-left: 5px solid var(--blue-soft); }
+/* LOGO STYLE - เพิ่มเติมตรงนี้ */
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -40px; /* ให้โลโก้เกยกับการ์ด header */
+  position: relative;
+  z-index: 2;
+  animation: fadeUp .8s ease both;
+}
 
-        /* Card 1 App per 1 Card */
-        .card {
-            background: rgba(255, 255, 255, 0.85); border-radius: 20px;
-            padding: 18px; margin-bottom: 12px; box-shadow: 0 5px 15px rgba(28, 43, 69, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        
-        .app-title { font-size: 0.95rem; font-weight: 600; color: var(--blue-soft); margin-bottom: 8px; border-bottom: 1px dashed var(--blue-light); padding-bottom: 5px; text-align: center; }
-        .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-        .price-tag { background: var(--blue-bg); border-radius: 10px; padding: 8px; display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 500; }
-        .full-tag { grid-column: span 2; background: var(--blue-soft); color: white; }
-        
-        .detail { font-size: 0.8rem; line-height: 1.6; color: var(--blue-main); white-space: pre-line; }
-        .red { color: #d32f2f; font-weight: 600; }
+.logo-circle {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px; /* เว้นระยะสำหรับกรอบ */
+  box-shadow: 0 8px 20px rgba(26, 74, 107, 0.15);
+  border: 3px solid #fff; /* กรอบขาวชั้นใน */
+  outline: 2px solid var(--accent); /* กรอบสีฟ้าชั้นนอก */
+}
 
-        /* Step & Contact */
-        .step-list { list-style: none; padding: 0; font-size: 0.82rem; }
-        .step-list li { margin-bottom: 5px; padding-left: 20px; position: relative; }
-        .step-list li::before { content: '🌸'; position: absolute; left: 0; }
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
-        .btn-box { background: white; border-radius: 15px; padding: 12px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--blue-deep); font-size: 0.85rem; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        
-        .footer-note { text-align: center; font-size: 0.75rem; color: var(--blue-soft); margin-top: 30px; }
-    </style>
+/* CARD BASE */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1.5px solid #ffffff;
+  border-radius: 26px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0, 80, 150, 0.08);
+  animation: fadeUp .6s ease both;
+}
+
+/* HEADER */
+.header { text-align: center; padding-top: 50px; } /* เว้นที่ให้โลโก้ */
+.shop-name { 
+  font-size: 2.2rem; 
+  font-weight: 600; 
+  color: var(--blue-deep); /* เปลี่ยนเป็นสีเข้มตามสั่ง */
+  margin-bottom: 6px; 
+}
+.shop-sub { font-size: .9rem; color: var(--text-main); line-height: 1.6; margin-bottom: 15px; }
+
+.badges { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.badge {
+  background: linear-gradient(135deg, #5bb8e8, #3a9bd5);
+  color: #fff; font-size: .75rem; font-weight: 500;
+  padding: 4px 14px; border-radius: 20px;
+}
+
+/* STATUS */
+.sec-title { 
+  font-size: 1.1rem; font-weight: 600; color: var(--blue-deep); 
+  display: flex; align-items: center; gap: 8px; margin-bottom: 15px; 
+}
+.sec-title::before { content: ''; width: 4px; height: 18px; border-radius: 4px; background: var(--accent); display: inline-block; }
+
+.status-row { display: flex; align-items: center; gap: 10px; justify-content: center; font-weight: 500; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #4dd0a0; animation: blink 1.4s infinite; }
+
+/* STICKER LIST */
+.sticker-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed rgba(91,184,232,0.3); }
+.sticker-price { background: #e3f2fd; color: #1a73e8; font-weight: 600; padding: 3px 12px; border-radius: 15px; }
+
+/* CTA BUTTON */
+.btn-main {
+  display: inline-block; width: 100%; max-width: 280px;
+  background: linear-gradient(135deg, #5bb8e8, #3a9bd5);
+  color: #fff; text-decoration: none; padding: 14px; border-radius: 50px;
+  font-weight: 500; transition: .3s; box-shadow: 0 6px 15px rgba(58,155,213,0.3);
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+.footer { text-align: center; font-size: .75rem; color: var(--blue-deep); padding: 10px; opacity: 0.8; }
+</style>
 </head>
 <body>
 
-    <div class="wrap">
-        <header class="header">
-            <div class="logo-container"><img src="Logo.jpeg"></div>
-            <div class="shop-name">ERIN SHOP ✨</div>
-            <div class="shop-intro">
-                Welcome to Erin Shop na ka  ✨<br>
-                ขายแอปพรี แต่งรูป ตัดต่อ สติกเกอร์ ธีมไลน์ ครบจบที่นี่ค่ะ 🫧
-            </div>
-        </header>
+<span class="sparkle s1">🫧</span>
+<span class="sparkle s2">💧</span>
+<span class="sparkle s4">✨</span>
 
-        <div class="cat-head">🍎 สติกเกอร์ / ธีม / เมโลดี้</div>
-        <div class="card">
-            <div class="app-title">♡ Sticker & Theme & Emoji ♡</div>
-            <div class="price-row">
-                <div class="price-tag"><span>50 c</span><span>25 b</span></div>
-                <div class="price-tag"><span>100 c</span><span>50 b</span></div>
-                <div class="price-tag"><span>150 c</span><span>75 b</span></div>
-                <div class="price-tag"><span>200 c</span><span>100 b</span></div>
-                <div class="price-tag full-tag"><span>Melody เมโลดี้</span><span>45 b</span></div>
-            </div>
-        </div>
+<div class="container">
 
-        <div class="cat-head">📺 แอปพรีเมียมดูหนัง</div>
-        <div class="card"><div class="app-title">🏰 Disney+ Hotstar</div><div class="detail">หาร 4: 1d 25 | 3d 35 | 7d 55 | 30d 110<br>หาร 5: 7d 45 | 30d 95<span class="red"> - แจ้งอุปกรณ์ให้ตรงนะคะ</span></div></div>
-        <div class="card"><div class="app-title">🐬 Viu Premium</div><div class="detail">หาร 4: 7d 20 | 30d 25 | หาร 2: 30d 45 | ยกแอค: 60</div></div>
-        <div class="card"><div class="app-title">✿ WeTV / iQIYI</div><div class="detail">30d: ห4 35 | ห3 45 | ห2 55 | ยก 85</div></div>
-        <div class="card"><div class="app-title">🎬 Prime Video / HBO Max</div><div class="detail">Prime: 7d 25 | 30d 50 | ยก 110<br>HBO: 30d 95 (Ulti) | 65 (Std)</div></div>
-        <div class="card"><div class="app-title">🏡 Netflix (แดงดำ)</div><div class="detail">1d 15 | 7d 45 | 30d 110 (จอส่วนตัว)</div></div>
-
-        <div class="cat-head">🎵 แอปฟังเพลง</div>
-        <div class="card">
-            <div class="app-title">🔴 Youtube Premium (ไม่ต่อ)</div>
-            <div class="detail">
-                เมลร้าน: 30 (เคลม 40) | เมลลูกค้า: 20 (เคลม 30)
-                แพ็คบุคคล: 45 (เคลม 55) | 40 (ไม่เคลม)
-            </div>
-        </div>
-
-        <div class="cat-head">📸 แอปแต่งรูป</div>
-        <div class="card">
-            <div class="app-title">🌸 Meitu SVIP</div>
-            <div class="detail">1d 45 | 7d 90 | 30d 140</div>
-        </div>
-        <div class="card">
-            <div class="app-title">🐰 Wink / BeautyCam</div>
-            <div class="detail">30 วัน: 100 - 110 (ห4)</div>
-        </div>
-
-        <div class="cat-head">🎬 แอปตัดต่อวิดีโอ</div>
-        <div class="card">
-            <div class="app-title">✂️ CapCut Pro</div>
-            <div class="detail">ห2: 1d 35 | 7d 65 | 30d 110</div>
-        </div>
-
-        <div class="cat-head">📋 ขั้นตอน & เงื่อนไข</div>
-        <div class="card">
-            <div class="detail" style="margin-bottom:10px;"><b>💸 ชำระเงิน:</b> ธนาคาร & วอเลท (ไม่บวกเพิ่ม)</div>
-            <ul class="step-list">
-                <li>ทักแชทแจ้งสินค้าที่ต้องการ</li>
-                <li>รอร้านเช็คสินค้าสักครู่</li>
-                <li>โอนเงินเรียบร้อย รอรับสินค้าได้เลยค่ะ</li>
-            </ul>
-        </div>
-
-        <div class="cat-head">📱 ติดต่อสั่งซื้อ & เครดิต</div>
-        <a href="https://lin.ee/EBW88DH" class="btn-box"><span>LINE ID</span><span>@355tmjpr (มี @)</span></a>
-        <a href="#" class="btn-box"><span>Facebook</span><span>เช็คเครดิตการซื้อขาย ✨</span></a>
-
-        <div class="footer-note">
-            © 2026 ERIN SHOP | Blue Pastel Style 💗
-        </div>
+  <div class="logo-wrapper">
+    <div class="logo-circle">
+      <img src="Logo.jpeg" alt="Shop Logo">
     </div>
+  </div>
+
+  <div class="card header">
+    <div class="shop-name">🫧 Erin Shop 🫧</div>
+    <div class="shop-sub">
+      Welcome to Erin Shop na ka 🧸<br>
+      ทางร้านขายแอพพรี แอพแต่งรูป สติ๊กเกอร์ไลน์<br>
+      สอบถามเพิ่มเติมได้ตลอดเลยนะคะ 💙
+    </div>
+    <div class="badges">
+      <span class="badge">🎀 สติกเกอร์ไลน์</span>
+      <span class="badge">📱 แอพพรีเมียม</span>
+      <span class="badge">🎬 แอพตัดต่อ</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-title">สถานะร้านค้า</div>
+    <div class="status-row">
+      <span class="dot"></span>
+      <span>เปิดให้บริการอยู่นะคะ ✨</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-title">🎀 สติกเกอร์ · ธีม · อิโมจิ</div>
+    <div class="sticker-row"><span class="sticker-coin">50 Coins</span><span class="sticker-price">25 ฿</span></div>
+    <div class="sticker-row"><span class="sticker-coin">100 Coins</span><span class="sticker-price">50 ฿</span></div>
+    <div class="sticker-row"><span class="sticker-coin">150 Coins</span><span class="sticker-price">75 ฿</span></div>
+    
+    <div style="margin-top:15px; font-size:0.8rem; color:var(--text-main); text-align:center;">
+      🔗 รบกวนส่งแบบลิงก์เท่านั้นเพื่อความรวดเร็วค่ะ
+    </div>
+  </div>
+
+  <div style="text-align:center; padding: 10px 0;">
+    <a href="https://lin.ee/EBW88DH" class="btn-main" target="_blank">💬 ทักแชทสั่งซื้อสินค้า</a>
+  </div>
+
+  <div class="footer">
+    © Erin Shop · ขอบคุณที่อุดหนุนนะคะ 💙🫧
+  </div>
+
+</div>
 
 </body>
 </html>
