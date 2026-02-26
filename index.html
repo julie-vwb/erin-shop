@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERIN SHOP - Official Website</title>
+    <title>ERIN SHOP - Premium Apps & Stickers</title>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -22,14 +22,9 @@
 
         .container { max-width: 500px; margin: 0 auto; position: relative; }
         
-        /* Floating Decor */
-        .sp { position: fixed; z-index: 0; filter: opacity(0.6); animation: f 6s infinite ease-in-out; pointer-events: none; }
-        @keyframes f { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        /* Header Section */
         header { text-align: center; margin-bottom: 25px; }
         .logo-ring {
-            width: 120px; height: 120px; border-radius: 50%;
+            width: 115px; height: 115px; border-radius: 50%;
             background: linear-gradient(135deg, var(--c4), var(--c6));
             padding: 4px; margin: 0 auto 15px;
             box-shadow: 0 10px 25px rgba(28, 43, 69, 0.2);
@@ -38,165 +33,141 @@
         .logo-inner img { width: 100%; height: 100%; object-fit: cover; }
 
         .shop-name { font-size: 1.7rem; font-weight: 600; color: var(--c1); }
-        .badges { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
-        .badge { background: white; border: 1.5px solid var(--c7); border-radius: 20px; padding: 3px 12px; font-size: .75rem; color: var(--c3); font-weight: 500; }
-
-        /* Status & Intro */
         .status-box {
             background: rgba(255, 255, 255, 0.7); border: 1.5px dashed var(--c5);
             border-radius: 18px; padding: 15px; margin: 20px 0; text-align: center;
         }
         .s-dot { display: inline-block; width: 10px; height: 10px; background: #6fcf97; border-radius: 50%; margin-right: 6px; animation: blink 1.5s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-        .intro-text { font-size: .8rem; color: var(--c4); line-height: 1.6; margin-top: 5px; }
 
-        /* Card Structure */
+        /* แยกหมวดหมู่เป็นกล่อง */
         .card {
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px);
-            border-radius: 25px; padding: 22px 18px; margin-bottom: 18px;
-            box-shadow: 0 8px 30px rgba(28, 43, 69, 0.06); border: 1px solid white;
+            background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(10px);
+            border-radius: 25px; padding: 22px 18px; margin-bottom: 20px;
+            box-shadow: 0 8px 30px rgba(28, 43, 69, 0.08); border: 1px solid white;
         }
-        .ct { font-size: 1rem; font-weight: 600; color: var(--c2); margin-bottom: 15px; border-left: 5px solid var(--c4); padding-left: 12px; }
+        .ct { font-size: 1.05rem; font-weight: 600; color: var(--c2); margin-bottom: 15px; border-left: 5px solid var(--c4); padding-left: 12px; }
 
-        /* Content Styles */
-        .price-list { margin-bottom: 15px; }
-        .pr-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--c8); font-size: .88rem; }
-        .pr-val { background: var(--c4); color: white; padding: 2px 12px; border-radius: 15px; font-weight: 500; font-size: .8rem; }
-        
-        .app-block { background: white; border-radius: 15px; padding: 15px; margin-bottom: 10px; border: 1px solid var(--c8); }
-        .app-title { font-size: .88rem; font-weight: 600; color: var(--c3); margin-bottom: 6px; display: flex; justify-content: space-between; }
-        .app-desc { font-size: .8rem; color: var(--c5); line-height: 1.6; white-space: pre-line; }
+        /* รายการย่อยภายในกล่อง */
+        .app-item { background: white; border-radius: 16px; padding: 14px; margin-bottom: 10px; border: 1px solid var(--c8); }
+        .app-name { font-size: .9rem; font-weight: 600; color: var(--c3); margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+        .app-price { font-size: .8rem; color: var(--c4); line-height: 1.6; white-space: pre-line; }
 
-        .note-red { color: #d32f2f; font-size: .75rem; font-weight: 500; margin-top: 10px; text-align: center; }
+        /* ตารางสติกเกอร์ */
+        .st-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .st-box { background: var(--c8); border-radius: 12px; padding: 8px 12px; display: flex; justify-content: space-between; font-size: .85rem; }
 
-        /* CTA & Footer */
-        .cta-wrap { text-align: center; margin-top: 30px; }
+        /* ส่วนท้าย */
+        .footer-cta { text-align: center; margin-top: 35px; }
         .cta-btn {
             display: inline-block; width: 100%; max-width: 320px;
             background: linear-gradient(135deg, var(--c1), var(--c3));
             color: white; text-decoration: none; padding: 16px; border-radius: 50px;
-            font-weight: 600; box-shadow: 0 10px 20px rgba(28, 43, 69, 0.2); transition: .3s;
+            font-weight: 600; box-shadow: 0 10px 20px rgba(28, 43, 69, 0.2);
         }
-        .cta-btn:hover { transform: translateY(-3px); }
-        .cta-sub { font-size: .75rem; color: var(--c3); margin-top: 12px; font-weight: 500; }
-
-        .footer { text-align: center; font-size: .7rem; color: var(--c5); margin-top: 40px; }
+        .important-red { color: #d32f2f; font-size: .82rem; font-weight: 600; margin: 25px 0 12px; background: #fff5f5; padding: 10px; border-radius: 12px; display: inline-block; width: 100%; }
+        .thanks { font-size: .8rem; color: var(--c3); font-weight: 500; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="sp" style="top:5%; left:5%; font-size:24px;">🫧</div>
-    <div class="sp" style="top:25%; right:5%; font-size:20px;">🧸</div>
-    <div class="sp" style="bottom:15%; left:10%; font-size:22px;">🍦</div>
-
     <div class="container">
         <header>
-            <div class="logo-ring">
-                <div class="logo-inner"><img src="Logo.jpeg" alt="Logo"></div>
-            </div>
+            <div class="logo-ring"><div class="logo-inner"><img src="Logo.jpeg"></div></div>
             <div class="shop-name">ERIN SHOP ✨</div>
-            <div class="badges">
-                <span class="badge">🍎 มีค่า</span>
-                <span class="badge">🫧 วอเลทไม่บวกเพิ่ม</span>
-            </div>
             <div class="status-box">
                 <div style="font-weight:600;"><span class="s-dot"></span>เปิดรับงานอยู่นะคะ 🎀</div>
-                <div class="intro-text">Welcome to Erin Shop na ka ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้ สอบถามได้นะคะ</div>
+                <div style="font-size: .75rem; color: var(--c5); margin-top: 5px;">ยินดีต้อนรับเข้าสู่ร้าน Erin Shop ค่ะ สอบถามได้ตลอดเลยน้า</div>
             </div>
         </header>
 
         <div class="card">
-            <div class="ct">สติ๊กเกอร์ ธีม อิโมจิ เมโลดี้</div>
-            <div class="price-list">
-                <div class="pr-row"><span>40 coins</span> <span class="pr-val">20 b</span></div>
-                <div class="pr-row"><span>50 coins</span> <span class="pr-val">25 b</span></div>
-                <div class="pr-row"><span>70 coins</span> <span class="pr-val">35 b</span></div>
-                <div class="pr-row"><span>85 coins</span> <span class="pr-val">45 b</span></div>
-                <div class="pr-row"><span>100 coins</span> <span class="pr-val">50 b</span></div>
-                <div class="pr-row"><span>150 coins</span> <span class="pr-val">75 b</span></div>
-                <div class="pr-row"><span>Melody</span> <span class="pr-val">45 b</span></div>
+            <div class="ct">🍎 สติกเกอร์ ธีม อิโมจิ เมโลดี้</div>
+            <div class="st-grid">
+                <div class="st-box"><span>40 coins</span><span>20 b</span></div>
+                <div class="st-box"><span>50 coins</span><span>25 b</span></div>
+                <div class="st-box"><span>70 coins</span><span>35 b</span></div>
+                <div class="st-box"><span>85 coins</span><span>45 b</span></div>
+                <div class="st-box"><span>100 coins</span><span>50 b</span></div>
+                <div class="st-box"><span>150 coins</span><span>75 b</span></div>
             </div>
-            <p class="note-red">📍 ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า</p>
+            <div style="text-align:center; font-size:.85rem; margin-top:12px; color:var(--c3); font-weight:600;">melod𓈒y ⠀⠀45 ⠀b𓈒♡︎</div>
         </div>
 
         <div class="card">
-            <div class="ct">แอพพรีเมียม (Disney+ - HBO)</div>
-            
-            <div class="app-block">
-                <div class="app-title">🏰 Disney+ Plus</div>
-                <div class="app-desc">หาร 4: 1d/25, 3d/35, 7d/55, 30d/110
-หาร 5: 7d/45, 30d/95
-*แจ้งอุปกรณ์ที่เข้า / เคลมกรณีแคปประกัน / ดูในทีวี+10b</div>
+            <div class="ct">📺 แอปดูหนัง & พรีเมียมสตรีมมิ่ง</div>
+            <div class="app-item">
+                <div class="app-name">🏰 Disney+ Plus</div>
+                <div class="app-price">หาร 4: 1d/25, 3d/35, 7d/55, 30d/110
+หาร 5: 7d/45, 30d/95 | ทีวี +10b (ดูในไทยเท่านั้น)</div>
             </div>
-
-            <div class="app-block">
-                <div class="app-title">🐬 Viu (วิว)</div>
-                <div class="app-desc">หาร 4: 7วัน/20, 30วัน/25
-หาร 3: 30วัน/35 | หาร 2: 30วัน/45
-ยกแอค: 30วัน/60 (ดูพร้อมกัน 3 อุปกรณ์)</div>
+            <div class="app-item">
+                <div class="app-name">🏠 Netflix (แดงดำ)</div>
+                <div class="app-price">มือถือ/iPad: 1d/15, 3d/25, 7d/45, 30d/110
+ทีวี: 1d/25, 3d/35, 7d/60, 30d/180</div>
             </div>
-
-            <div class="app-block">
-                <div class="app-title">💬 WeTV / iQIYI</div>
-                <div class="app-desc">WeTV (หาร4-35 / หาร3-45 / หาร2-55 / ยก-85)
-iQIYI Gold (หาร4-35 / หาร3-45 / หาร2-55 / ยก-85)
-iQIYI Diamond 4K (หาร5-55 / หาร4-65)</div>
+            <div class="app-item">
+                <div class="app-name">🐬 Viu (วิว)</div>
+                <div class="app-price">หาร4: 7d/20, 30d/25 | หาร3: 30d/35
+หาร2: 30d/45 | ยกแอค: 30d/60</div>
             </div>
-
-            <div class="app-block">
-                <div class="app-title">🏠 Netflix (แดงดำ)</div>
-                <div class="app-desc">มือถือ/iPad: 1d/15, 3d/25, 7d/45, 30d/110
-TV เท่านั้น: 1d/25, 3d/35, 7d/60, 30d/180</div>
+            <div class="app-item">
+                <div class="app-name">💬 WeTV / iQIYI</div>
+                <div class="app-price">WeTV: 7d/20 | 30d(หาร4-35 / หาร3-45 / หาร2-55 / ยก-85)
+iQIYI Gold: 7d/20 | 30d(หาร4-35 / หาร3-45 / หาร2-55 / ยก-85)
+iQIYI Diamond 4K: 30d(หาร5-55 / หาร4-65)</div>
             </div>
-
-            <div class="app-block">
-                <div class="app-title">🐮 HBO Max (Ultimate/Standard)</div>
-                <div class="app-desc">Ultimate 4K: 7วัน(หาร5-35/หาร4-45) | 30วัน(หาร5-95/หาร4-115)
-Standard HD: 7วัน(หาร4-30/หาร3-40) | 30วัน(หาร4-65/หาร2-75)</div>
+            <div class="app-item">
+                <div class="app-name">🐮 HBO Max (Ultimate/Standard)</div>
+                <div class="app-price">Ultimate 4K: 7d(หาร5-35/หาร4-45), 30d(หาร5-95/หาร4-115)
+Standard HD: 7d(หาร4-30/หาร3-40), 30d(หาร4-65/หาร2-75)</div>
             </div>
-
-            <div class="app-block">
-                <div class="app-title">⭐️ อื่นๆ: Prime / Canva / Mono / OneD</div>
-                <div class="app-desc">Canva Pro: 7d/15, 14d/25, 30d/40 (เมลลูกค้า)
-Prime: 30วัน(หาร6-50 / หาร5-55 / หาร3-80 / ยก-110)
+            <div class="app-item">
+                <div class="app-name">🍀 อื่นๆ: Prime / Mono / Bili / Youku / OneD</div>
+                <div class="app-price">Prime: 30d (หาร6-50 / หาร5-55 / หาร3-80 / ยก-110)
 MonoMax: Standard 7d/55 | Mini 30d/50-70
-OneD: 30d (หาร2-60 / ยก-95) | Ch3+: 30d (หาร2-60 / ยก-90)</div>
+OneD/Ch3+: 30d (หาร2-60 / ยก-95)
+BiliBili/Youku: 30d (หาร4-40 / หาร3-45 / หาร2-55)</div>
             </div>
         </div>
 
         <div class="card">
-            <div class="ct">แอพแต่งรูป & ตัดต่อ & YouTube</div>
-            <div class="app-block">
-                <div class="app-title">🐰 Meitu / Wink / BeautyCam</div>
-                <div class="app-desc">Meitu VIP (หาร2): 7d/80, 30d/120
-Meitu SVIP (หาร4): 1d/45, 7d/90, 30d/140
-Wink (iOS): 7d/75, 30d/110 | BeautyCam: 30d/100</div>
+            <div class="ct">📸 แอปแต่งรูป & ตัดต่อพรีเมียม</div>
+            <div class="app-item">
+                <div class="app-name">🎬 CapCut Pro</div>
+                <div class="app-price">มือถือ: 7d(หาร3-55/หาร2-65), 30d(หาร3-90/หาร2-110)
+คอม PC (หาร 2): 7d/60, 30d/130</div>
             </div>
-            <div class="app-block">
-                <div class="app-title">🎬 CapCut Pro</div>
-                <div class="app-desc">มือถือ (หาร3): 7d/55, 30d/90 | (หาร2): 30d/110
-คอม PC (หาร2): 7d/60, 30d/130</div>
+            <div class="app-item">
+                <div class="app-name">🐰 Meitu / BeautyCam / Wink</div>
+                <div class="app-price">Meitu VIP: 7d/80, 30d/120 | SVIP: 1d/45, 30d/140
+BeautyCam: 7d/70, 30d/100 | Wink (iOS): 30d/110</div>
             </div>
-            <div class="app-block">
-                <div class="app-title">🎵 YouTube Premium</div>
-                <div class="app-desc">เมลร้าน: ไม่เคลม 40 | เคลม 55
-เมลลูกค้า: เคลม 30
-แพ็คบุคคล: เมลร้าน 45-55</div>
+            <div class="app-item">
+                <div class="app-name">⭐️ Canva Pro</div>
+                <div class="app-price">7 วัน 15 | 14 วัน 25 | 30 วัน 40 (เมลลูกค้า)</div>
             </div>
         </div>
 
-        <div class="card" style="background: var(--c8); border:none; text-align:center;">
-            <p style="font-size:.85rem; font-weight:500;">💳 รับธนาคาร & วอเลท (ไม่บวกเพิ่ม)</p>
-            <p style="font-size:.75rem; margin-top:5px;">Line @355tmjpr (มี @)</p>
+        <div class="card">
+            <div class="ct">🎵 แอปฟังเพลงพรีเมียม</div>
+            <div class="app-item">
+                <div class="app-name">Youtube Premium</div>
+                <div class="app-price">เมลร้าน 30 วัน: ไม่เคลม 40 | เคลม 55
+เมลลูกค้า 30 วัน: เคลม 30
+แพ็คบุคคล (เมลร้าน): 45-55</div>
+            </div>
         </div>
 
-        <div class="cta-wrap">
+        <div class="footer-cta">
             <a href="https://lin.ee/EBW88DH" class="cta-btn">💚 ติดต่อสอบถามจิ้มเลย!</a>
-            <div class="cta-sub">ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า ✨💖</div>
-        </div>
-
-        <div class="footer">
-            Copyright © 2026 ERIN SHOP · All Rights Reserved
+            
+            <div class="important-red">
+                📍 ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า
+            </div>
+            
+            <div class="thanks">ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า ✨💖</div>
+            <div style="font-size:.75rem; color:var(--c4);">💳 ธนาคาร & วอเลท (ไม่บวกเพิ่ม) | Line @355tmjpr</div>
         </div>
     </div>
 
