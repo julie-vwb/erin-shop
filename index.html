@@ -68,7 +68,6 @@
             border-radius: 25px; padding: 20px; margin-bottom: 15px;
             box-shadow: 0 8px 25px rgba(28, 43, 69, 0.08); border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        .info-text { font-size: 0.85rem; line-height: 1.6; color: var(--blue-main); }
         .app-header { font-size: 1rem; font-weight: 600; color: var(--blue-soft); margin-bottom: 8px; }
         .app-info { font-size: 0.78rem; color: var(--blue-main); margin-bottom: 12px; line-height: 1.5; }
         .no-claim { color: #d32f2f; font-weight: 600; }
@@ -90,7 +89,8 @@
         .contact-box { background: var(--white); border-radius: 20px; padding: 20px; margin: 20px 0; text-align: center; }
         .note-red { color: #d32f2f; font-size: 0.82rem; font-weight: 600; margin: 10px 0; background: rgba(211, 47, 47, 0.05); padding: 10px; border-radius: 12px; text-align: center; }
         .thanks { font-size: 0.85rem; font-weight: 500; color: var(--blue-main); margin-bottom: 10px; }
-        .footer-line { font-size: 0.7rem; color: var(--blue-soft); margin-top: 15px; }
+        .credit-link { font-size: 0.7rem; color: var(--blue-soft); margin-top: 15px; line-height: 1.6; }
+        .credit-link a { color: var(--blue-main); text-decoration: none; }
     </style>
 </head>
 <body>
@@ -114,14 +114,16 @@
             </div>
             <div class="shop-name">ERIN SHOP ✨</div>
             <div class="status-box">
-                <div style="font-weight:600;"><span class="s-dot"></span>แอปพรีเมี่ยม สติกเกอร์ LINE แอปฟังเพลง 🫧</div>
+                <div style="font-weight:600;"><span class="s-dot"></span>สติกเกอร์ LINE แอปดูหนัง แอปฟังเพลง 🫧</div>
             </div>
         </header>
 
-        <div class="card" style="text-align: center;">
-            <div class="info-text">
-                Welcome to Erin Shop na ka 💖<br>
-                ทางร้านขายแอพพรี แอพแต่งรูป แอพตัดต่อ สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้ ครบวงจรค่ะ
+        <div class="category-title">🍎 สติกเกอร์ LINE & เมโลดี้</div>
+        <div class="card">
+            <div class="price-grid">
+                <div class="price-box"><span>50 coins</span><span>25 b</span></div>
+                <div class="price-box"><span>100 coins</span><span>50 b</span></div>
+                <div class="price-box full-width" style="background: var(--blue-soft); color: white;"><span>Melody 🎵 ทุกเพลง</span><span>45 b</span></div>
             </div>
         </div>
 
@@ -134,15 +136,13 @@
                 • <span class="no-claim">ต้องแจ้งอุปกรณ์ที่เข้าให้ตรง ไม่งั้นยึดจอน้า</span><br>
                 • พร้อมกดภายใน 5 นาที / เคลมกรณี แคปประกัน / ทีวี +10b
             </div>
-            <div class="price-grid" style="margin-bottom: 10px;">
-                <div class="price-box"><span>1 day (หาร 4)</span><span>25 b</span></div>
-                <div class="price-box"><span>3 day (หาร 4)</span><span>35 b</span></div>
-                <div class="price-box"><span>7 day (หาร 4)</span><span>55 b</span></div>
-                <div class="price-box"><span>30 day (หาร 4)</span><span>110 b</span></div>
-            </div>
             <div class="price-grid">
-                <div class="price-box"><span>7 day (หาร 5)</span><span>45 b</span></div>
-                <div class="price-box"><span>30 day (หาร 5)</span><span>95 b</span></div>
+                <div class="price-box"><span>1 day (ห4)</span><span>25 b</span></div>
+                <div class="price-box"><span>3 day (ห4)</span><span>35 b</span></div>
+                <div class="price-box"><span>7 day (ห4)</span><span>55 b</span></div>
+                <div class="price-box"><span>30 day (ห4)</span><span>110 b</span></div>
+                <div class="price-box"><span>7 day (ห5)</span><span>45 b</span></div>
+                <div class="price-box"><span>30 day (ห5)</span><span>95 b</span></div>
             </div>
         </div>
 
@@ -159,7 +159,6 @@
 
         <div class="card">
             <div class="app-header">🐬 Viu Premium</div>
-            <div class="app-info">* <span class="no-claim">หาร 4 ไม่รับเคลมทุกกรณี</span></div>
             <div class="price-grid">
                 <div class="price-box"><span>หาร 4 (30 วัน)</span><span>25 b</span></div>
                 <div class="price-box"><span>หาร 2 (30 วัน)</span><span>45 b</span></div>
@@ -168,15 +167,30 @@
         </div>
 
         <div class="card">
-            <div class="app-header">💬 WeTV / iQIYI / HBO</div>
+            <div class="app-header">💬 WeTV VIP</div>
             <div class="price-grid">
-                <div class="price-box"><span>iQIYI Gold</span><span>35-85 b</span></div>
-                <div class="price-box"><span>WeTV VIP</span><span>35-85 b</span></div>
-                <div class="price-box full-width"><span>HBO Max (30 วัน)</span><span>65-115 b</span></div>
+                <div class="price-box"><span>30 วัน</span><span>35-85 b</span></div>
+                <div class="price-box"><span>90 วัน</span><span>สอบถาม</span></div>
             </div>
         </div>
 
-        <div class="category-title">🎬 แอปตัดต่อ & แต่งรูป</div>
+        <div class="card">
+            <div class="app-header">💎 iQIYI Premium</div>
+            <div class="price-grid">
+                <div class="price-box"><span>Gold 30 วัน</span><span>35-85 b</span></div>
+                <div class="price-box"><span>4K 30 วัน</span><span>55-65 b</span></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="app-header">🐮 HBO Max</div>
+            <div class="price-grid">
+                <div class="price-box"><span>หาร 30 วัน</span><span>65 b</span></div>
+                <div class="price-box"><span>ยกแอค 30 วัน</span><span>115 b</span></div>
+            </div>
+        </div>
+
+        <div class="category-title">🎬 แอปตัดต่อวิดีโอ</div>
         <div class="card">
             <div class="app-header">🎬 CapCut Pro</div>
             <div class="app-info">* iOS/Android/PC / <span class="no-claim">หาร 3 ไม่รับเคลม</span></div>
@@ -186,24 +200,24 @@
             </div>
         </div>
 
+        <div class="category-title">📸 แอปแต่งรูปพรีเมียม</div>
         <div class="card">
-            <div class="app-header">🐰 Meitu / Canva</div>
+            <div class="app-header">🐰 Meitu VIP / SVIP</div>
             <div class="price-grid">
                 <div class="price-box"><span>Meitu VIP</span><span>120 b</span></div>
                 <div class="price-box"><span>Meitu SVIP</span><span>140 b</span></div>
-                <div class="price-box full-width"><span>Canva Pro (30 วัน)</span><span>40 b</span></div>
             </div>
         </div>
 
-        <div class="category-title">🍎 สติกเกอร์ LINE & เมโลดี้</div>
         <div class="card">
+            <div class="app-header">🎨 Canva Pro</div>
             <div class="price-grid">
-                <div class="price-box"><span>50 coins</span><span>25 b</span></div>
-                <div class="price-box"><span>100 coins</span><span>50 b</span></div>
-                <div class="price-box full-width" style="background: var(--blue-soft); color: white;"><span>Melody 🎵 ทุกเพลง</span><span>45 b</span></div>
+                <div class="price-box"><span>7 วัน</span><span>15 b</span></div>
+                <div class="price-box"><span>30 วัน</span><span>40 b</span></div>
             </div>
         </div>
 
+        <div class="category-title">🎵 แอปฟังเพลงพรีเมียม</div>
         <div class="card">
             <div class="app-header">🎧 Youtube Premium</div>
             <div class="app-info">* <span class="no-claim">เมลร้าน 40.- ไม่รับเคลม</span> / เคลมได้ 55.-</div>
@@ -218,16 +232,16 @@
             
             <div class="contact-box">
                 <b style="color:var(--blue-deep)">📱 ช่องทางการติดต่อ</b><br>
-                Line: @355tmjpr (มี @)<br>
-                <a href="https://lin.ee/EBW88DH" style="color:var(--blue-soft); text-decoration:none;">lin.ee/EBW88DH</a>
+                Line ID: @355tmjpr (มี @)<br>
+                Link: <a href="https://lin.ee/EBW88DH" style="color:var(--blue-soft); text-decoration:none;">lin.ee/EBW88DH</a>
             </div>
 
             <div class="note-red">📍 ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า</div>
-            <div class="thanks">ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า ✨💖</div>
+            <div class="thanks">ขอบคุณสำหรับออเดอร์นะคะ ✨💖</div>
             
-            <div class="footer-line">
-                💳 รับธนาคาร & วอเลท (ไม่บวกเพิ่ม)<br>
-                © 2026 ERIN SHOP OFFICIAL
+            <div class="credit-link">
+                Credit: <a href="https://www.facebook.com/share/1DveZBFdqz/?mibextid=wwXIfr" target="_blank">PinkJulie Ju</a><br>
+                💳 รับธนาคาร & วอเลท (ไม่บวกเพิ่ม) | © 2026 ERIN SHOP
             </div>
         </div>
     </div>
