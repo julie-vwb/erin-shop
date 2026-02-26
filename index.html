@@ -1,291 +1,204 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kochnapasorn Shop 🫧</title>
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --blue-soft: #E3F2FD;
-    --blue-mid: #BBDEFB;
-    --blue-accent: #64B5F6;
-    --yellow-soft: #FFFDE7;
-    --white: #ffffff;
-    --pink-accent: #FF80AB;
-    --bg-main: linear-gradient(180deg, #E3F2FD 0%, #FFFDE7 100%);
-    --text-color: #546E7A;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERIN SHOP - Official Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --c1: #1C2B45; --c2: #243A5A; --c3: #2E4A73; --c4: #3B5C89;
+            --c5: #4E6F9E; --c6: #6F8FB8; --c7: #9FB7D6; --c8: #D9E3F2;
+        }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Mitr', sans-serif;
+            background: linear-gradient(160deg, var(--c8) 0%, var(--c7) 50%, var(--c6) 100%);
+            background-attachment: fixed;
+            color: var(--c1);
+            padding: 25px 15px;
+        }
 
-  body {
-    font-family: 'Mitr', sans-serif;
-    background: var(--bg-main);
-    background-attachment: fixed;
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    padding: 20px 10px;
-  }
+        .container { max-width: 500px; margin: 0 auto; position: relative; }
+        
+        /* Floating Decor */
+        .sp { position: fixed; z-index: 0; filter: opacity(0.6); animation: f 6s infinite ease-in-out; pointer-events: none; }
+        @keyframes f { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-  .container {
-    max-width: 450px;
-    width: 100%;
-    text-align: center;
-  }
+        /* Header Section */
+        header { text-align: center; margin-bottom: 25px; }
+        .logo-ring {
+            width: 120px; height: 120px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--c4), var(--c6));
+            padding: 4px; margin: 0 auto 15px;
+            box-shadow: 0 10px 25px rgba(28, 43, 69, 0.2);
+        }
+        .logo-inner { width: 100%; height: 100%; border-radius: 50%; background: white; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .logo-inner img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* Header Section */
-  .profile-section {
-    margin-bottom: 30px;
-    position: relative;
-  }
+        .shop-name { font-size: 1.7rem; font-weight: 600; color: var(--c1); }
+        .badges { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+        .badge { background: white; border: 1.5px solid var(--c7); border-radius: 20px; padding: 3px 12px; font-size: .75rem; color: var(--c3); font-weight: 500; }
 
-  .logo-outer {
-    width: 180px;
-    height: 180px;
-    background: linear-gradient(135deg, var(--blue-mid), var(--yellow-soft));
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    padding: 5px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  }
+        /* Status & Intro */
+        .status-box {
+            background: rgba(255, 255, 255, 0.7); border: 1.5px dashed var(--c5);
+            border-radius: 18px; padding: 15px; margin: 20px 0; text-align: center;
+        }
+        .s-dot { display: inline-block; width: 10px; height: 10px; background: #6fcf97; border-radius: 50%; margin-right: 6px; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .intro-text { font-size: .8rem; color: var(--c4); line-height: 1.6; margin-top: 5px; }
 
-  .logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid #fff;
-  }
+        /* Card Structure */
+        .card {
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px);
+            border-radius: 25px; padding: 22px 18px; margin-bottom: 18px;
+            box-shadow: 0 8px 30px rgba(28, 43, 69, 0.06); border: 1px solid white;
+        }
+        .ct { font-size: 1rem; font-weight: 600; color: var(--c2); margin-bottom: 15px; border-left: 5px solid var(--c4); padding-left: 12px; }
 
-  .shop-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--blue-accent);
-    margin-bottom: 5px;
-  }
+        /* Content Styles */
+        .price-list { margin-bottom: 15px; }
+        .pr-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--c8); font-size: .88rem; }
+        .pr-val { background: var(--c4); color: white; padding: 2px 12px; border-radius: 15px; font-weight: 500; font-size: .8rem; }
+        
+        .app-block { background: white; border-radius: 15px; padding: 15px; margin-bottom: 10px; border: 1px solid var(--c8); }
+        .app-title { font-size: .88rem; font-weight: 600; color: var(--c3); margin-bottom: 6px; display: flex; justify-content: space-between; }
+        .app-desc { font-size: .8rem; color: var(--c5); line-height: 1.6; white-space: pre-line; }
 
-  .shop-subtitle {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.8;
-    margin-bottom: 15px;
-  }
+        .note-red { color: #d32f2f; font-size: .75rem; font-weight: 500; margin-top: 10px; text-align: center; }
 
-  /* Tags/Badges */
-  .tag-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 25px;
-  }
+        /* CTA & Footer */
+        .cta-wrap { text-align: center; margin-top: 30px; }
+        .cta-btn {
+            display: inline-block; width: 100%; max-width: 320px;
+            background: linear-gradient(135deg, var(--c1), var(--c3));
+            color: white; text-decoration: none; padding: 16px; border-radius: 50px;
+            font-weight: 600; box-shadow: 0 10px 20px rgba(28, 43, 69, 0.2); transition: .3s;
+        }
+        .cta-btn:hover { transform: translateY(-3px); }
+        .cta-sub { font-size: .75rem; color: var(--c3); margin-top: 12px; font-weight: 500; }
 
-  .tag {
-    background: #fff;
-    padding: 6px 15px;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    color: var(--text-color);
-    border: 1px solid rgba(255,255,255,0.5);
-  }
-
-  /* Status Box (Dashed) */
-  .status-banner {
-    background: rgba(255, 255, 255, 0.4);
-    border: 2px dashed var(--blue-mid);
-    border-radius: 25px;
-    padding: 20px;
-    margin-bottom: 25px;
-  }
-
-  .status-text {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--blue-accent);
-  }
-
-  /* Main Card Content */
-  .content-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    border-radius: 40px;
-    padding: 25px 20px;
-    margin-bottom: 20px;
-    text-align: left;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-  }
-
-  .section-header {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--blue-accent);
-  }
-
-  .item-list {
-    list-style: none;
-    font-size: 0.85rem;
-    line-height: 1.8;
-  }
-
-  .item-list li {
-    margin-bottom: 8px;
-    padding-left: 15px;
-    position: relative;
-  }
-
-  .item-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--blue-mid);
-  }
-
-  /* Link Buttons */
-  .link-box {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    padding: 15px;
-    border-radius: 20px;
-    text-decoration: none;
-    color: var(--text-color);
-    margin-bottom: 12px;
-    transition: 0.3s;
-    border: 1px solid rgba(0,0,0,0.02);
-  }
-
-  .link-box:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  }
-
-  .link-icon { font-size: 1.5rem; margin-right: 15px; }
-  .link-info b { display: block; font-size: 0.9rem; color: var(--blue-accent); }
-  .link-info span { font-size: 0.75rem; opacity: 0.7; }
-
-  /* CTA Button */
-  .main-cta {
-    display: block;
-    background: linear-gradient(90deg, var(--blue-accent), #81D4FA);
-    color: #fff;
-    text-decoration: none;
-    padding: 18px;
-    border-radius: 50px;
-    font-weight: 600;
-    margin-top: 20px;
-    box-shadow: 0 10px 20px rgba(100, 181, 246, 0.3);
-  }
-
-  .footer {
-    margin-top: 30px;
-    font-size: 0.7rem;
-    opacity: 0.6;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .container { animation: fadeUp 0.8s ease-out; }
-</style>
+        .footer { text-align: center; font-size: .7rem; color: var(--c5); margin-top: 40px; }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="profile-section">
-    <div class="logo-outer">
-      <img src="Logo.jpeg" alt="Logo" class="logo-img">
+    <div class="sp" style="top:5%; left:5%; font-size:24px;">🫧</div>
+    <div class="sp" style="top:25%; right:5%; font-size:20px;">🧸</div>
+    <div class="sp" style="bottom:15%; left:10%; font-size:22px;">🍦</div>
+
+    <div class="container">
+        <header>
+            <div class="logo-ring">
+                <div class="logo-inner"><img src="Logo.jpeg" alt="Logo"></div>
+            </div>
+            <div class="shop-name">ERIN SHOP ✨</div>
+            <div class="badges">
+                <span class="badge">🍎 มีค่า</span>
+                <span class="badge">🫧 วอเลทไม่บวกเพิ่ม</span>
+            </div>
+            <div class="status-box">
+                <div style="font-weight:600;"><span class="s-dot"></span>เปิดรับงานอยู่นะคะ 🎀</div>
+                <div class="intro-text">Welcome to Erin Shop na ka ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้ สอบถามได้นะคะ</div>
+            </div>
+        </header>
+
+        <div class="card">
+            <div class="ct">สติ๊กเกอร์ ธีม อิโมจิ เมโลดี้</div>
+            <div class="price-list">
+                <div class="pr-row"><span>40 coins</span> <span class="pr-val">20 b</span></div>
+                <div class="pr-row"><span>50 coins</span> <span class="pr-val">25 b</span></div>
+                <div class="pr-row"><span>70 coins</span> <span class="pr-val">35 b</span></div>
+                <div class="pr-row"><span>85 coins</span> <span class="pr-val">45 b</span></div>
+                <div class="pr-row"><span>100 coins</span> <span class="pr-val">50 b</span></div>
+                <div class="pr-row"><span>150 coins</span> <span class="pr-val">75 b</span></div>
+                <div class="pr-row"><span>Melody</span> <span class="pr-val">45 b</span></div>
+            </div>
+            <p class="note-red">📍 ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า</p>
+        </div>
+
+        <div class="card">
+            <div class="ct">แอพพรีเมียม (Disney+ - HBO)</div>
+            
+            <div class="app-block">
+                <div class="app-title">🏰 Disney+ Plus</div>
+                <div class="app-desc">หาร 4: 1d/25, 3d/35, 7d/55, 30d/110
+หาร 5: 7d/45, 30d/95
+*แจ้งอุปกรณ์ที่เข้า / เคลมกรณีแคปประกัน / ดูในทีวี+10b</div>
+            </div>
+
+            <div class="app-block">
+                <div class="app-title">🐬 Viu (วิว)</div>
+                <div class="app-desc">หาร 4: 7วัน/20, 30วัน/25
+หาร 3: 30วัน/35 | หาร 2: 30วัน/45
+ยกแอค: 30วัน/60 (ดูพร้อมกัน 3 อุปกรณ์)</div>
+            </div>
+
+            <div class="app-block">
+                <div class="app-title">💬 WeTV / iQIYI</div>
+                <div class="app-desc">WeTV (หาร4-35 / หาร3-45 / หาร2-55 / ยก-85)
+iQIYI Gold (หาร4-35 / หาร3-45 / หาร2-55 / ยก-85)
+iQIYI Diamond 4K (หาร5-55 / หาร4-65)</div>
+            </div>
+
+            <div class="app-block">
+                <div class="app-title">🏠 Netflix (แดงดำ)</div>
+                <div class="app-desc">มือถือ/iPad: 1d/15, 3d/25, 7d/45, 30d/110
+TV เท่านั้น: 1d/25, 3d/35, 7d/60, 30d/180</div>
+            </div>
+
+            <div class="app-block">
+                <div class="app-title">🐮 HBO Max (Ultimate/Standard)</div>
+                <div class="app-desc">Ultimate 4K: 7วัน(หาร5-35/หาร4-45) | 30วัน(หาร5-95/หาร4-115)
+Standard HD: 7วัน(หาร4-30/หาร3-40) | 30วัน(หาร4-65/หาร2-75)</div>
+            </div>
+
+            <div class="app-block">
+                <div class="app-title">⭐️ อื่นๆ: Prime / Canva / Mono / OneD</div>
+                <div class="app-desc">Canva Pro: 7d/15, 14d/25, 30d/40 (เมลลูกค้า)
+Prime: 30วัน(หาร6-50 / หาร5-55 / หาร3-80 / ยก-110)
+MonoMax: Standard 7d/55 | Mini 30d/50-70
+OneD: 30d (หาร2-60 / ยก-95) | Ch3+: 30d (หาร2-60 / ยก-90)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="ct">แอพแต่งรูป & ตัดต่อ & YouTube</div>
+            <div class="app-block">
+                <div class="app-title">🐰 Meitu / Wink / BeautyCam</div>
+                <div class="app-desc">Meitu VIP (หาร2): 7d/80, 30d/120
+Meitu SVIP (หาร4): 1d/45, 7d/90, 30d/140
+Wink (iOS): 7d/75, 30d/110 | BeautyCam: 30d/100</div>
+            </div>
+            <div class="app-block">
+                <div class="app-title">🎬 CapCut Pro</div>
+                <div class="app-desc">มือถือ (หาร3): 7d/55, 30d/90 | (หาร2): 30d/110
+คอม PC (หาร2): 7d/60, 30d/130</div>
+            </div>
+            <div class="app-block">
+                <div class="app-title">🎵 YouTube Premium</div>
+                <div class="app-desc">เมลร้าน: ไม่เคลม 40 | เคลม 55
+เมลลูกค้า: เคลม 30
+แพ็คบุคคล: เมลร้าน 45-55</div>
+            </div>
+        </div>
+
+        <div class="card" style="background: var(--c8); border:none; text-align:center;">
+            <p style="font-size:.85rem; font-weight:500;">💳 รับธนาคาร & วอเลท (ไม่บวกเพิ่ม)</p>
+            <p style="font-size:.75rem; margin-top:5px;">Line @355tmjpr (มี @)</p>
+        </div>
+
+        <div class="cta-wrap">
+            <a href="https://lin.ee/EBW88DH" class="cta-btn">💚 ติดต่อสอบถามจิ้มเลย!</a>
+            <div class="cta-sub">ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า ✨💖</div>
+        </div>
+
+        <div class="footer">
+            Copyright © 2026 ERIN SHOP · All Rights Reserved
+        </div>
     </div>
-    <h1 class="shop-title">💎 Kochnapasorn Shop 💎</h1>
-    <p class="shop-subtitle">🫧 ยินดีต้อนรับสู่ร้านสารพัดบริการ 🫧</p>
-    
-    <div class="tag-container">
-      <div class="tag">✨ เติมเกม</div>
-      <div class="tag">💧 งานกราฟิก</div>
-      <div class="tag">🫧 กลุ่มงานต่างๆ</div>
-      <div class="tag">📱 แอปพรีเมี่ยม</div>
-    </div>
-  </div>
-
-  <div class="status-banner">
-    <div class="status-text">🟢 เปิดรับงานอยู่นะคะ 🫧</div>
-    <p style="font-size: 0.8rem; margin-top: 5px;">ทักสอบถามคิวงานก่อนได้เลยค่า ✨</p>
-  </div>
-
-  <div class="content-card">
-    <div class="section-header">🎨 งานบริการกราฟิก & ตัดต่อ</div>
-    <ul class="item-list">
-      <li>รับใส่โทน VDS/AM คลิปละ 1฿ ภาพละ 0.50฿</li>
-      <li>รับตัดคลิป (รับตามใจฉัน)</li>
-      <li>รับทำปก เริ่มต้นที่ 69.-</li>
-      <li>รับทำลายน้ำ (เริ่มต้น 39-59.- / มีตูน 69.-)</li>
-      <li>รับทำป้ายต่างๆ เริ่มต้นที่ 69-89฿</li>
-      <li>รับวาดเครื่องประดับ เริ่มต้นที่ 39.-</li>
-    </ul>
-  </div>
-
-  <div class="content-card">
-    <div class="section-header">🎮 บริการอื่นๆ</div>
-    <ul class="item-list">
-      <li>รับเติมเกมเยอะมากๆ</li>
-      <li>ขายแอปพรีเมี่ยม / แอปแต่งรูป-ตัดต่อ</li>
-      <li>เปิดกลุ่มโค้ดตงฮวา / กลุ่มงาน ROV / Ebit</li>
-      <li>เปิดห้องเอฟตูน (ค่าเข้า 29.-)</li>
-      <li>รับลงทุนของสวยๆ งามๆ</li>
-    </ul>
-  </div>
-
-  <div class="content-card">
-    <div class="section-header" style="color: var(--hot);">🚫 สิ่งที่ไม่รับทำ</div>
-    <p style="font-size: 0.85rem; color: #FF6B6B; line-height: 1.8;">
-      ไม่รับงาน 18+ / งานผิดกฎหมาย / ของโจร / งานศาสนา
-    </p>
-  </div>
-
-  <div class="content-card">
-    <div class="section-header">📱 ช่องทางติดต่อ</div>
-    
-    <a href="https://drive.google.com/drive/folders/1X_1DBZ6YecE1WgNWyHZT51PaD-wJsKVH" class="link-box" target="_blank">
-      <div class="link-icon">📁</div>
-      <div class="link-info">
-        <b>ลิ้งค์รวมงานร้าน</b>
-        <span>คลิกเพื่อดูผลงานทั้งหมด</span>
-      </div>
-    </a>
-
-    <a href="https://line.me/ti/p/Kk9dVgv5zx" class="link-box" target="_blank">
-      <div class="link-icon">💚</div>
-      <div class="link-info">
-        <b>LINE Official</b>
-        <span>สั่งงาน/เติมเกม ทักทางนี้เลย</span>
-      </div>
-    </a>
-
-    <a href="https://www.facebook.com/share/1852Y93rSP/" class="link-box" target="_blank">
-      <div class="link-icon">💙</div>
-      <div class="link-info">
-        <b>Facebook Page</b>
-        <span>ติดตามข่าวสารและรีวิว</span>
-      </div>
-    </a>
-  </div>
-
-  <a href="https://line.me/ti/p/Kk9dVgv5zx" class="main-cta">
-    🫧 ติดต่อสั่งซื้อ/สอบถามคลิกเลย 🫧
-  </a>
-
-  <div class="footer">
-    made with 🫧 · Kochnapasorn Shop · 2026
-  </div>
-</div>
 
 </body>
 </html>
