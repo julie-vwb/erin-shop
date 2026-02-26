@@ -1,184 +1,291 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erin Shop - บันทึกสไตล์ข้อมูลเยอะ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-1: #1C2B45; --color-2: #243A5A; --color-3: #2E4A73;
-            --color-4: #3B5C89; --color-5: #4E6F9E; --color-6: #6F8FB8;
-            --color-7: #9FB7D6; --color-8: #D9E3F2;
-            --bg-gradient: linear-gradient(135deg, #D9E3F2 0%, #9FB7D6 100%);
-            --card-bg: rgba(255, 255, 255, 0.9);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kochnapasorn Shop 🫧</title>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-soft: #E3F2FD;
+    --blue-mid: #BBDEFB;
+    --blue-accent: #64B5F6;
+    --yellow-soft: #FFFDE7;
+    --white: #ffffff;
+    --pink-accent: #FF80AB;
+    --bg-main: linear-gradient(180deg, #E3F2FD 0%, #FFFDE7 100%);
+    --text-color: #546E7A;
+  }
 
-        body {
-            font-family: 'Mitr', sans-serif;
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--color-1);
-            margin: 0; padding: 20px;
-            display: flex; justify-content: center;
-        }
+  * { margin:0; padding:0; box-sizing:border-box; }
 
-        .container {
-            width: 100%; max-width: 500px;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 40px; padding: 35px 20px;
-            box-shadow: 0 20px 50px rgba(28, 43, 69, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-        }
+  body {
+    font-family: 'Mitr', sans-serif;
+    background: var(--bg-main);
+    background-attachment: fixed;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+  }
 
-        header { text-align: center; margin-bottom: 30px; }
-        .logo-ring {
-            width: 110px; height: 110px; border-radius: 50%;
-            border: 2px solid var(--color-6); padding: 5px;
-            margin: 0 auto 15px; background: white;
-        }
-        .logo-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+  .container {
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+  }
 
-        .shop-name { font-size: 26px; font-weight: 500; color: var(--color-1); }
-        .status-box {
-            background: white; border-radius: 20px; padding: 12px;
-            margin: 15px 0 25px; display: flex; align-items: center;
-            justify-content: center; gap: 10px; font-size: 13px;
-            border: 1px solid var(--color-8);
-        }
-        .s-dot { width: 8px; height: 8px; background: var(--color-5); border-radius: 50%; }
+  /* Header Section */
+  .profile-section {
+    margin-bottom: 30px;
+    position: relative;
+  }
 
-        .card {
-            background: white; border-radius: 25px; padding: 20px;
-            margin-bottom: 15px; border-left: 5px solid var(--color-4);
-        }
-        .card-title { font-size: 16px; font-weight: 500; margin-bottom: 12px; color: var(--color-2); }
-        
-        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .price-item {
-            padding: 8px 12px; background: var(--color-8);
-            border-radius: 10px; display: flex; justify-content: space-between; font-size: 13px;
-        }
+  .logo-outer {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, var(--blue-mid), var(--yellow-soft));
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    padding: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
 
-        .sub-section { border-top: 1px dashed var(--color-7); margin-top: 15px; padding-top: 15px; }
-        .app-tag { background: var(--color-3); color: white; padding: 2px 10px; border-radius: 8px; font-size: 12px; }
-        .detail-text { font-size: 12px; line-height: 1.6; color: var(--color-4); margin-top: 8px; white-space: pre-wrap; }
+  .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+  }
 
-        .cta-button {
-            display: block; text-align: center; background: var(--color-1);
-            color: white; text-decoration: none; padding: 18px;
-            border-radius: 20px; font-weight: 500; margin-top: 25px;
-        }
-    </style>
+  .shop-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    margin-bottom: 5px;
+  }
+
+  .shop-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 15px;
+  }
+
+  /* Tags/Badges */
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+  }
+
+  .tag {
+    background: #fff;
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    color: var(--text-color);
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+
+  /* Status Box (Dashed) */
+  .status-banner {
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px dashed var(--blue-mid);
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 25px;
+  }
+
+  .status-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--blue-accent);
+  }
+
+  /* Main Card Content */
+  .content-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  }
+
+  .section-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--blue-accent);
+  }
+
+  .item-list {
+    list-style: none;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .item-list li {
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
+  }
+
+  .item-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--blue-mid);
+  }
+
+  /* Link Buttons */
+  .link-box {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    transition: 0.3s;
+    border: 1px solid rgba(0,0,0,0.02);
+  }
+
+  .link-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+
+  .link-icon { font-size: 1.5rem; margin-right: 15px; }
+  .link-info b { display: block; font-size: 0.9rem; color: var(--blue-accent); }
+  .link-info span { font-size: 0.75rem; opacity: 0.7; }
+
+  /* CTA Button */
+  .main-cta {
+    display: block;
+    background: linear-gradient(90deg, var(--blue-accent), #81D4FA);
+    color: #fff;
+    text-decoration: none;
+    padding: 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(100, 181, 246, 0.3);
+  }
+
+  .footer {
+    margin-top: 30px;
+    font-size: 0.7rem;
+    opacity: 0.6;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .container { animation: fadeUp 0.8s ease-out; }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="logo-ring"><img src="Logo.jpeg"></div>
-            <div class="shop-name">Erin Shop ✨</div>
-            <div class="status-box"><div class="s-dot"></div> Welcome to Erin Shop na ka 🫧</div>
-        </header>
-
-        <div class="card">
-            <div class="card-title">🍎 สติ๊กเกอร์ ธีม อิโมจิ เมโลดี้</div>
-            <div class="price-grid">
-                <div class="price-item"><span>40 c</span> <span>20 b</span></div>
-                <div class="price-item"><span>50 c</span> <span>25 b</span></div>
-                <div class="price-item"><span>70 c</span> <span>35 b</span></div>
-                <div class="price-item"><span>85 c</span> <span>45 b</span></div>
-                <div class="price-item"><span>100 c</span> <span>50 b</span></div>
-                <div class="price-item"><span>150 c</span> <span>75 b</span></div>
-            </div>
-            <div class="detail-text" style="text-align:center;">melod𓈒y ⠀⠀45 ⠀b𓈒♡︎</div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">📺 แอพพรีเมียม (Disney+ - HBO)</div>
-            
-            <div class="sub-section">
-                <span class="app-tag">Disney+ Plus 🏰</span>
-                <div class="detail-text">หาร 4: 1 day 25 | 3 day 35 | 7 day 55 | 30 day 110
-หาร 5: 7 day 45 | 30 day 95
-*พร้อมกดใน 5 นาที / ดูในไทย / ทีวี +10b</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="app-tag">Viu วิว 🐬</span>
-                <div class="detail-text">หาร 4: 7วัน 20 | 30วัน 25
-หาร 3: 30วัน 35
-หาร 2: 30วัน 45
-ยกแอค: 30วัน 60 (ดูพร้อมกัน 3 อุปกรณ์)</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="app-tag">WeTV / iQIYI 💬</span>
-                <div class="detail-text">WeTV: 7วัน 20 | 30วัน (หาร4-35 / หาร3-45 / หาร2-55) | ยกแอค 85
-iQIYI Gold: 7วัน 20 | 30วัน (หาร4-35 / หาร3-45 / หาร2-55) | ยกแอค 85
-iQIYI Diamond 4K: 30วัน (หาร5-55 / หาร4-65)</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="app-tag">BiliBili / Youku / MonoMax ☘️</span>
-                <div class="detail-text">BiliBili: 30วัน (หาร4-40 / หาร3-50 / หาร2-55) | ยกแอค 100
-MonoMax: 30วัน (หาร5-45 / หาร3-60 / หาร2-80) | Mini 30วัน 50
-Youku: 30วัน (หาร4-40 / หาร3-45 / หาร2-55) | ยกแอค 85</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="app-tag">Netflix แดงดำ 🏠</span>
-                <div class="detail-text">มือถือ/iPad: 1วัน 15 | 3วัน 25 | 7วัน 45 | 30วัน 110
-TV เท่านั้น: 1วัน 25 | 3วัน 35 | 7วัน 60 | 30วัน 180</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="app-tag">HBO Max 🐮</span>
-                <div class="detail-text">Ultimate 4K: 7วัน (หาร5-35 / หาร4-45) | 30วัน (หาร5-95 / หาร4-115)
-Standard HD: 7วัน (หาร4-30 / หาร3-40) | 30วัน (หาร4-65 / หาร2-75)</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="app-tag">Prime / Canva / Ch3 / OneD ⭐️</span>
-                <div class="detail-text">Canva Pro: 7วัน 15 | 14วัน 25 | 30วัน 40
-Prime Video: 30วัน (หาร6-50 / หาร5-55 / หาร3-80) | ยกแอค 110
-Ch3+: 30วัน (หาร2-60 / ยกแอค 90)
-OneD: 30วัน (หาร2-60 / ยกแอค 95)</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">📸 แอพแต่งรูป & ตัดต่อ</div>
-            <div class="sub-section">
-                <span class="app-tag">Meitu / BeautyCam / Wink 🐰</span>
-                <div class="detail-text">Meitu VIP: 7วัน 80 | 30วัน 120 (หาร2)
-Meitu SVIP: 1วัน 45 | 30วัน 140 (หาร4)
-BeautyCam: 7วัน 70 | 30วัน 100 (หาร4)
-Wink (iOS): 7วัน 75 | 30วัน 110 (หาร4)</div>
-            </div>
-            <div class="sub-section">
-                <span class="app-tag">CapCut Pro 🎬</span>
-                <div class="detail-text">มือถือ/ไอแพด: 7วัน (หาร3-55 / หาร2-65) | 30วัน (หาร3-90 / หาร2-110)
-คอม PC: 7วัน 60 | 30วัน 130 (หาร2)</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">🎵 YouTube Premium</div>
-            <div class="detail-text">เมลร้าน (30วัน): ไม่เคลม 40 | เคลม 55
-เมลลูกค้า (30วัน): เคลม 30
-*ไม่ต่อแพ็คบุคคล: เมลร้าน 45-55</div>
-        </div>
-
-        <div class="card" style="background: var(--color-8); border: none; text-align: center;">
-            <div class="detail-text" style="color: var(--color-1); font-weight: 500;">
-                💳 รับธนาคาร & วอเลท (ไม่บวกเพิ่ม)<br>
-                Line @355tmjpr (มี @)
-            </div>
-        </div>
-
-        <a href="https://lin.ee/EBW88DH" class="cta-button">สั่งซื้อทักแชทได้เลยค่า 🧵🎀</a>
+<div class="container">
+  <div class="profile-section">
+    <div class="logo-outer">
+      <img src="Logo.jpeg" alt="Logo" class="logo-img">
     </div>
+    <h1 class="shop-title">💎 Kochnapasorn Shop 💎</h1>
+    <p class="shop-subtitle">🫧 ยินดีต้อนรับสู่ร้านสารพัดบริการ 🫧</p>
+    
+    <div class="tag-container">
+      <div class="tag">✨ เติมเกม</div>
+      <div class="tag">💧 งานกราฟิก</div>
+      <div class="tag">🫧 กลุ่มงานต่างๆ</div>
+      <div class="tag">📱 แอปพรีเมี่ยม</div>
+    </div>
+  </div>
+
+  <div class="status-banner">
+    <div class="status-text">🟢 เปิดรับงานอยู่นะคะ 🫧</div>
+    <p style="font-size: 0.8rem; margin-top: 5px;">ทักสอบถามคิวงานก่อนได้เลยค่า ✨</p>
+  </div>
+
+  <div class="content-card">
+    <div class="section-header">🎨 งานบริการกราฟิก & ตัดต่อ</div>
+    <ul class="item-list">
+      <li>รับใส่โทน VDS/AM คลิปละ 1฿ ภาพละ 0.50฿</li>
+      <li>รับตัดคลิป (รับตามใจฉัน)</li>
+      <li>รับทำปก เริ่มต้นที่ 69.-</li>
+      <li>รับทำลายน้ำ (เริ่มต้น 39-59.- / มีตูน 69.-)</li>
+      <li>รับทำป้ายต่างๆ เริ่มต้นที่ 69-89฿</li>
+      <li>รับวาดเครื่องประดับ เริ่มต้นที่ 39.-</li>
+    </ul>
+  </div>
+
+  <div class="content-card">
+    <div class="section-header">🎮 บริการอื่นๆ</div>
+    <ul class="item-list">
+      <li>รับเติมเกมเยอะมากๆ</li>
+      <li>ขายแอปพรีเมี่ยม / แอปแต่งรูป-ตัดต่อ</li>
+      <li>เปิดกลุ่มโค้ดตงฮวา / กลุ่มงาน ROV / Ebit</li>
+      <li>เปิดห้องเอฟตูน (ค่าเข้า 29.-)</li>
+      <li>รับลงทุนของสวยๆ งามๆ</li>
+    </ul>
+  </div>
+
+  <div class="content-card">
+    <div class="section-header" style="color: var(--hot);">🚫 สิ่งที่ไม่รับทำ</div>
+    <p style="font-size: 0.85rem; color: #FF6B6B; line-height: 1.8;">
+      ไม่รับงาน 18+ / งานผิดกฎหมาย / ของโจร / งานศาสนา
+    </p>
+  </div>
+
+  <div class="content-card">
+    <div class="section-header">📱 ช่องทางติดต่อ</div>
+    
+    <a href="https://drive.google.com/drive/folders/1X_1DBZ6YecE1WgNWyHZT51PaD-wJsKVH" class="link-box" target="_blank">
+      <div class="link-icon">📁</div>
+      <div class="link-info">
+        <b>ลิ้งค์รวมงานร้าน</b>
+        <span>คลิกเพื่อดูผลงานทั้งหมด</span>
+      </div>
+    </a>
+
+    <a href="https://line.me/ti/p/Kk9dVgv5zx" class="link-box" target="_blank">
+      <div class="link-icon">💚</div>
+      <div class="link-info">
+        <b>LINE Official</b>
+        <span>สั่งงาน/เติมเกม ทักทางนี้เลย</span>
+      </div>
+    </a>
+
+    <a href="https://www.facebook.com/share/1852Y93rSP/" class="link-box" target="_blank">
+      <div class="link-icon">💙</div>
+      <div class="link-info">
+        <b>Facebook Page</b>
+        <span>ติดตามข่าวสารและรีวิว</span>
+      </div>
+    </a>
+  </div>
+
+  <a href="https://line.me/ti/p/Kk9dVgv5zx" class="main-cta">
+    🫧 ติดต่อสั่งซื้อ/สอบถามคลิกเลย 🫧
+  </a>
+
+  <div class="footer">
+    made with 🫧 · Kochnapasorn Shop · 2026
+  </div>
+</div>
 
 </body>
 </html>
