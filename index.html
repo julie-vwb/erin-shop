@@ -67,7 +67,7 @@ z-index:1;
 
 /* logo */
 .logo-wrap{width:110px;height:110px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(–btn1),var(–btn2));margin:0 auto 18px;animation:pulse 3s ease-in-out infinite;display:flex;align-items:center;justify-content:center;}
-.logo-inner{width:100%;height:100%;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.logo-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 
 /* header */
 .header{text-align:center;padding:36px 24px 28px}
@@ -149,12 +149,14 @@ display:flex;align-items:center;gap:6px;
 .cta-wrap{text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
 .btn-main{
 display:inline-block;
-background:linear-gradient(135deg,var(–btn1),var(–btn2));
-color:#fff;font-family:‘Mitr’,‘Sarabun’,sans-serif;font-weight:500;font-size:1rem;
+background-color:#5bb8e8;
+background-image:linear-gradient(135deg,#5bb8e8,#3a9bd5);
+color:#fff !important;font-family:‘Mitr’,‘Sarabun’,sans-serif;font-weight:500;font-size:1rem;
 padding:14px 40px;border-radius:50px;text-decoration:none;
 animation:glow 2.5s ease-in-out infinite;
 border:none;cursor:pointer;transition:transform .2s;
 -webkit-appearance:none;
+display:inline-flex;align-items:center;justify-content:center;
 }
 .btn-main:hover{transform:scale(1.04)}
 .btn-sec{
@@ -215,38 +217,37 @@ margin-top:4px;
 
 <!-- sparkles -->
 
-<span class="sparkle s1">🫧</span>
-<span class="sparkle s2">💧</span>
+<span class="sparkle s1">✦</span>
+<span class="sparkle s2">✧</span>
 <span class="sparkle s3">✦</span>
-<span class="sparkle s4">🪥</span>
-<span class="sparkle s5">🫧</span>
+<span class="sparkle s4">✧</span>
+<span class="sparkle s5">✦</span>
 <span class="sparkle s6">⋆</span>
-<span class="sparkle s7">💧</span>
+<span class="sparkle s7">✧</span>
 <span class="sparkle s8">✦</span>
 
 <div class="container">
 
-  <!-- 1. Header -->
+  <!-- 1. Header — โลโก้ลอยบน background ไม่มีการ์ด -->
 
-  <div class="card header" style="animation-delay:0s">
+  <div style="text-align:center;padding:40px 16px 24px;position:relative;z-index:1;animation:fadeUp .6s ease both">
     <div class="logo-wrap">
       <div class="logo-inner">
-        <img src="Logo.jpeg" alt="Erin Shop Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
+        <img src="Logo.jpeg" alt="Erin Shop Logo" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
       </div>
     </div>
-    <div class="shop-name">🫧 Erin Shop 🫧</div>
-    <div class="shop-sub">Welcome to Erin Shop na ka 🧸<br>ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ<br>สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้<br>นอกจากนี้สอบถามได้นะคะ 💙</div>
+    <div class="shop-name" style="margin-top:16px">&#128432; Erin Shop &#128432;</div>
+    <div class="shop-sub">Welcome to Erin Shop na ka &#129528;<br>ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ<br>สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้<br>นอกจากนี้สอบถามได้นะคะ 💙</div>
     <div class="badges">
-      <span class="badge">🎀 สติกเกอร์ไลน์</span>
-      <span class="badge">📱 แอพพรีเมียม</span>
-      <span class="badge">🎬 แอพตัดต่อ</span>
+      <span class="badge">&#127872; สติกเกอร์ไลน์</span>
+      <span class="badge">&#128241; แอพพรีเมียม</span>
+      <span class="badge">&#127916; แอพตัดต่อ</span>
     </div>
   </div>
 
   <!-- 2. สถานะรับงาน -->
 
-  <div class="card" style="animation-delay:.1s">
-    <div class="sec-title">สถานะร้านค้า</div>
+  <div class="card" style="animation-delay:.1s;background:rgba(255,255,255,.5);border:2px dashed rgba(91,184,232,.5);">
     <div class="status-row">
       <span class="dot"></span>
       <span>เปิดให้บริการอยู่นะคะ ✨</span>
@@ -256,7 +257,7 @@ margin-top:4px;
   <!-- สติกเกอร์ ธีม เมโลดี้ -->
 
   <div class="card" style="animation-delay:.15s">
-    <div class="sec-title">🎀 สติกเกอร์ · ธีม · อิโมจิ · เมโลดี้</div>
+    <div class="sec-title">&#127872; สติกเกอร์ &middot; ธีม &middot; อิโมจิ &middot; เมโลดี้</div>
 
 ```
 <div class="sticker-list">
@@ -276,7 +277,7 @@ margin-top:4px;
 </div>
 
 <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-light)">
-  <span>🔗</span>
+  <span>&#128279;</span>
   <span>รบกวนส่งแบบลิงก์เท่านั้น เพื่อความรวดเร็วและถูกต้องค่ะ</span>
 </div>
 ```
@@ -789,7 +790,7 @@ margin-top:4px;
 <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(91,184,232,.35),transparent);margin:18px 0"></div>
 
 <div class="cta-wrap" style="margin-bottom:16px">
-  <p style="font-weight:500;margin-bottom:8px">สนใจสั่งซื้อ ทักมาได้เลยนะคะ! 🫧</p>
+  <p style="font-weight:500;margin-bottom:8px">สนใจสั่งซื้อ ทักมาได้เลยนะคะ!</p>
   <a href="https://lin.ee/EBW88DH" class="btn-main" target="_blank">💬 ทักหาร้านเลย</a>
   <p style="font-size:.82rem;color:#c0392b;margin-top:6px">⚠️ ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า</p>
   <p style="font-size:.82rem;color:var(--text-light);margin-top:2px">ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า 💙</p>
@@ -799,7 +800,7 @@ margin-top:4px;
   </div>
 
   <div class="footer">
-    © Erin Shop · ขอบคุณที่อุดหนุนนะคะ 💙🫧
+    &copy; Erin Shop &middot; ขอบคุณที่อุดหนุนนะคะ 💙
   </div>
 
 </div>
