@@ -1,799 +1,478 @@
 <!DOCTYPE html>
-
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Erin Shop</title>
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --pink:#5bb8e8;
-  --purple:#7ac8e8;
-  --text:#1a4a6b;
-  --text-light:#2a6090;
-  --card-bg:rgba(255,255,255,.78);
-  --border:rgba(100,180,230,.4);
-  --btn1:#5bb8e8;
-  --btn2:#3a9bd5;
-}
-body{
-  font-family:'Mitr',sans-serif;
-  font-weight:400;
-  background:linear-gradient(160deg,#d6eeff 0%,#e8f4ff 50%,#d6f0ff 100%);
-  min-height:100vh;
-  color:var(--text);
-  overflow-x:hidden;
-}
-/* sparkles */
-.sparkle{position:fixed;pointer-events:none;font-size:1.2rem;animation:float 6s ease-in-out infinite;z-index:0;opacity:.6}
-@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(15deg)}}
-.s1{top:8%;left:4%;animation-delay:0s}
-.s2{top:20%;right:6%;animation-delay:1s}
-.s3{top:40%;left:2%;animation-delay:2s}
-.s4{top:60%;right:4%;animation-delay:.5s}
-.s5{top:75%;left:8%;animation-delay:1.5s}
-.s6{top:85%;right:10%;animation-delay:3s}
-.s7{top:50%;left:92%;animation-delay:2.5s}
-.s8{top:30%;left:95%;animation-delay:.8s}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erin Shop - Premium Digital Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ERIN SHOP LUXURY CODE STYLE
+           Color Palette: Pastel Blue & Deep Navy
+        */
+        :root {
+            --p-blue-100: #e3f2fd;
+            --p-blue-200: #d6eeff;
+            --p-blue-300: #5bb8e8;
+            --p-blue-400: #3a9bd5;
+            --deep-navy: #1a4a6b;
+            --text-light: #2a6090;
+            --white-glass: rgba(255, 255, 255, 0.82);
+            --border-glass: rgba(255, 255, 255, 0.5);
+            --shadow-soft: 0 12px 40px rgba(26, 74, 107, 0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
 
-/* animations */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(91,184,232,.5)}50%{box-shadow:0 0 0 10px rgba(91,184,232,0)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes glow{0%,100%{box-shadow:0 4px 20px rgba(91,184,232,.4)}50%{box-shadow:0 4px 40px rgba(91,184,232,.8),0 0 60px rgba(58,155,213,.3)}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-.container{max-width:800px;margin:0 auto;padding:20px 16px;position:relative;z-index:1}
+        body {
+            font-family: 'Mitr', sans-serif;
+            background: linear-gradient(135deg, #d6eeff 0%, #f0f8ff 50%, #e1f5fe 100%);
+            background-attachment: fixed;
+            color: var(--deep-navy);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-/* card base */
-.card{
-background:var(–card-bg);
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
-border:1px solid var(–border);
-border-radius:22px;
-padding:28px 24px;
-margin-bottom:20px;
-animation:fadeUp .6s ease both;
-}
+        /* --- Decorations --- */
+        .bg-shapes {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-/* logo */
-.logo-wrap{width:110px;height:110px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(–btn1),var(–btn2));margin:0 auto 18px;animation:pulse 3s ease-in-out infinite;display:flex;align-items:center;justify-content:center;}
-.logo-inner{width:100%;height:100%;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+        .shape {
+            position: absolute;
+            background: rgba(91, 184, 232, 0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: move 20s infinite alternate;
+        }
 
-/* header */
-.header{text-align:center;padding:36px 24px 28px}
-.shop-name{font-size:2rem;font-weight:600;color:var(–text);margin-bottom:4px}
-.shop-sub{font-size:.95rem;font-weight:300;color:var(–text-light);margin-bottom:16px;line-height:1.7}
-.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.badge{
-background:linear-gradient(135deg,var(–btn1),var(–btn2));
-color:#fff;font-size:.8rem;font-weight:500;
-padding:5px 16px;border-radius:20px;
-}
-.badge-outline{
-background:transparent;
-border:1.5px solid var(–pink);
-color:var(–text);font-size:.8rem;font-weight:500;
-padding:5px 16px;border-radius:20px;
-}
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 100px); }
+        }
 
-/* section title */
-.sec-title{
-font-size:1.15rem;font-weight:600;
-color:var(–text);margin-bottom:16px;
-display:flex;align-items:center;gap:8px;
-}
-.sec-title::before{content:’’;display:inline-block;width:4px;height:20px;border-radius:4px;background:linear-gradient(180deg,var(–btn1),var(–btn2))}
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+            font-size: 1.2rem;
+            animation: float 5s ease-in-out infinite;
+        }
 
-/* status */
-.status-row{display:flex;align-items:center;gap:10px;justify-content:center;font-size:1.05rem;font-weight:500}
-.dot{width:12px;height:12px;border-radius:50%;background:#4dd0a0;animation:blink 1.4s ease-in-out infinite;flex-shrink:0}
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
 
-/* product grid */
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:8px}
-.product-item{
-background:rgba(91,184,232,.08);
-border:1px solid rgba(91,184,232,.25);
-border-radius:14px;padding:14px 10px;text-align:center;
-font-size:.9rem;font-weight:500;color:var(–text);
-}
-.product-icon{font-size:1.5rem;margin-bottom:6px}
+        /* --- Layout Container --- */
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+        }
 
-/* steps */
-.steps{display:flex;flex-direction:column;gap:14px}
-.step{display:flex;gap:14px;align-items:flex-start}
-.step-num{
-width:32px;height:32px;border-radius:50%;flex-shrink:0;
-background:linear-gradient(135deg,var(–btn1),var(–btn2));
-color:#fff;font-weight:600;font-size:.9rem;
-display:flex;align-items:center;justify-content:center;
-}
-.step-text{font-size:.95rem;line-height:1.7;padding-top:4px}
+        /* --- Logo Section --- */
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: -45px;
+            position: relative;
+            z-index: 5;
+        }
 
-/* cond list */
-.cond-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.cond-list li{display:flex;gap:8px;align-items:flex-start;font-size:.92rem;line-height:1.65}
-.cond-list li::before{content:‘✦’;color:var(–pink);flex-shrink:0;margin-top:2px}
+        .logo-frame {
+            width: 130px;
+            height: 130px;
+            background: #fff;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid var(--p-blue-300);
+            position: relative;
+            animation: pulse-border 3s infinite;
+        }
 
-/* info box */
-.info-box{
-background:rgba(91,184,232,.07);
-border:1px solid rgba(91,184,232,.2);
-border-radius:14px;padding:16px;
-font-size:.92rem;line-height:1.75;
-}
-ul.plain{list-style:none;display:flex;flex-direction:column;gap:8px}
-ul.plain li{display:flex;gap:8px;align-items:flex-start;font-size:.92rem;line-height:1.65}
-ul.plain li::before{content:’·’;color:var(–pink);font-size:1.4rem;line-height:1;flex-shrink:0}
+        @keyframes pulse-border {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91, 184, 232, 0.4); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(91, 184, 232, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91, 184, 232, 0); }
+        }
 
-/* payment badges */
-.pay-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.pay-badge{
-background:rgba(91,184,232,.12);
-border:1px solid rgba(91,184,232,.3);
-border-radius:12px;padding:8px 16px;
-font-size:.88rem;font-weight:500;color:var(–text);
-display:flex;align-items:center;gap:6px;
-}
+        .logo-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
-/* cta */
-.cta-wrap{text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center}
-.btn-main{
-display:inline-block;
-background:linear-gradient(135deg,var(–btn1),var(–btn2));
-color:#fff;font-family:‘Mitr’,sans-serif;font-weight:500;font-size:1rem;
-padding:14px 40px;border-radius:50px;text-decoration:none;
-animation:glow 2.5s ease-in-out infinite;
-border:none;cursor:pointer;transition:transform .2s;
-}
-.btn-main:hover{transform:scale(1.04)}
-.btn-sec{
-display:inline-block;
-background:transparent;
-border:2px solid var(–pink);
-color:var(–text);font-family:‘Mitr’,sans-serif;font-weight:500;font-size:1rem;
-padding:12px 36px;border-radius:50px;text-decoration:none;
-transition:all .2s;cursor:pointer;
-}
-.btn-sec:hover{background:rgba(91,184,232,.1)}
+        /* --- Cards --- */
+        .card {
+            background: var(--white-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-soft);
+            animation: slideUp 0.8s ease backwards;
+        }
 
-/* sub title badge */
-.sub-title{font-size:.9rem;font-weight:600;color:#fff;background:linear-gradient(135deg,var(–btn1),var(–btn2));padding:5px 14px;border-radius:20px;display:inline-block;margin-bottom:10px;}
-.sub-note{font-size:.8rem;color:var(–text-light);margin:6px 0 10px;line-height:1.6}
-.sub-sec{margin-bottom:18px}
-.sub-sec:last-child{margin-bottom:0}
-.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(91,184,232,.35),transparent);margin:16px 0}
-/* price table */
-.ptable-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(91,184,232,.25);margin-bottom:8px}
-.ptable{width:100%;border-collapse:collapse;font-size:.88rem}
-.ptable th{background:rgba(91,184,232,.15);color:var(–text);font-weight:600;padding:8px 10px;text-align:center;border-bottom:2px solid rgba(91,184,232,.3)}
-.ptable td{padding:7px 10px;text-align:center;border-bottom:1px solid rgba(91,184,232,.12);color:var(–text)}
-.ptable tr:last-child td{border-bottom:none}
-.ptable tr:hover td{background:rgba(91,184,232,.06)}
-.price-val{font-weight:600;color:var(–btn2)}
-.platform-badge{font-size:.75rem;background:rgba(91,184,232,.15);border-radius:8px;padding:2px 8px;display:inline-block;margin-bottom:8px;color:var(–text-light)}
-/* credit */
-.credit-box{
-background:rgba(91,184,232,.06);
-border:1px dashed rgba(91,184,232,.3);
-border-radius:14px;padding:12px 16px;
-font-size:.82rem;color:var(–text-light);text-align:center;
-margin-top:4px;
-}
-.credit-box a{color:var(–btn2);text-decoration:none}
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* sticker list style */
-.sticker-list{display:flex;flex-direction:column;gap:0}
-.sticker-row{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-bottom:1px dashed rgba(91,184,232,.25)}
-.sticker-row:last-child{border-bottom:none}
-.sticker-coin{font-size:.95rem;color:var(–text);font-weight:400}
-.sticker-price{background:rgba(91,184,232,.18);color:var(–btn2);font-weight:600;font-size:.92rem;padding:4px 16px;border-radius:20px;min-width:64px;text-align:center}
-.cat-tag{background:transparent;border:1.5px solid rgba(91,184,232,.5);color:var(–text);font-size:.8rem;font-weight:500;padding:4px 14px;border-radius:20px}
+        .header-card {
+            text-align: center;
+            padding-top: 65px;
+        }
 
-/* contact card */
-.contact-card{display:flex;align-items:center;gap:14px;background:rgba(91,184,232,.07);border:1px solid rgba(91,184,232,.25);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(–text);transition:background .2s;margin-bottom:8px}
-.contact-card:hover{background:rgba(91,184,232,.14)}
-.contact-name{font-weight:600;font-size:.95rem;color:var(–text);margin-bottom:2px}
-.contact-desc{font-size:.82rem;color:var(–text-light)}
+        .shop-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
 
-/* footer */
-.footer{text-align:center;font-size:.8rem;font-weight:300;color:var(–text-light);padding:16px 0 8px}
-</style>
+        .shop-desc {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
 
+        /* --- Sections Style --- */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+        }
+
+        .section-header::before {
+            content: '';
+            width: 6px;
+            height: 24px;
+            background: var(--p-blue-400);
+            border-radius: 10px;
+        }
+
+        /* --- Pricing Grid & Tables --- */
+        .price-category {
+            margin-bottom: 30px;
+        }
+
+        .cat-tag {
+            display: inline-block;
+            background: var(--p-blue-400);
+            color: #fff;
+            padding: 5px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(58, 155, 213, 0.2);
+        }
+
+        .table-responsive {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(91, 184, 232, 0.2);
+            background: rgba(255, 255, 255, 0.5);
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(91, 184, 232, 0.15);
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(91, 184, 232, 0.1);
+        }
+
+        .price-highlight {
+            font-weight: 600;
+            color: var(--p-blue-400);
+        }
+
+        .note-text {
+            font-size: 0.82rem;
+            color: #6a89a0;
+            padding: 10px;
+            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+        /* --- Buttons & Links --- */
+        .btn-grad {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, var(--p-blue-300), var(--p-blue-400));
+            color: #fff;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(58, 155, 213, 0.3);
+            margin: 15px 0;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-grad:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(58, 155, 213, 0.4);
+        }
+
+        .contact-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: inherit;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+
+        .contact-box:hover {
+            background: var(--p-blue-100);
+            transform: translateX(5px);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        /* --- Custom Divider --- */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--p-blue-300), transparent);
+            margin: 25px 0;
+        }
+
+        /* --- Animations for Items --- */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+    </style>
 </head>
 <body>
 
-<!-- sparkles -->
-
-<span class="sparkle s1">🫧</span>
-<span class="sparkle s2">💧</span>
-<span class="sparkle s3">✦</span>
-<span class="sparkle s4">🪥</span>
-<span class="sparkle s5">🫧</span>
-<span class="sparkle s6">⋆</span>
-<span class="sparkle s7">💧</span>
-<span class="sparkle s8">✦</span>
-
-<div class="container">
-
-  <!-- 1. Header -->
-
-  <div class="card header" style="animation-delay:0s">
-    <div class="logo-wrap">
-      <div class="logo-inner">
-        <img src="Logo.jpeg" alt="Erin Shop Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
-      </div>
+    <div class="bg-shapes">
+        <div class="shape" style="width: 300px; height: 300px; top: -100px; right: -50px;"></div>
+        <div class="shape" style="width: 400px; height: 400px; bottom: -150px; left: -100px; background: rgba(122, 200, 232, 0.15);"></div>
     </div>
-    <div class="shop-name">🫧 Erin Shop 🫧</div>
-    <div class="shop-sub">Welcome to Erin Shop na ka 🧸<br>ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ<br>สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้<br>นอกจากนี้สอบถามได้นะคะ 💙</div>
-    <div class="badges">
-      <span class="badge">🎀 สติกเกอร์ไลน์</span>
-      <span class="badge">📱 แอพพรีเมียม</span>
-      <span class="badge">🎬 แอพตัดต่อ</span>
+
+    <div class="sparkle" style="top: 10%; left: 10%;">🫧</div>
+    <div class="sparkle" style="top: 30%; right: 15%;">✨</div>
+    <div class="sparkle" style="bottom: 20%; left: 15%;">💙</div>
+    <div class="sparkle" style="top: 60%; left: 5%;">⭐</div>
+
+    <div class="container">
+
+        <div class="logo-section">
+            <div class="logo-frame">
+                <img src="Logo.jpeg" alt="Erin Shop Logo">
+            </div>
+        </div>
+
+        <div class="card header-card">
+            <h1 class="shop-title">🫧 Erin Shop 🫧</h1>
+            <p class="shop-desc">
+                Welcome to Erin Shop na ka 🧸<br>
+                ศูนย์รวมแอพพรีเมียม สติ๊กเกอร์ ธีมไลน์ เมโลดี้<br>
+                บริการรวดเร็ว ทันใจ ใส่ใจทุกออเดอร์ค่ะ
+            </p>
+            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                <span style="background:#e3f2fd; color:var(--p-blue-400); padding:5px 15px; border-radius:20px; font-size:0.8rem; font-weight:600;">#แอพพรีเมียม</span>
+                <span style="background:#e3f2fd; color:var(--p-blue-400); padding:5px 15px; border-radius:20px; font-size:0.8rem; font-weight:600;">#สติ๊กเกอร์ไลน์</span>
+                <span style="background:#e3f2fd; color:var(--p-blue-400); padding:5px 15px; border-radius:20px; font-size:0.8rem; font-weight:600;">#CanvaPro</span>
+            </div>
+        </div>
+
+        <div class="card stagger-1" style="padding: 20px;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <div style="width:12px; height:12px; background:#4dd0a0; border-radius:50%; box-shadow: 0 0 10px #4dd0a0;"></div>
+                <span style="font-weight: 500;">เปิดให้บริการตามปกติ สอบถามได้เลยนะคะ ✨</span>
+            </div>
+        </div>
+
+        <div class="card stagger-2">
+            <div class="section-header">🎀 สติกเกอร์ · ธีม · อิโมจิ · เมโลดี้</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Coins</th>
+                            <th>ราคา (Baht)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>40 Coins</td><td class="price-highlight">20 ฿</td></tr>
+                        <tr><td>50 Coins</td><td class="price-highlight">25 ฿</td></tr>
+                        <tr><td>70 Coins</td><td class="price-highlight">35 ฿</td></tr>
+                        <tr><td>100 Coins</td><td class="price-highlight">50 ฿</td></tr>
+                        <tr><td>150 Coins</td><td class="price-highlight">75 ฿</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="note-text">📍 เมโลดี้ (Melody) ราคาเพียง 45 ฿ | รบกวนส่งแบบลิงก์เท่านั้นเพื่อความรวดเร็วและถูกต้องค่ะ 🔗</p>
+        </div>
+
+        <div class="card stagger-3">
+            <div class="section-header">📱 แอพพรีเมียม (Movie & Entertainment)</div>
+
+            <div class="price-category">
+                <span class="cat-tag">ดิสนีย์พลัส (Disney+)</span>
+                <div class="table-responsive">
+                    <table>
+                        <tr><th>ประเภท</th><th>ระยะเวลา</th><th>ราคา</th></tr>
+                        <tr><td>หาร 4</td><td>30 วัน</td><td class="price-highlight">110 ฿</td></tr>
+                        <tr><td>หาร 5</td><td>30 วัน</td><td class="price-highlight">95 ฿</td></tr>
+                    </table>
+                </div>
+                <div class="note-text">รับชมได้ในไทย ดูในทีวี +10 บาท แจ้งอุปกรณ์ก่อนน้า</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="price-category">
+                <span class="cat-tag">🐬 Viu (วิว)</span>
+                <div class="table-responsive">
+                    <table>
+                        <tr><th>แพ็กเกจ</th><th>ระยะเวลา</th><th>ราคา</th></tr>
+                        <tr><td>หาร 4</td><td>30 วัน</td><td class="price-highlight">25 ฿</td></tr>
+                        <tr><td>ยกแอค</td><td>30 วัน</td><td class="price-highlight">60 ฿</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="price-category">
+                <span class="cat-tag">🐮 HBO Max Ultimate 4K</span>
+                <div class="table-responsive">
+                    <table>
+                        <tr><th>ประเภท</th><th>7 วัน</th><th>30 วัน</th></tr>
+                        <tr><td>หาร 5</td><td>35 ฿</td><td>95 ฿</td></tr>
+                        <tr><td>หาร 4</td><td>45 ฿</td><td>115 ฿</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card stagger-4">
+            <div class="section-header">📸 แอพแต่งรูป & เครื่องมือทำงาน</div>
+            
+            <div class="price-category">
+                <span class="cat-tag">🎨 Canva Pro</span>
+                <div class="table-responsive">
+                    <table>
+                        <tr><td>7 วัน</td><td class="price-highlight">15 ฿</td></tr>
+                        <tr><td>30 วัน</td><td class="price-highlight">40 ฿</td></tr>
+                    </table>
+                </div>
+                <p class="note-text">เมลลูกค้า ไม่ต่ออายุ เปลี่ยนแฟมิลี่ทุกเดือนค่ะ</p>
+            </div>
+
+            <div class="price-category">
+                <span class="cat-tag">🐰 Meitu / Wink / BeautyCam</span>
+                <div class="table-responsive">
+                    <table>
+                        <tr><th>แอพ</th><th>30 วัน</th><th>ราคา</th></tr>
+                        <tr><td>Meitu VIP</td><td>หาร 2</td><td>120 ฿</td></tr>
+                        <tr><td>Wink (iOS)</td><td>หาร 4</td><td>110 ฿</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">🛒 ขั้นตอนการสั่งซื้อ</div>
+            <div style="padding-left: 10px;">
+                <p style="margin-bottom: 12px;">1️⃣ ทักแชทแจ้งสินค้าที่สนใจ 💬</p>
+                <p style="margin-bottom: 12px;">2️⃣ รอแอดมินเช็คสต็อกและแจ้งยอด ⏳</p>
+                <p style="margin-bottom: 12px;">3️⃣ ชำระเงินผ่านธนาคารหรือวอเลท 💳</p>
+                <p style="margin-bottom: 12px;">4️⃣ รับสินค้าและเข้าใช้งานได้ทันที 🎉</p>
+            </div>
+            <div class="divider"></div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div style="background:#f1f8ff; border:1px solid #d0e8ff; padding:10px 20px; border-radius:15px; font-size:0.9rem;">🏦 ธนาคาร</div>
+                <div style="background:#f1f8ff; border:1px solid #d0e8ff; padding:10px 20px; border-radius:15px; font-size:0.9rem;">💳 วอเลท</div>
+            </div>
+        </div>
+
+        <div class="card" style="text-align: center;">
+            <div class="section-header">🔗 ช่องทางติดต่อสั่งซื้อ</div>
+            
+            <a href="https://lin.ee/EBW88DH" class="contact-box" target="_blank">
+                <span style="font-size: 1.5rem;">💚</span>
+                <div style="text-align: left;">
+                    <div style="font-weight: 600;">LINE Official Account</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7;">@355tmjpr (มี @ นะคะ)</div>
+                </div>
+            </a>
+
+            <a href="https://facebook.com/ErinShop" class="contact-box" target="_blank">
+                <span style="font-size: 1.5rem;">🔖</span>
+                <div style="text-align: left;">
+                    <div style="font-weight: 600;">Facebook Page / เครดิต</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7;">facebook.com/ErinShop</div>
+                </div>
+            </a>
+
+            <a href="https://lin.ee/EBW88DH" class="btn-grad">💬 ทักแชทสั่งซื้อสินค้าเลย</a>
+            
+            <p style="font-size: 0.8rem; color: #c0392b; margin-top: 15px;">⚠️ ราคามีการเปลี่ยนแปลงตามโปรโมชั่น สอบถามก่อนสั่งซื้อนะคะ</p>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 5px;">ขอบคุณที่อุดหนุนและไว้ใจ Erin Shop นะคะ 💙🫧</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Erin Shop - Premium Digital Services. All rights reserved.<br>
+            Designed with Love for Luxury Experience.
+        </div>
+
     </div>
-  </div>
 
-  <!-- 2. สถานะรับงาน -->
-
-  <div class="card" style="animation-delay:.1s">
-    <div class="sec-title">สถานะร้านค้า</div>
-    <div class="status-row">
-      <span class="dot"></span>
-      <span>เปิดให้บริการอยู่นะคะ ✨</span>
-    </div>
-  </div>
-
-  <!-- สติกเกอร์ ธีม เมโลดี้ -->
-
-  <div class="card" style="animation-delay:.15s">
-    <div class="sec-title">🎀 สติกเกอร์ · ธีม · อิโมจิ · เมโลดี้</div>
-
-```
-<div class="sticker-list">
-  <div class="sticker-row"><span class="sticker-coin">40 Coins</span><span class="sticker-price">20 ฿</span></div>
-  <div class="sticker-row"><span class="sticker-coin">50 Coins</span><span class="sticker-price">25 ฿</span></div>
-  <div class="sticker-row"><span class="sticker-coin">70 Coins</span><span class="sticker-price">35 ฿</span></div>
-  <div class="sticker-row"><span class="sticker-coin">85 Coins</span><span class="sticker-price">45 ฿</span></div>
-  <div class="sticker-row"><span class="sticker-coin">100 Coins</span><span class="sticker-price">50 ฿</span></div>
-  <div class="sticker-row"><span class="sticker-coin">150 Coins</span><span class="sticker-price">75 ฿</span></div>
-</div>
-
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 10px">
-  <span class="cat-tag">สติกเกอร์</span>
-  <span class="cat-tag">ธีมไลน์</span>
-  <span class="cat-tag">อิโมจิ</span>
-  <span class="cat-tag">เมโลดี้ 45 ฿</span>
-</div>
-
-<div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-light)">
-  <span>🔗</span>
-  <span>รบกวนส่งแบบลิงก์เท่านั้น เพื่อความรวดเร็วและถูกต้องค่ะ</span>
-</div>
-```
-
-  </div>
-
-  <div class="card" style="animation-delay:.2s">
-    <div class="sec-title">📱 แอพพรีเมียม</div>
-    <p style="font-size:.82rem;color:var(--text-light);margin-bottom:14px">ตั้งแต่ดิสนีย์จนถึง HBO Max ครบทุกแพลตฟอร์ม 🌊</p>
-
-```
-<!-- Disney+ -->
-<div class="sub-sec">
-  <div class="sub-title">ดิสนีย์พลัส</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">หาร 4</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>1 วัน</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>3 วัน</td><td class="price-val">35 บาท</td></tr>
-      <tr><td>7 วัน</td><td class="price-val">55 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">110 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">หาร 5</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">95 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 4 อุปกรณ์ · แจ้งอุปกรณ์ให้ตรงนะคะ ไม่งั้นยึดจอน้า · พร้อมกดภายใน 5 นาที · เคลมกรณีแคปประกัน · รับชมได้แค่ในไทย · ดูในทีวี +10 บาท</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Viu -->
-<div class="sub-sec">
-  <div class="sub-title">🐬 Viu (วิว)</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">หาร 4</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td class="price-val">20 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">25 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">หาร 3</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>30 วัน</td><td class="price-val">35 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">หาร 2</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>30 วัน</td><td class="price-val">45 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">ยกแอค</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>30 วัน</td><td class="price-val">60 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 3 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- WeTV -->
-<div class="sub-sec">
-  <div class="sub-title">✿ WeTV</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>4</td><td class="price-val">20 บาท</td></tr>
-      <tr><td>30 วัน</td><td>4</td><td class="price-val">35 บาท</td></tr>
-      <tr><td>30 วัน</td><td>3</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">55 บาท</td></tr>
-      <tr><td>30 วัน (ยกแอค)</td><td>—</td><td class="price-val">85 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 2 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- iQIYI Gold -->
-<div class="sub-sec">
-  <div class="sub-title">iQIYI Gold · ภาพ 1080p</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>4</td><td class="price-val">20 บาท</td></tr>
-      <tr><td>30 วัน</td><td>4</td><td class="price-val">35 บาท</td></tr>
-      <tr><td>30 วัน</td><td>3</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">55 บาท</td></tr>
-      <tr><td>30 วัน (ยกแอค)</td><td>—</td><td class="price-val">85 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 2 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- iQIYI Diamond -->
-<div class="sub-sec">
-  <div class="sub-title">iQIYI Diamond · ภาพ 4K</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>30 วัน</td><td>5</td><td class="price-val">55 บาท</td></tr>
-      <tr><td>30 วัน</td><td>4</td><td class="price-val">65 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 4 อุปกรณ์ · ดูตอนล่วงหน้า & ดูในทีวีได้</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Bili Bili -->
-<div class="sub-sec">
-  <div class="sub-title">🎀 Bili Bili</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>4</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>30 วัน</td><td>4</td><td class="price-val">40 บาท</td></tr>
-      <tr><td>30 วัน</td><td>3</td><td class="price-val">50 บาท</td></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">55 บาท</td></tr>
-      <tr><td>30 วัน (ยกแอค)</td><td>—</td><td class="price-val">100 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 1 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Monomax -->
-<div class="sub-sec">
-  <div class="sub-title">⭐️ Monomax</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">Basic (ไม่สามารถดูบอลได้)</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>2</td><td class="price-val">35 บาท</td></tr>
-      <tr><td>30 วัน</td><td>5</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>30 วัน</td><td>3</td><td class="price-val">60 บาท</td></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">80 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">Standard (สามารถดูบอลได้)</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>2</td><td class="price-val">55 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">Mini (ไม่สามารถดูบอลได้)</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>3</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>30 วัน</td><td>3</td><td class="price-val">50 บาท</td></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">70 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 1 อุปกรณ์ · ระบบจอส่วนตัว สินค้าพร้อมส่ง · ดูตอนล่วงหน้าไม่ได้ค่ะ</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Youku -->
-<div class="sub-sec">
-  <div class="sub-title">🍎 Youku</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>4</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>30 วัน</td><td>4</td><td class="price-val">40 บาท</td></tr>
-      <tr><td>30 วัน</td><td>3</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">55 บาท</td></tr>
-      <tr><td>30 วัน (ยกแอค)</td><td>—</td><td class="price-val">85 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 2 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Canva Pro -->
-<div class="sub-sec">
-  <div class="sub-title">⭐️ Canva Pro</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td class="price-val">15 บาท</td></tr>
-      <tr><td>14 วัน</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">40 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">เมลลูกค้า ไม่ต่อ · เปลี่ยนแฟมทุกเดือน</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Prime Video -->
-<div class="sub-sec">
-  <div class="sub-title">🚗 Prime Video</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">7 วัน</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>หาร 6</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>หาร 5</td><td class="price-val">35 บาท</td></tr>
-      <tr><td>หาร 3</td><td class="price-val">40 บาท</td></tr>
-      <tr><td>ยกแอค</td><td class="price-val">55 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">30 วัน</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>หาร 6</td><td class="price-val">50 บาท</td></tr>
-      <tr><td>หาร 5</td><td class="price-val">55 บาท</td></tr>
-      <tr><td>หาร 3</td><td class="price-val">80 บาท</td></tr>
-      <tr><td>ยกแอค</td><td class="price-val">110 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 3 อุปกรณ์ · แอคล็อก ไม่รับเคลมค่ะ</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Ch3+ -->
-<div class="sub-sec">
-  <div class="sub-title">Ch3+ · 30 วัน</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>หาร 2</td><td class="price-val">60 บาท</td></tr>
-      <tr><td>ยกแอค</td><td class="price-val">90 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 1 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- One D -->
-<div class="sub-sec">
-  <div class="sub-title">🍊 One D</div>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">60 บาท</td></tr>
-      <tr><td>30 วัน (ยกแอค)</td><td>—</td><td class="price-val">95 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 2 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- แอปดูหนังแดงดำ -->
-<div class="sub-sec">
-  <div class="sub-title">🏡 แอปดูหนัง (แดงดำ)</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">มือถือ · iPad · คอม</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>1 วัน</td><td class="price-val">15 บาท</td></tr>
-      <tr><td>3 วัน</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>7 วัน</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">110 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">TV เท่านั้น</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>1 วัน</td><td class="price-val">25 บาท</td></tr>
-      <tr><td>3 วัน</td><td class="price-val">35 บาท</td></tr>
-      <tr><td>7 วัน</td><td class="price-val">60 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">180 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">จอส่วนตัว · กรณีจอชนให้รอเท่านั้น · เมลปิดเป็นที่ระบบ ไม่รับเคลมนะคะ</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- HBO Max Ultimate 4K -->
-<div class="sub-sec">
-  <div class="sub-title">🐮 HBO Max Ultimate 4K</div>
-  <p style="font-size:.82rem;color:var(--text-light);margin-bottom:8px">จอส่วนตัว</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>5</td><td class="price-val">35 บาท</td></tr>
-      <tr><td>7 วัน</td><td>4</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>30 วัน</td><td>5</td><td class="price-val">95 บาท</td></tr>
-      <tr><td>30 วัน</td><td>4</td><td class="price-val">115 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 4 อุปกรณ์</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- HBO Max Standard Full HD -->
-<div class="sub-sec">
-  <div class="sub-title">HBO Max Standard Full HD</div>
-  <p style="font-size:.82rem;color:var(--text-light);margin-bottom:8px">จอส่วนตัว</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>หาร</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td>4</td><td class="price-val">30 บาท</td></tr>
-      <tr><td>7 วัน</td><td>3</td><td class="price-val">40 บาท</td></tr>
-      <tr><td>30 วัน</td><td>4</td><td class="price-val">65 บาท</td></tr>
-      <tr><td>30 วัน</td><td>2</td><td class="price-val">75 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">รับชมพร้อมกันได้ 2 อุปกรณ์</div>
-</div>
-```
-
-  </div>
-
-  <!-- แอพแต่งรูป -->
-
-  <div class="card" style="animation-delay:.35s">
-    <div class="sec-title">📸 แอพแต่งรูป</div>
-
-```
-<!-- Meitu -->
-<div class="sub-sec">
-  <div class="sub-title">🐰 Meitu</div>
-  <div class="platform-badge">iOS · Android</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">Package VIP · หาร 2</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td class="price-val">80 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">120 บาท</td></tr>
-    </table>
-  </div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:10px 0 6px">Package SVIP · หาร 4</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>1 วัน</td><td class="price-val">45 บาท</td></tr>
-      <tr><td>3 วัน</td><td class="price-val">60 บาท</td></tr>
-      <tr><td>7 วัน</td><td class="price-val">90 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">140 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">⚠️ ไม่รวมเครดิตต่างๆ ที่ต้องเติมเพิ่มเองค่ะ</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- BeautyCam -->
-<div class="sub-sec">
-  <div class="sub-title">🐰 BeautyCam</div>
-  <div class="platform-badge">iOS · Android</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">หาร 4</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td class="price-val">70 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">100 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">⚠️ ไม่รวมเครดิตต่างๆ ที่ต้องเติมเพิ่มเองค่ะ</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- Wink -->
-<div class="sub-sec">
-  <div class="sub-title">🍎 Wink</div>
-  <div class="platform-badge">iOS เท่านั้น</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">หาร 4</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>ระยะเวลา</th><th>ราคา</th></tr>
-      <tr><td>7 วัน</td><td class="price-val">75 บาท</td></tr>
-      <tr><td>30 วัน</td><td class="price-val">110 บาท</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">⚠️ ไม่รวมเครดิตต่างๆ ที่ต้องเติมเพิ่มเองค่ะ</div>
-</div>
-```
-
-  </div>
-
-  <!-- แอพฟังเพลง -->
-
-  <div class="card" style="animation-delay:.45s">
-    <div class="sec-title">🎵 แอพฟังเพลง</div>
-
-```
-<!-- YouTube Premium -->
-<div class="sub-sec">
-  <div class="sub-title">▶️ YouTube Premium</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px">ไม่ต่อ (1 เดือน) — แชร์แพ็ค</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>เมล</th><th>ราคา</th><th>เคลม</th></tr>
-      <tr><td>เมลร้าน</td><td class="price-val">30 บาท</td><td>40 บาท (1 ครั้ง)</td></tr>
-      <tr><td>เมลลูกค้า</td><td class="price-val">20 บาท</td><td>30 บาท (1 ครั้ง)</td></tr>
-    </table>
-  </div>
-  <div class="sub-note">⚠️ นำเมลมาเปลี่ยนเองเท่านั้นค่ะ</div>
-
-  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin:12px 0 6px">ไม่ต่อ (1 เดือน) — แพ็คบุคคล</p>
-  <div class="ptable-wrap">
-    <table class="ptable">
-      <tr><th>เมล</th><th>ราคา</th><th>เคลม</th></tr>
-      <tr><td>เมลร้าน (มีเคลม)</td><td class="price-val">45 บาท</td><td>55 บาท (1 ครั้ง)</td></tr>
-      <tr><td>เมลร้าน (ไม่เคลม)</td><td class="price-val">40 บาท</td><td>—</td></tr>
-    </table>
-  </div>
-</div>
-```
-
-  </div>
-
-  <!-- ขั้นตอนสั่งซื้อ -->
-
-  <div class="card" style="animation-delay:.55s">
-    <div class="sec-title">ขั้นตอนการสั่งซื้อ</div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">ทักแชทหาร้านค้าค่ะ 💬</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">แจ้งสินค้าที่ต้องการ</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">รอทางร้านเช็คสินค้าให้สักครู่นะคะ</div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-text">ทางร้านแจ้ง <strong>พร้อมส่ง</strong> → ลูกค้าโอนเงิน → รอรับสินค้าได้เลยค่ะ 🎉</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- วิธีชำระเงิน -->
-
-  <div class="card" style="animation-delay:.58s">
-    <div class="sec-title">วิธีชำระเงิน</div>
-    <p style="font-size:.92rem;margin-bottom:12px">รับทั้งธนาคาร และ วอเลท <strong>ไม่บวกเพิ่มค่ะ</strong> 💙</p>
-    <div class="pay-row">
-      <div class="pay-badge">🏦 ธนาคาร</div>
-      <div class="pay-badge">💳 วอเลท</div>
-    </div>
-  </div>
-
-  <!-- ช่องทางติดต่อ + CTA + Credit -->
-
-  <div class="card" style="animation-delay:.6s">
-    <div class="sec-title">ช่องทางติดต่อ</div>
-
-```
-<a href="https://lin.ee/EBW88DH" target="_blank" class="contact-card">
-  <span style="font-size:1.4rem">💚</span>
-  <div>
-    <div class="contact-name">LINE</div>
-    <div class="contact-desc">@355tmjpr · ทักแชทสั่งซื้อได้เลยค่ะ (มี @ นะคะ)</div>
-  </div>
-</a>
-
-<a href="https://www.facebook.com/share/1DveZBFdqz/?mibextid=wwXIfr" target="_blank" class="contact-card">
-  <span style="font-size:1.4rem">🔖</span>
-  <div>
-    <div class="contact-name">เครดิต</div>
-    <div class="contact-desc">facebook.com/ErinShop</div>
-  </div>
-</a>
-
-<div style="height:1px;background:linear-gradient(90deg,transparent,rgba(91,184,232,.35),transparent);margin:18px 0"></div>
-
-<div class="cta-wrap" style="margin-bottom:16px">
-  <p style="font-weight:500;margin-bottom:8px">สนใจสั่งซื้อ ทักมาได้เลยนะคะ! 🫧</p>
-  <a href="https://lin.ee/EBW88DH" class="btn-main" target="_blank">💬 ทักหาร้านเลย</a>
-  <p style="font-size:.82rem;color:#c0392b;margin-top:6px">⚠️ ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า</p>
-  <p style="font-size:.82rem;color:var(--text-light);margin-top:2px">ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า 💙</p>
-</div>
-```
-
-  </div>
-
-  <div class="footer">
-    © Erin Shop · ขอบคุณที่อุดหนุนนะคะ 💙🫧
-  </div>
-
-</div>
-</body>
+    </body>
 </html>
