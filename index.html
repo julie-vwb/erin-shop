@@ -3,572 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERIN SHOP ✨ | Premium Apps & Stickers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>ERIN SHOP ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* --- [Global Settings & Animations] --- */
+        /* --- [ฐานดีไซน์แบบพาสเทลหรูหรา] --- */
         :root {
-            --main-pastel-pink: #fce4ec;
-            --main-pastel-blue: #e3f2fd;
-            --luxury-purple: #f3e5f5;
-            --text-dark: #5a5a5a;
-            --soft-white: rgba(255, 255, 255, 0.85);
-            --gradient-blue: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            --gradient-pink: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --bg-gradient: linear-gradient(180deg, #fdf4f7 0%, #f0f7ff 100%);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --border-pink: #ffc2d1;
+            --soft-blue: #a2d2ff;
+            --main-text: #6b6b6b;
+            --shadow-light: 0 10px 30px rgba(255, 194, 209, 0.2);
         }
 
         * {
             box-sizing: border-box;
+            font-family: 'Itim', 'Kanit', sans-serif; /* ฟอนต์ตามเรฟรูปภาพ */
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Kanit', sans-serif;
-            background: linear-gradient(180deg, #fdfcfb 0%, #e2d1c3 100%);
+            background: var(--bg-gradient);
             background-attachment: fixed;
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
-        /* เอฟเฟกต์ละอองดาวเบื้องหลัง */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/stardust.png');
-            opacity: 0.3;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* --- [Reusable Components] --- */
-        .glass-card {
-            background: var(--soft-white);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: var(--glass-shadow);
-            margin-bottom: 25px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            color: var(--main-text);
+            display: flex;
+            justify-content: center;
         }
 
         .container {
-            max-width: 500px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 480px;
             padding: 40px 20px;
-            position: relative;
         }
 
-        /* --- [1️⃣ Logo & Header Area] --- */
-        .header-section {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .logo-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid #fff;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        /* 2️⃣ ชื่อร้าน ERIN SHOP ✨ */
-        .shop-name {
-            font-family: 'Mitr', sans-serif;
-            font-size: 32px;
-            font-weight: 500;
-            background: linear-gradient(to right, #7ab8eb, #ff99aa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 10px 0;
-            letter-spacing: 1px;
-        }
-
-        /* 3️⃣ กล่องสถานะร้าน 🟢 */
-        .status-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .status-pill {
-            background: white;
-            padding: 8px 25px;
-            border-radius: 50px;
-            font-size: 14px;
-            border: 1.5px dashed #a1c4fd;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #666;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #4CAF50;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #4CAF50;
-            animation: pulse 1.5s infinite;
-        }
-
-        /* 4️⃣ คำโปรยต้อนรับ */
-        .welcome-box {
+        /* --- [การจัดวางแบบ Glassmorphism ตามรูปภาพ] --- */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 35px;
+            border: 2px solid #ffffff;
+            box-shadow: var(--shadow-light);
             padding: 25px;
-            text-align: center;
-            font-size: 14px;
-            color: #777;
+            margin-bottom: 25px;
             position: relative;
             overflow: hidden;
         }
 
-        .welcome-box::before {
-            content: "🫶🏻";
-            position: absolute;
-            top: -10px; right: -10px;
-            font-size: 40px;
-            opacity: 0.1;
+        /* --- [ส่วนหัวและโลโก้] --- */
+        .header-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-circle {
+            width: 130px;
+            height: 130px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 5px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .shop-title {
+            font-size: 34px;
+            color: #ff9fb2;
+            margin: 10px 0;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px #fff;
+        }
+
+        /* --- [กล่องสถานะแบบเส้นประตามภาพ] --- */
+        .status-pill {
+            background: white;
+            border: 2px dashed var(--border-pink); /* เส้นประตามภาพตัวอย่าง */
+            border-radius: 20px;
+            padding: 12px 30px;
+            display: inline-block;
+            font-size: 16px;
+            color: #ff8fa3;
+            margin-bottom: 25px;
+            animation: bounce 2s infinite;
+        }
+
+        /* --- [โครงสร้างสินค้าแบบ List ตามภาพ Disney+/Viu] --- */
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            margin-bottom: 8px;
+            border-left: 4px solid var(--border-pink); /* ขอบสีชมพูตามเรฟ */
+        }
+
+        .product-name {
+            font-size: 15px;
+            color: #7a7a7a;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* --- [ปุ่มติดต่อแบบ Gradient ตามภาพ] --- */
+        .contact-btn {
+            background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.4);
+            margin: 30px 0;
+            border: 2px solid #fff;
         }
 
         /* --- [Animations] --- */
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-        }
-
     </style>
 </head>
 <body>
 
 <div class="container">
     <header class="header-section">
-        <div class="logo-wrapper">
-            <img src="Logo.jpeg" alt="Erin Shop Logo" class="logo-img">
+        <div class="logo-circle">
+            <img src="Logo.jpeg" alt="Erin Shop Logo">
         </div>
         
-        <h1 class="shop-name">💙 ERIN SHOP 💙</h1>
-
-        <div class="welcome-tagline" style="font-size: 13px; color: #999; margin-top: -10px; margin-bottom: 20px;">
-            - Welcome To Erin Shop na ka -
+        <h1 class="shop-title">💙 Erin Shop 💙</h1>
+        
+        <div style="font-size: 14px; color: #a1c4fd; margin-bottom: 20px;">
+            Welcome to Erin Shop na ka 🫶🏻
         </div>
 
-        <div class="status-container">
-            <div class="status-pill">
-                <span class="status-dot"></span> เปิดรับงานอยู่นะคะ 🎀
-            </div>
+        <div class="status-pill">
+            <span style="display: inline-block; width: 10px; height: 10px; background: #77dd77; border-radius: 50%; margin-right: 8px;"></span>
+            เปิดรับออเดอร์อยู่นะคะ 🎀
         </div>
 
-        <div class="glass-card welcome-box">
-            <div style="font-weight: 500; color: #555; margin-bottom: 8px;">Welcome to Erin Shop na ka 🫶🏻</div>
+        <div class="glass-panel" style="font-size: 13px; line-height: 1.8; color: #888; padding: 15px;">
             ร้านของเราขายแอพพรีเมียม แอพแต่งรูป แอพตัดต่อ<br>
             สติ๊กเกอร์ • ธีมไลน์ • อิโมจิ • เมโลดี้ และอื่น ๆ<br>
             สอบถามเพิ่มเติมได้เลยนะคะ ✨
         </div>
     </header>
-        <style>
-        .category-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 40px 0 20px;
-            font-family: 'Mitr', sans-serif;
-            color: #8da9c4;
-            font-size: 18px;
-        }
 
-        .category-title::before, .category-title::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #d1d1d1, transparent);
-        }
+    <div style="text-align: center; margin: 30px 0 15px;">
+        <span style="color: #ff9fb2; font-size: 18px;">🎨 Stickers & Line Tools</span>
+    </div>
 
-        .item-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 10px;
-        }
-
-        .item-icon {
-            font-size: 22px;
-        }
-
-        .item-name {
-            font-weight: 500;
-            color: #4a4a4a;
-            font-size: 17px;
-        }
-
-        .price-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .price-tag {
-            background: #fdfdfd;
-            padding: 10px;
-            border-radius: 15px;
-            border: 1px solid #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 13px;
-        }
-
-        .coin-val { color: #999; margin-bottom: 2px; }
-        .baht-val { color: #ff9fb2; font-weight: 500; font-size: 15px; }
-
-        .app-condition {
-            font-size: 12px;
-            color: #888;
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 15px;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-
-        .condition-badge {
-            display: inline-block;
-            background: #e3f2fd;
-            color: #1e88e5;
-            padding: 2px 10px;
-            border-radius: 5px;
-            font-size: 11px;
-            margin-bottom: 8px;
-        }
-
-        /* ตกแต่งเพิ่มสำหรับ Disney+ ที่แยกจอ */
-        .screen-info {
-            display: flex;
-            justify-content: space-between;
-            background: #fffafa;
-            padding: 8px 15px;
-            border-radius: 10px;
-            margin-bottom: 5px;
-            font-size: 13px;
-            border-left: 3px solid #ffc0cb;
-        }
-    </style>
-
-    <div class="category-title">🛍️ หมวดสินค้า</div>
-
-    <div class="glass-card" style="padding: 25px;">
-        <div class="item-header">
-            <span class="item-icon">🎨</span>
-            <span class="item-name">Sticker / Theme / Emoji</span>
+    <div class="glass-panel">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
+            <span style="font-size: 20px;">✨</span>
+            <strong style="color: #6b6b6b;">Sticker / Theme / Emoji</strong>
         </div>
-        <div class="price-grid">
-            <div class="price-tag"><span class="coin-val">40 coins</span><span class="baht-val">20 b</span></div>
-            <div class="price-tag"><span class="coin-val">50 coins</span><span class="baht-val">25 b</span></div>
-            <div class="price-tag"><span class="coin-val">70 coins</span><span class="baht-val">35 b</span></div>
-            <div class="price-tag"><span class="coin-val">85 coins</span><span class="baht-val">45 b</span></div>
-            <div class="price-tag"><span class="coin-val">100 coins</span><span class="baht-val">50 b</span></div>
-            <div class="price-tag"><span class="coin-val">150 coins</span><span class="baht-val">75 b</span></div>
+
+        <div class="product-item">
+            <span class="product-name">50 coins</span>
+            <span class="product-price" style="color: #ff9fb2;">25 b</span>
         </div>
-        <div class="item-header" style="margin-top: 20px;">
-            <span class="item-icon">🎵</span>
-            <span class="item-name">Line Melody</span>
+        <div class="product-item">
+            <span class="product-name">100 coins</span>
+            <span class="product-price" style="color: #ff9fb2;">50 b</span>
         </div>
-        <div class="price-tag" style="flex-direction: row; justify-content: space-between; width: 100%;">
-            <span>ทุกเพลงถูกลิขสิทธิ์</span>
-            <span class="baht-val">45 b</span>
+        <div class="product-item">
+            <span class="product-name">150 coins</span>
+            <span class="product-price" style="color: #ff9fb2;">75 b</span>
+        </div>
+
+        <div style="margin-top: 25px; display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
+            <span style="font-size: 20px;">🎵</span>
+            <strong style="color: #6b6b6b;">Line Melody</strong>
+        </div>
+        <div class="product-item" style="border-left-color: #a1c4fd;">
+            <span class="product-name">ทุกเพลงถูกลิขสิทธิ์</span>
+            <span class="product-price" style="color: #a1c4fd;">45 b</span>
         </div>
     </div>
 
-    <div class="category-title">🎬 แอพพรีเมียม</div>
+    <div style="text-align: center; margin: 40px 0 15px;">
+        <span style="color: #a1c4fd; font-size: 18px;">🎬 แอปพรีเมียมยอดฮิต</span>
+    </div>
 
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #a1c4fd;">
-        <div class="item-header">
-            <span class="item-icon">🏰</span>
-            <span class="item-name">Disney+ Hotstar</span>
+    <div class="glass-panel" style="padding-top: 20px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">🏰</span>
+            <strong style="color: #555; font-size: 17px;">Disney+ Hotstar</strong>
         </div>
-        <div class="condition-badge">หาร 4 (รับชมพร้อมกันได้ 4 อุปกรณ์)</div>
-        <div class="screen-info"><span>1 Day</span><strong>25 b</strong></div>
-        <div class="screen-info"><span>3 Day</span><strong>35 b</strong></div>
-        <div class="screen-info"><span>7 Day</span><strong>55 b</strong></div>
-        <div class="screen-info"><span>30 Day</span><strong>110 b</strong></div>
-        
-        <div class="condition-badge" style="margin-top:15px; background: #fce4ec; color: #d81b60;">หาร 5</div>
-        <div class="screen-info"><span>7 Day</span><strong>45 b</strong></div>
-        <div class="screen-info"><span>30 Day</span><strong>95 b</strong></div>
 
-        <div class="app-condition">
+        <div style="background: #eef7ff; color: #7ab8eb; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 15px;">
+            หาร 4 (รับชมพร้อมกันได้ 4 อุปกรณ์)
+        </div>
+
+        <div class="product-item">
+            <span class="product-name">1 Day</span>
+            <span class="product-price">25 b</span>
+        </div>
+        <div class="product-item">
+            <span class="product-name">3 Day</span>
+            <span class="product-price">35 b</span>
+        </div>
+        <div class="product-item">
+            <span class="product-name">7 Day</span>
+            <span class="product-price">55 b</span>
+        </div>
+        <div class="product-item">
+            <span class="product-name">30 Day</span>
+            <span class="product-price">110 b</span>
+        </div>
+
+        <div style="background: #fff0f3; color: #ff9fb2; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin: 15px 0 10px;">
+            หาร 5
+        </div>
+
+        <div class="product-item">
+            <span class="product-name">7 Day</span>
+            <span class="product-price">45 b</span>
+        </div>
+        <div class="product-item" style="margin-bottom: 20px;">
+            <span class="product-name">30 Day</span>
+            <span class="product-price">95 b</span>
+        </div>
+
+        <div style="background: #fafafa; border-radius: 15px; padding: 15px; font-size: 11px; color: #999; line-height: 1.8;">
             📍 แจ้งอุปกรณ์ที่เข้าใช้งานให้ตรง หากไม่ตรงยึดจอ<br>
             📍 พร้อมกดภายใน 5 นาที / เคลมกรณีมีแคปประกัน<br>
             📍 รับชมเฉพาะในไทย / 📺 ดูในทีวี +10 b
         </div>
     </div>
-
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #ffdae0;">
-        <div class="item-header">
-            <span class="item-icon">📺</span>
-            <span class="item-name">Viu Premium</span>
+    <div class="glass-panel">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">📺</span>
+            <strong style="color: #555; font-size: 17px;">Viu Premium</strong>
         </div>
-        <div class="screen-info"><span>หาร 4 (7 วัน)</span><strong>20 b</strong></div>
-        <div class="screen-info"><span>หาร 4 (30 วัน)</span><strong>25 b</strong></div>
-        <div class="screen-info"><span>หาร 3 (30 วัน)</span><strong>35 b</strong></div>
-        <div class="screen-info"><span>หาร 2 (30 วัน)</span><strong>45 b</strong></div>
-        <div class="screen-info" style="background: #fff0f3;"><span>ยกแอค (30 วัน)</span><strong>60 b</strong></div>
-        <div class="app-condition">✅ รับชมพร้อมกันได้ 3 อุปกรณ์</div>
+        <div class="product-item"><span>หาร 4 (7 วัน)</span><span class="product-price">20 b</span></div>
+        <div class="product-item"><span>หาร 4 (30 วัน)</span><span class="product-price">25 b</span></div>
+        <div class="product-item"><span>หาร 3 (30 วัน)</span><span class="product-price">35 b</span></div>
+        <div class="product-item"><span>หาร 2 (30 วัน)</span><span class="product-price">45 b</span></div>
+        <div class="product-item" style="border-left-color: #ff9fb2;">
+            <span style="color: #ff9fb2;">ยกแอค (30 วัน)</span><span class="product-price">60 b</span>
+        </div>
+        <div style="margin-top: 10px; font-size: 11px; color: #999;">✅ รับชมพร้อมกันได้ 3 อุปกรณ์</div>
     </div>
 
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #a1c4fd;">
-        <div class="item-header">
-            <span class="item-icon">🟢</span>
-            <span class="item-name">WeTV VIP</span>
+    <div class="glass-panel">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">🟢</span>
+            <strong style="color: #555; font-size: 17px;">WeTV VIP</strong>
         </div>
-        <div class="screen-info"><span>7 วัน (หาร 4)</span><strong>20 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 4)</span><strong>35 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 3)</span><strong>45 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 2)</span><strong>55 b</strong></div>
-        <div class="screen-info" style="background: #eef7ff;"><span>ยกแอค (30 วัน)</span><strong>85 b</strong></div>
-        <div class="app-condition">✅ รับชมพร้อมกันได้ 2 อุปกรณ์</div>
+        <div class="product-item"><span>7 วัน (หาร 4)</span><span class="product-price">20 b</span></div>
+        <div class="product-item"><span>30 วัน (หาร 4)</span><span class="product-price">35 b</span></div>
+        <div class="product-item"><span>30 วัน (หาร 3)</span><span class="product-price">45 b</span></div>
+        <div class="product-item"><span>30 วัน (หาร 2)</span><span class="product-price">55 b</span></div>
+        <div class="product-item" style="border-left-color: #a1c4fd;">
+            <span style="color: #a1c4fd;">ยกแอค (30 วัน)</span><span class="product-price">85 b</span>
+        </div>
     </div>
 
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #ffe082;">
-        <div class="item-header">
-            <span class="item-icon">🔶</span>
-            <span class="item-name">iQIYI Gold & Diamond</span>
+    <div class="glass-panel">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <span style="font-size: 22px;">🔶</span>
+            <strong style="color: #555; font-size: 17px;">iQIYI Gold & Diamond</strong>
         </div>
-        <div class="condition-badge">Gold (1080p / 2 อุปกรณ์)</div>
-        <div class="screen-info"><span>7 วัน (หาร 4)</span><strong>20 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 4)</span><strong>35 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 3)</span><strong>45 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 2)</span><strong>55 b</strong></div>
-        <div class="screen-info"><span>ยกแอค (30 วัน)</span><strong>85 b</strong></div>
+        <div style="background: #fff9c4; color: #fbc02d; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 10px;">
+            Gold 1080p (หาร 4/3/2)
+        </div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">35 / 45 / 55 b</span></div>
+        <div class="product-item"><span>ยกแอค (30 วัน)</span><span class="product-price">85 b</span></div>
         
-        <div class="condition-badge" style="margin-top:15px;">Diamond (4K / 4 อุปกรณ์)</div>
-        <div class="screen-info"><span>30 วัน (หาร 5)</span><strong>55 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 4)</span><strong>65 b</strong></div>
-        <div class="app-condition">✨ ดูตอนล่วงหน้าได้ / ดูในทีวีได้ (เฉพาะ Diamond)</div>
-    </div>
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #ffdae0;">
-        <div class="item-header">
-            <span class="item-icon">📱</span>
-            <span class="item-name">Bilibili</span>
+        <div style="background: #e1f5fe; color: #0288d1; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin: 10px 0;">
+            Diamond 4K (หาร 5/4)
         </div>
-        <div class="screen-info"><span>7 วัน (หาร 4)</span><strong>25 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 4)</span><strong>40 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 3)</span><strong>50 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 2)</span><strong>55 b</strong></div>
-        <div class="screen-info" style="background: #fff5f7;"><span>ยกแอค (30 วัน)</span><strong>100 b</strong></div>
-        <div class="app-condition">✅ รับชมพร้อมกันได้ 1 อุปกรณ์</div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">55 / 65 b</span></div>
     </div>
 
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #a1c4fd;">
-        <div class="item-header">
-            <span class="item-icon">🎬</span>
-            <span class="item-name">MonoMax</span>
+    <div class="glass-panel">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">📱</span>
+            <strong style="color: #555; font-size: 17px;">Bilibili</strong>
         </div>
-        <div class="condition-badge">Basic / Mini (ไม่ดูบอล)</div>
-        <div class="screen-info"><span>7 วัน (หาร 2)</span><strong>35 b</strong></div>
-        <div class="screen-info"><span>7 วัน (หาร 3)</span><strong>25 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 5)</span><strong>45 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 3)</span><strong>60 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 2)</span><strong>80 b</strong></div>
+        <div class="product-item"><span>7 วัน / 30 วัน (หาร 4)</span><span class="product-price">25 / 40 b</span></div>
+        <div class="product-item"><span>30 วัน (หาร 3 / 2)</span><span class="product-price">50 / 55 b</span></div>
+        <div class="product-item"><span>ยกแอค (30 วัน)</span><span class="product-price">100 b</span></div>
+    </div>
+
+    <div class="glass-panel">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">🍿</span>
+            <strong style="color: #555; font-size: 17px;">Prime Video</strong>
+        </div>
+        <div class="product-item"><span>7 วัน (หาร 6 / 5 / 3)</span><span class="product-price">25 / 35 / 40 b</span></div>
+        <div class="product-item"><span>30 วัน (หาร 6 / 5 / 3)</span><span class="product-price">50 / 55 / 80 b</span></div>
+        <div class="product-item" style="border-left-color: #a1c4fd;">
+            <span>ยกแอค (7 วัน / 30 วัน)</span><span class="product-price">55 / 110 b</span>
+        </div>
+    </div>
+
+    <div class="glass-panel">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">📺</span>
+            <strong style="color: #555; font-size: 17px;">HBO Max</strong>
+        </div>
+        <div style="background: #f3e5f5; color: #7b1fa2; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 10px;">
+            Ultimate 4K (หาร 5/4)
+        </div>
+        <div class="product-item"><span>7 วัน</span><span class="product-price">35 / 45 b</span></div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">95 / 115 b</span></div>
         
-        <div class="condition-badge" style="margin-top:15px; background: #e8f5e9; color: #2e7d32;">Standard (ดูบอลได้)</div>
-        <div class="screen-info"><span>7 วัน (หาร 2)</span><strong>55 b</strong></div>
-        <div class="app-condition">
-            📍 รับชมพร้อมกันได้ 1 อุปกรณ์ / ระบบจอส่วนตัว<br>
-            📍 ดูตอนล่วงหน้าไม่ได้
+        <div style="background: #fafafa; margin-top: 10px; border-radius: 10px; padding: 10px; font-size: 11px; color: #999;">
+            📍 ระบบจอส่วนตัว ล็อกโปรไฟล์ได้
         </div>
     </div>
-
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #ffdae0;">
-        <div class="item-header">
-            <span class="item-icon">🎞️</span>
-            <span class="item-name">Youku</span>
-        </div>
-        <div class="screen-info"><span>7 วัน (หาร 4)</span><strong>25 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 4)</span><strong>40 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 3)</span><strong>45 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 2)</span><strong>55 b</strong></div>
-        <div class="screen-info" style="background: #fff5f7;"><span>ยกแอค (30 วัน)</span><strong>85 b</strong></div>
-        <div class="app-condition">✅ รับชมพร้อมกันได้ 2 อุปกรณ์</div>
+    <div style="text-align: center; margin: 40px 0 15px;">
+        <span style="color: #ff9fb2; font-size: 18px; font-family: 'Itim', sans-serif;">📸 หมวดแอปแต่งรูป</span>
     </div>
 
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #a1c4fd;">
-        <div class="item-header">
-            <span class="item-icon">🍿</span>
-            <span class="item-name">Prime Video</span>
-        </div>
-        <div class="condition-badge">แพ็กเกจ 7 วัน</div>
-        <div class="screen-info"><span>หาร 6 / 5 / 3</span><strong>25 / 35 / 40 b</strong></div>
-        <div class="screen-info"><span>ยกแอค (7 วัน)</span><strong>55 b</strong></div>
-        
-        <div class="condition-badge" style="margin-top:15px;">แพ็กเกจ 30 วัน</div>
-        <div class="screen-info"><span>หาร 6 / 5 / 3</span><strong>50 / 55 / 80 b</strong></div>
-        <div class="screen-info" style="background: #eef7ff;"><span>ยกแอค (30 วัน)</span><strong>110 b</strong></div>
-        <div class="app-condition">
-            📍 รับชมพร้อมกันได้ 3 อุปกรณ์<br>
-            📍 แอคล็อกไม่รับเคลม
-        </div>
-    </div>
-
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #ffdae0;">
-        <div class="item-header">
-            <span class="item-icon">📺</span>
-            <span class="item-name">HBO Max</span>
-        </div>
-        <div class="condition-badge">Ultimate 4K (จอส่วนตัว / 4 อุปกรณ์)</div>
-        <div class="screen-info"><span>7 วัน (หาร 5 / 4)</span><strong>35 / 45 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 5 / 4)</span><strong>95 / 115 b</strong></div>
-
-        <div class="condition-badge" style="margin-top:15px; background: #f3e5f5; color: #7b1fa2;">Standard Full HD (จอส่วนตัว / 2 อุปกรณ์)</div>
-        <div class="screen-info"><span>7 วัน (หาร 4 / 3)</span><strong>30 / 40 b</strong></div>
-        <div class="screen-info"><span>30 วัน (หาร 4 / 2)</span><strong>65 / 75 b</strong></div>
-    </div>
-
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #a1c4fd;">
-        <div class="item-header">
-            <span class="item-icon">🔴</span>
-            <span class="item-name">แอปดูหนัง แดงดำ</span>
-        </div>
-        <div class="condition-badge">มือถือ / iPad / คอม</div>
-        <div class="screen-info"><span>1 / 3 / 7 / 30 วัน</span><strong>15 / 25 / 45 / 110 b</strong></div>
-        
-        <div class="condition-badge" style="margin-top:15px; background: #ffebee; color: #c62828;">TV เท่านั้น</div>
-        <div class="screen-info"><span>1 / 3 / 7 / 30 วัน</span><strong>25 / 35 / 60 / 180 b</strong></div>
-        <div class="app-condition">📍 จอส่วนตัว กรณีจอชนให้รอเท่านั้น / เมลปิดเป็นที่ระบบ ไม่รับเคลม</div>
-
-        <div class="item-header" style="margin-top: 25px;">
-            <span class="item-icon">🎥</span>
-            <span class="item-name">CH3+ & OneD</span>
-        </div>
-        <div class="screen-info"><span>CH3+ (30 วัน) หาร 2 / ยกแอค</span><strong>60 / 90 b</strong></div>
-        <div class="screen-info"><span>OneD (30 วัน) หาร 2 / ยกแอค</span><strong>60 / 95 b</strong></div>
-    </div>
-
-    <div class="category-title">🎨 หมวดแอปแต่งรูป & ตัดต่อ</div>
-
-    <div class="glass-card" style="padding: 25px;">
-        <div class="item-header">
-            <span class="item-icon">✨</span>
-            <span class="item-name">Meitu (iOS & Android)</span>
-        </div>
-        <div class="condition-badge">VIP (หาร 2)</div>
-        <div class="screen-info"><span>7 วัน / 30 วัน</span><strong>80 / 120 b</strong></div>
-        <div class="condition-badge" style="margin-top:10px;">SVIP (หาร 4)</div>
-        <div class="screen-info"><span>1 / 3 / 7 / 30 วัน</span><strong>45 / 60 / 90 / 140 b</strong></div>
-        
-        <div class="item-header" style="margin-top: 25px;">
-            <span class="item-icon">📸</span>
-            <span class="item-name">BeautyCam & Wink</span>
-        </div>
-        <div class="screen-info"><span>BeautyCam (30 วัน / หาร 4)</span><strong>100 b</strong></div>
-        <div class="screen-info"><span>Wink (30 วัน / หาร 4)</span><strong>110 b</strong></div>
-        <div class="app-condition">📍 Wink รองรับ iOS เท่านั้น / ไม่รวมเครดิตเติมเพิ่มเอง</div>
-
-        <div class="item-header" style="margin-top: 25px;">
-            <span class="item-icon">🖌️</span>
-            <span class="item-name">Canva Pro</span>
-        </div>
-        <div class="screen-info"><span>7 / 14 / 30 วัน</span><strong>15 / 25 / 40 b</strong></div>
-        <div class="app-condition">📍 เมลลูกค้า ไม่ต่อ / เปลี่ยนแฟมทุกเดือน</div>
-    </div>
-    <div class="category-title">🎧 หมวดแอปฟังเพลง</div>
-
-    <div class="glass-card" style="padding: 25px; border-left: 6px solid #ffe082;">
-        <div class="item-header">
-            <span class="item-icon">🎵</span>
-            <span class="item-name">Youtube Premium (แบบไม่ต่อ)</span>
+    <div class="glass-panel" style="border-left: 6px solid #ffc2d1;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">✨</span>
+            <strong style="color: #555; font-size: 17px;">Meitu (iOS & Android)</strong>
         </div>
         
-        <div class="app-badge">เมลร้าน (ราคาปกติ / เคลม 1 ครั้ง)</div>
-        <div class="screen-info"><span>30 วัน</span><strong>30 / 40 b</strong></div>
-        
-        <div class="app-badge" style="margin-top:10px;">เมลลูกค้า (ราคาปกติ / เคลม 1 ครั้ง)</div>
-        <div class="screen-info"><span>30 วัน</span><strong>20 / 30 b</strong></div>
-        <div class="app-condition" style="margin-bottom: 15px;">📍 ลูกค้านำเมลมาเปลี่ยนเองนะคะ</div>
+        <div style="background: #fff0f3; color: #ff9fb2; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 10px;">
+            Package VIP (หาร 2)
+        </div>
+        <div class="product-item"><span>7 วัน</span><span class="product-price">80 b</span></div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">120 b</span></div>
 
-        <div class="app-badge" style="background: #fff9c4; color: #fbc02d;">แพ็กบุคคล (เมลร้าน)</div>
-        <div class="screen-info"><span>30 วัน (เคลม 1 ครั้ง)</span><strong>55 b</strong></div>
-        <div class="screen-info"><span>30 วัน (ไม่รับเคลม)</span><strong>40 b</strong></div>
+        <div style="background: #fff0f3; color: #ff9fb2; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin: 15px 0 10px;">
+            Package SVIP (หาร 4)
+        </div>
+        <div class="product-item"><span>1 วัน</span><span class="product-price">45 b</span></div>
+        <div class="product-item"><span>3 วัน</span><span class="product-price">60 b</span></div>
+        <div class="product-item"><span>7 วัน</span><span class="product-price">90 b</span></div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">140 b</span></div>
+        
+        <div style="margin-top: 15px; font-size: 11px; color: #b0b0b0;">📍 ไม่รวมเครดิตต่าง ๆ ที่ต้องเติมเพิ่มเองนะคะ</div>
     </div>
 
-    <div class="category-title">📋 ขั้นตอน & เงื่อนไข</div>
-
-    <div class="glass-card" style="padding: 30px; background: linear-gradient(to bottom, #ffffff, #fffafa);">
-        <div style="text-align: center; margin-bottom: 20px;">
-            <strong style="color: #ff9fb2; font-size: 18px;">📋 ขั้นตอนการสั่งซื้อ</strong>
+    <div class="glass-panel" style="border-left: 6px solid #ffc2d1;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">💖</span>
+            <strong style="color: #555; font-size: 17px;">BeautyCam</strong>
         </div>
-        <div style="font-size: 14px; line-height: 2;">
-            1. ทักแชทสอบถามสินค้าที่ต้องการ<br>
-            2. แจ้งชื่อแอปหรือบริการที่สนใจ<br>
-            3. รอทางร้านเช็คสต็อกสินค้าสักครู่<br>
-            4. เมื่อร้านแจ้งว่า "พร้อมส่ง" ลูกค้าโอนเงินได้เลยค่ะ<br>
-            5. รับสินค้าและเริ่มใช้งานได้ทันที 💙
+        <div style="background: #fafafa; color: #999; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 10px;">
+            รองรับ iOS และ Android (หาร 4)
+        </div>
+        <div class="product-item"><span>7 วัน</span><span class="product-price">70 b</span></div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">100 b</span></div>
+        <div style="margin-top: 10px; font-size: 11px; color: #b0b0b0;">📍 ไม่รวมเครดิตต่าง ๆ ที่ต้องเติมเพิ่มเอง</div>
+    </div>
+
+    <div class="glass-panel" style="border-left: 6px solid #ffc2d1;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">🎀</span>
+            <strong style="color: #555; font-size: 17px;">Wink</strong>
+        </div>
+        <div style="background: #fff5f7; color: #ff99aa; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 10px;">
+            รองรับ iOS เท่านั้น (หาร 4)
+        </div>
+        <div class="product-item"><span>7 วัน</span><span class="product-price">75 b</span></div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">110 b</span></div>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0 15px;">
+        <span style="color: #a1c4fd; font-size: 18px; font-family: 'Itim', sans-serif;">🎬 หมวดแอปตัดต่อ</span>
+    </div>
+
+    <div class="glass-panel" style="border-left: 6px solid #a1c4fd;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">✂️</span>
+            <strong style="color: #555; font-size: 17px;">CapCut Pro</strong>
+        </div>
+        <div class="product-item"><span>30 วัน (แชร์บ้าน)</span><span class="product-price">45 b</span></div>
+        <div class="product-item"><span>1 ปี (ส่วนตัว)</span><span class="product-price">590 b</span></div>
+    </div>
+
+    <div class="glass-panel" style="border-left: 6px solid #a1c4fd;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">🎨</span>
+            <strong style="color: #555; font-size: 17px;">Canva Pro</strong>
+        </div>
+        <div style="background: #eef7ff; color: #7ab8eb; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 10px;">
+            เมลลูกค้า (ไม่ต่อเมลเดิม)
+        </div>
+        <div class="product-item"><span>30 วัน</span><span class="product-price">40 b</span></div>
+    </div>
+    <div style="text-align: center; margin: 40px 0 15px;">
+        <span style="color: #ffcc33; font-size: 18px; font-family: 'Itim', sans-serif;">🎧 หมวดแอปฟังเพลง</span>
+    </div>
+
+    <div class="glass-panel" style="border-left: 6px solid #ffcc33;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <span style="font-size: 22px;">🔴</span>
+            <strong style="color: #555; font-size: 17px;">YouTube Premium (แบบไม่ต่อ)</strong>
         </div>
 
-        <div style="margin-top: 25px; border-top: 1px dashed #eee; padding-top: 20px;">
+        <div style="background: #fff9c4; color: #fbc02d; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin-bottom: 10px;">
+            เมลร้าน
+        </div>
+        <div class="product-item"><span>ราคาปกติ</span><span class="product-price">30 b</span></div>
+        <div class="product-item"><span>เคลม 1 ครั้ง</span><span class="product-price">40 b</span></div>
+
+        <div style="background: #fff9c4; color: #fbc02d; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin: 15px 0 10px;">
+            เมลลูกค้า (ลูกค้านำเมลมาเปลี่ยนเอง)
+        </div>
+        <div class="product-item"><span>ราคาปกติ</span><span class="product-price">20 b</span></div>
+        <div class="product-item"><span>เคลม 1 ครั้ง</span><span class="product-price">30 b</span></div>
+
+        <div style="background: #fdfdfd; border: 1px solid #eee; color: #888; font-size: 11px; padding: 4px 12px; border-radius: 8px; display: inline-block; margin: 15px 0 10px;">
+            แบบไม่ต่อ (แพ็กบุคคล) เมลร้าน
+        </div>
+        <div class="product-item"><span>เคลม 1 ครั้ง</span><span class="product-price">55 b</span></div>
+        <div class="product-item"><span>ไม่รับเคลม</span><span class="product-price">40 b</span></div>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0 15px;">
+        <span style="color: #7ab8eb; font-size: 18px; font-family: 'Itim', sans-serif;">📋 Info & Contact</span>
+    </div>
+
+    <div class="glass-panel" style="padding: 30px;">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <strong style="color: #ff9fb2; font-size: 19px;">🛒 ขั้นตอนการสั่งซื้อ</strong>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; font-size: 14px;">
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span style="background: #ffc2d1; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;">1</span>
+                <span>ทักแชท</span>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span style="background: #ffc2d1; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;">2</span>
+                <span>แจ้งสินค้าที่ต้องการ</span>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span style="background: #ffc2d1; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;">3</span>
+                <span>รอทางร้านเช็คสินค้าให้สักครู่</span>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span style="background: #ffc2d1; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;">4</span>
+                <span>เมื่อแจ้งว่า “พร้อมส่ง” ลูกค้าโอนเงิน</span>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span style="background: #ffc2d1; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;">5</span>
+                <span>รอรับสินค้าได้เลยค่ะ 💙</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; border-top: 1px dashed #eee; padding-top: 20px;">
             <strong style="color: #7ab8eb; display: block; margin-bottom: 10px;">💳 การชำระเงิน</strong>
-            <span style="font-size: 14px;">• รับโอนผ่านธนาคาร และ วอเลท (ไม่บวกเพิ่ม)</span>
+            <span style="font-size: 14px; color: #888;">รับโอนผ่านธนาคาร และ วอเลท ไม่บวกเพิ่มค่ะ</span>
         </div>
 
         <div style="text-align: center; margin-top: 25px;">
-            <span style="font-size: 11px; color: #b0b0b0; background: #fdfdfd; padding: 5px 15px; border-radius: 10px; border: 1px solid #f0f0f0;">
-                ราคามีปรับขึ้นลงค่ะ กรุณาสสอบถามก่อนสั่งซื้อน้า
-            </span>
+            <p style="font-size: 10px; color: #b0b0b0; font-style: italic; margin: 0;">
+                ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า
+            </p>
         </div>
     </div>
 
-    <div style="padding: 10px 0;">
-        <a href="https://lin.ee/EBW88DH" class="contact-btn" style="text-align: center; display: block; transition: all 0.3s;">
-            💚 ติดต่อสอบถามจิ้มเลย!
-        </a>
-        
-        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-            <a href="https://www.facebook.com/share/1DveZBFdqz/" style="text-decoration: none; background: white; padding: 10px 20px; border-radius: 50px; font-size: 13px; color: #555; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">📘 Facebook</a>
-            <a href="https://lin.ee/EBW88DH" style="text-decoration: none; background: white; padding: 10px 20px; border-radius: 50px; font-size: 13px; color: #555; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">💚 LINE: @355tmjpr</a>
-        </div>
-    </div>
+    <a href="https://lin.ee/EBW88DH" class="contact-btn">
+        <span style="margin-right: 10px;">💬</span> ติดต่อสอบถามจิ้มเลย!
+    </a>
 
-    <div style="text-align: center; margin-top: 50px; padding-bottom: 60px;">
-        <div style="font-size: 12px; color: #ffacbc; font-style: italic;">
+    <div style="text-align: center; margin-top: 40px; padding-bottom: 50px;">
+        <p style="font-size: 11px; color: #ffacbc; font-family: 'Itim', sans-serif;">
             ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า 🫶🏻
-        </div>
-        <div style="font-size: 10px; color: #ddd; margin-top: 15px; letter-spacing: 1px;">
-            made with 💙 ERIN SHOP
-        </div>
+        </p>
+        <p style="font-size: 9px; color: #e0e0e0; letter-spacing: 2px; margin-top: 20px; text-transform: uppercase;">
+            💙 ERIN SHOP OFFICIAL 💙
+        </p>
     </div>
 
 </div> </body>
 </html>
-
-
-ต้องการให้ส่ง **Part 2/4** ต่อเลยไหมคะ? พาร์ทหน้าจะเข้าสู่ช่วง **🛍️ หมวดสินค้า (สติ๊กเกอร์/ธีม/เมโลดี้)** และเริ่มเข้าสู่ **รายการแอปพรีเมียม** แบบละเอียดทุกรายการที่แจ้งไว้เลยค่ะ 🫶🏻✨
