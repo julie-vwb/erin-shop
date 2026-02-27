@@ -8,7 +8,7 @@
 <style>
   :root {
     --blue1: #e3f2fd; --blue2: #bbdefb; --blue3: #90caf9; --blue4: #1e88e5;
-    --text: #1a4a73; --textl: #5a8fb9; --price-blue: #2196f3;
+    --text: #1a4a73; --textl: #5a8fb9; --price-blue: #1e88e5;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -16,18 +16,37 @@
     background: linear-gradient(160deg, #e1f5fe 0%, #bbdefb 50%, #e3f2fd 100%);
     min-height: 100vh; color: var(--text); overflow-x: hidden; position: relative;
   }
+
+  /* Stable Emoji Background Layer */
+  #emoji-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1; overflow: hidden;
+  }
+  .float-em {
+    position: absolute; bottom: -50px; opacity: 0;
+    animation: floating linear infinite;
+  }
+  @keyframes floating {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.4; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+
   .wrap { max-width:480px; margin:0 auto; padding:16px 14px 60px; position:relative; z-index:2; }
 
   /* HEADER */
   .header { text-align:center; padding:35px 0 20px; }
   .logo-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 8px 20px rgba(100,181,246,0.2); }
   .shop-name { font-size:2.4rem; font-weight:700; color: #1e88e5; margin: 10px 0; }
-  .shop-sub { font-size:.9rem; color:var(--textl); line-height:1.7; font-weight: 500; }
+  .shop-sub { font-size:.88rem; color:var(--textl); line-height:1.7; font-weight: 500; padding: 0 10px; }
   
-  /* BADGE ปรับตามรูปภาพ: เหลือแอปพรีเมียมอันเดียว */
-  .badge-main { 
-    background:#fff; border-radius:15px; padding:8px 20px; display:inline-flex; align-items:center; gap:8px;
-    font-size:.85rem; color:var(--text); box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin: 15px 0;
+  /* BADGE AREA: เพิ่มสติกเกอร์ และ แอปแต่งรูป ตามสั่ง */
+  .badge-container { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 15px 0; }
+  .badge-item { 
+    background:#fff; border-radius:15px; padding:8px 15px; display:inline-flex; align-items:center; gap:6px;
+    font-size:.8rem; color:var(--text); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid var(--blue1);
   }
 
   /* STATUS */
@@ -40,39 +59,37 @@
 
   /* CARDS */
   .card {
-    background:rgba(255,255,255,.8); backdrop-filter:blur(10px); border-radius:22px; 
+    background:rgba(255,255,255,.85); backdrop-filter:blur(12px); border-radius:22px; 
     padding:20px 18px; margin-bottom:14px; box-shadow:0 4px 18px rgba(100,181,246,.1);
+    border: 1px solid rgba(255,255,255,0.5);
   }
   .ct { font-size:.98rem; font-weight:600; color:var(--blue4); margin-bottom:18px; display:flex; align-items:center; gap:8px; }
   
-  /* STICKER PRICE STYLE ปรับตามรูปภาพ: ราคาสีฟ้าเข้ม */
+  /* STICKER PRICE */
   .price-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed var(--blue2); }
-  .price-tag-blue { background: rgba(33, 150, 243, 0.08); color: var(--price-blue); padding: 4px 12px; border-radius: 10px; font-weight: 700; font-size: 1.1rem; }
+  .price-tag-blue { color: var(--price-blue); font-weight: 700; font-size: 1.1rem; }
   .coin-text { font-weight: 500; color: var(--text); }
-
-  /* FLOATING EMOJI STYLE (💧🧸🧵🫧) */
-  .sp { position: fixed; pointer-events: none; z-index: 1; opacity: 0.4; animation: float 8s infinite linear; font-size: 20px; }
-  @keyframes float { 
-    0% { transform: translateY(110vh) translateX(0); opacity: 0; }
-    20% { opacity: 0.4; }
-    80% { opacity: 0.4; }
-    100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
-  }
 </style>
 </head>
 <body>
+
+<div id="emoji-bg"></div>
 
 <div class="wrap">
   <div class="header">
     <img src="Logo.jpeg" alt="Logo" class="logo-img">
     <div class="shop-name">💙 Erin Shop 💙</div>
     <div class="shop-sub">Welcome to Erin Shop na ka 🫶🏻 ร้านของเราขายแอปพรีเมียม สติ๊กเกอร์ไลน์ ราคาถูก และอื่น ๆ สอบถามได้เลยนะคะ</div>
-    <div class="badge-main">📱 แอปพรีเมียม</div>
+    
+    <div class="badge-container">
+      <div class="badge-item">📱 แอปพรีเมียม</div>
+      <div class="badge-item">🌈 สติกเกอร์</div>
+      <div class="badge-item">📸 แอปแต่งรูป</div>
+    </div>
   </div>
 
   <div class="status-box">
     <div class="s-open"><span class="s-dot"></span>เปิดรับงานอยู่นะคะ 🫧</div>
-    <div style="font-size: 0.75rem; color: var(--textl); margin-top: 5px;">ทักสอบถามคิวงานก่อนได้เลยค่า ✨</div>
   </div>
 
   <div class="card">
@@ -81,16 +98,29 @@
     <div class="price-row"><span class="coin-text">85 Coins</span> <span class="price-tag-blue">41 ฿</span></div>
     <div class="price-row"><span class="coin-text">100 Coins</span> <span class="price-tag-blue">48 ฿</span></div>
     <div class="price-row"><span class="coin-text">150 Coins</span> <span class="price-tag-blue">72 ฿</span></div>
-    <div style="display: flex; gap: 8px; margin-top: 15px;">
-      <span style="background:var(--blue1); padding:4px 12px; border-radius:10px; font-size:.75rem; border: 1px solid var(--blue2);">สติกเกอร์</span>
-      <span style="background:var(--blue1); padding:4px 12px; border-radius:10px; font-size:.75rem; border: 1px solid var(--blue2);">ธีมไลน์</span>
-      <span style="background:var(--blue1); padding:4px 12px; border-radius:10px; font-size:.75rem; border: 1px solid var(--blue2);">อิโมจิ</span>
-      <span style="background:var(--blue1); padding:4px 12px; border-radius:10px; font-size:.75rem; border: 1px solid var(--blue2);">เมโลดี้</span>
-    </div>
-    <div style="font-size: 0.7rem; color: var(--textl); margin-top: 12px; display: flex; align-items: center; gap: 5px;">
-      📎 รบกวนส่งแบบลิงก์เท่านั้น เพื่อความรวดเร็วและถูกต้องค่ะ
+    <div style="display: flex; gap: 6px; margin-top: 15px; flex-wrap: wrap;">
+      <span style="background:var(--blue1); padding:4px 10px; border-radius:10px; font-size:.72rem;">สติกเกอร์</span>
+      <span style="background:var(--blue1); padding:4px 10px; border-radius:10px; font-size:.72rem;">ธีมไลน์</span>
+      <span style="background:var(--blue1); padding:4px 10px; border-radius:10px; font-size:.72rem;">อิโมจิ</span>
+      <span style="background:var(--blue1); padding:4px 10px; border-radius:10px; font-size:.72rem;">เมโลดี้</span>
     </div>
   </div>
+
+<script>
+  function createEmoji() {
+    const bg = document.getElementById('emoji-bg');
+    const ems = ['💧', '🧸', '🧵', '🫧'];
+    const div = document.createElement('div');
+    div.className = 'float-em';
+    div.textContent = ems[Math.floor(Math.random() * ems.length)];
+    div.style.left = Math.random() * 100 + 'vw';
+    div.style.fontSize = (Math.random() * 10 + 15) + 'px';
+    div.style.animationDuration = (Math.random() * 5 + 8) + 's';
+    bg.appendChild(div);
+    setTimeout(() => div.remove(), 13000);
+  }
+  setInterval(createEmoji, 700);
+</script>
   <div class="card">
     <div class="ct">🏰 Disney+ Hotstar</div>
     <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
@@ -226,13 +256,6 @@
   </div>
 
   <div class="card">
-    <div class="ct">🎬 แอปแดงดำ</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
-      1 วัน 15 ฿ | 30 วัน 110-180 ฿
-    </div>
-  </div>
-
-  <div class="card">
     <div class="ct">🎞️ HBO Max</div>
     <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
       7 วัน เริ่ม 30 ฿ | 30 วัน เริ่ม 65-115 ฿
@@ -262,25 +285,33 @@
     </div>
   </div>
 
+  <style>
+    .step-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.9rem; font-weight: 500; }
+    .step-num { 
+      background: var(--blue3); color: #fff; width: 24px; height: 24px; 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      font-size: 0.75rem; flex-shrink: 0;
+    }
+  </style>
   <div class="card">
     <div class="ct">📋 ขั้นตอน & เงื่อนไขการสั่งซื้อ</div>
-    <div style="font-size:.9rem; line-height:2.2; color:var(--text); margin-bottom:15px; font-weight: 500;">
-      1. ทักแชทสอบถาม <br>
-      2. แจ้งสินค้าที่ต้องการ <br>
-      3. รอทางร้านเช็คสินค้าให้สักครู่ <br>
-      4. เมื่อแจ้งว่า “พร้อมส่ง” โอนเงิน และรอรับสินค้าได้เลยค่ะ 💙
+    <div style="margin-top: 10px;">
+      <div class="step-item"><div class="step-num">1</div> ทักแชทสอบถาม</div>
+      <div class="step-item"><div class="step-num">2</div> แจ้งสินค้าที่ต้องการ</div>
+      <div class="step-item"><div class="step-num">3</div> รอทางร้านเช็คสินค้าให้สักครู่</div>
+      <div class="step-item"><div class="step-num">4</div> เมื่อแจ้งว่า “พร้อมส่ง” โอนเงิน และรอรับสินค้าได้เลยค่ะ 💙</div>
     </div>
-    <div style="background: #fff; border: 1.5px solid var(--blue2); padding: 12px; border-radius: 15px; display: flex; align-items: center; gap: 10px;">
-      <span style="font-size: 1.2rem;">💳</span>
-      <div style="font-size: 0.82rem; color: var(--text);">
+    <div style="background: #fff; border: 1px solid var(--blue2); padding: 12px; border-radius: 15px; margin-top: 15px; display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 1.1rem;">💳</span>
+      <div style="font-size: 0.8rem; color: var(--text);">
         <b>การชำระเงิน:</b> รับโอนผ่านธนาคาร และ วอเลท (ไม่บวกเพิ่ม)
       </div>
     </div>
   </div>
 
   <a href="https://lin.ee/EBW88DH" target="_blank" style="text-decoration: none;">
-    <div style="background: linear-gradient(90deg, #ff85a2 0%, #ba73e6 100%); color: #fff; padding: 18px; border-radius: 50px; text-align: center; font-weight: 600; font-size: 1.1rem; margin: 20px 0; box-shadow: 0 8px 20px rgba(186, 115, 230, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px;">
-      💚 ติดต่อสอบถามจิ้มเลย!
+    <div style="background: linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%); color: var(--blue4); padding: 16px; border-radius: 50px; text-align: center; font-weight: 600; font-size: 1.05rem; margin: 20px 0; box-shadow: 0 6px 15px rgba(144, 202, 249, 0.3); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; gap: 10px;">
+      💙 ติดต่อสอบถามจิ้มเลย!
     </div>
   </a>
 
@@ -290,23 +321,8 @@
 
   <div class="footer" style="text-align:center; padding-top:10px; font-size:.75rem; color:var(--textl);">
     <div style="margin-bottom: 8px;">ขอบคุณสำหรับความไว้วางใจที่ให้ Erin Shop ดูแลนะคะ 💙</div>
-    <div style="opacity: 0.8;">made with 💙 · <b>Erin Shop</b> · 2026</div>
+    <div style="opacity: 0.7;">made with 💙 · <b>Erin Shop</b> · 2026</div>
   </div>
 </div>
-
-<script>
-  function createEmoji() {
-    const emojis = ['💧', '🧸', '🧵', '🫧'];
-    const e = document.createElement('div');
-    e.className = 'sp';
-    e.style.left = Math.random() * 100 + 'vw';
-    e.style.animationDuration = (Math.random() * 3 + 5) + 's';
-    e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    document.body.appendChild(e);
-    setTimeout(() => e.remove(), 8000);
-  }
-  setInterval(createEmoji, 600);
-</script>
-
 </body>
 </html>
