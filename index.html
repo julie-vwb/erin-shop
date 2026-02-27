@@ -7,336 +7,419 @@
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --blue-dark: #1e88e5; /* สีฟ้าเข้มสำหรับราคาและหัวข้อ */
-    --blue-medium: #90caf9;
-    --blue-light: #e3f2fd;
-    --text: #1a4a73;
-    --textl: #5a8fb9;
+    --bg-color: #d6e9ff; /* สีฟ้าพาสเทลแบบในรูป */
+    --card-bg: #ffffff;
+    --blue-dark: #1e88e5; 
+    --text-main: #4a7ab5;
+    --text-sub: #7fa9d1;
+    --shadow: rgba(149, 157, 165, 0.1);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     font-family: 'Mitr', sans-serif;
-    background: linear-gradient(160deg, #e1f5fe 0%, #bbdefb 50%, #e3f2fd 100%);
-    min-height: 100vh; color: var(--text); overflow-x: hidden; position: relative;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 50% 50%, #e3f2fd 0%, #d6e9ff 100%);
+    min-height: 100vh; color: var(--text-main); padding-bottom: 50px;
   }
+  .wrap { max-width:480px; margin:0 auto; padding:20px 16px; position:relative; }
 
-  /* Background Emoji Floating */
-  #emoji-bg {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 1; overflow: hidden;
-  }
-  .float-em {
-    position: absolute; bottom: -50px; opacity: 0;
-    animation: floating linear infinite;
-  }
-  @keyframes floating {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.4; }
-    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-  }
+  /* HEADER STYLE */
+  .header { text-align:center; padding:20px 0; }
+  .logo-img { width: 100px; height: 100px; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 4px 15px var(--shadow); margin-bottom: 15px; }
+  .shop-name { font-size:2rem; font-weight:700; color: #1e88e5; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .shop-sub { font-size:.85rem; color: var(--text-sub); line-height:1.6; padding: 0 15px; margin-bottom: 20px; }
 
-  .wrap { max-width:480px; margin:0 auto; padding:16px 14px 60px; position:relative; z-index:2; }
-
-  /* HEADER */
-  .header { text-align:center; padding:35px 0 20px; }
-  .logo-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 8px 20px rgba(100,181,246,0.2); }
-  .shop-name { font-size:2.4rem; font-weight:700; color: var(--blue-dark); margin: 10px 0; }
-  .shop-sub { font-size:.88rem; color:var(--textl); line-height:1.7; font-weight: 500; padding: 0 10px; }
-  
-  /* BADGE: คงไว้ตามเดิม */
-  .badge-container { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 15px 0; }
+  /* BADGE */
+  .badge-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
   .badge-item { 
-    background:#fff; border-radius:15px; padding:8px 15px; display:inline-flex; align-items:center; gap:6px;
-    font-size:.8rem; color:var(--text); box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid var(--blue-light);
+    background:#fff; border-radius:20px; padding:6px 16px; font-size:.75rem; 
+    display:flex; align-items:center; gap:6px; box-shadow: 0 2px 8px var(--shadow); border: 1px solid #f0f0f0;
   }
 
-  /* CATEGORY TITLE STYLE */
-  .cat-title { 
-    font-size: 1.05rem; font-weight: 700; color: var(--blue-dark); 
-    text-align: left; margin: 30px 0 15px; padding: 10px 15px;
-    background: rgba(255,255,255,0.5); border-radius: 12px;
-    border-left: 5px solid var(--blue-dark);
+  /* STATUS */
+  .status-pill {
+    background: #fff; border: 1.5px dashed #90caf9; border-radius: 30px;
+    padding: 10px 20px; display: inline-flex; align-items: center; gap: 8px;
+    font-size: .85rem; color: #1e88e5; margin-bottom: 25px;
   }
+  .dot { width: 10px; height: 10px; background: #66bb6a; border-radius: 50%; }
 
-  /* CARDS */
+  /* CARD STYLE */
   .card {
-    background:rgba(255,255,255,.85); backdrop-filter:blur(12px); border-radius:22px; 
-    padding:20px 18px; margin-bottom:14px; box-shadow:0 4px 18px rgba(100,181,246,.1);
-    border: 1px solid rgba(255,255,255,0.5);
+    background: var(--card-bg); border-radius: 25px; padding: 22px; 
+    margin-bottom: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.03);
   }
-  .ct { font-size:.98rem; font-weight:600; color:var(--blue-dark); margin-bottom:18px; display:flex; align-items:center; gap:8px; }
+  .ct { font-size:.95rem; font-weight:600; color:var(--blue-dark); margin-bottom:18px; display:flex; align-items:center; gap:8px; }
   
-  /* STICKER PRICE: สีฟ้าเข้ม */
-  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed var(--blue-light); }
-  .price-tag-blue { color: var(--blue-dark); font-weight: 700; font-size: 1.1rem; }
-  .coin-text { font-weight: 500; color: var(--text); }
+  /* STICKER ROW */
+  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #e3f2fd; }
+  .price-val { color: var(--blue-dark); font-weight: 700; font-size: 1.05rem; }
+
+  /* TAGS */
+  .tags { display: flex; gap: 6px; margin-top: 15px; flex-wrap: wrap; }
+  .tag { background: #f0f7ff; color: #7fa9d1; padding: 4px 12px; border-radius: 10px; font-size: .7rem; }
+
+  /* NOTE BOX */
+  .note {
+    background: #f9fcff; border-radius: 15px; padding: 12px 15px; margin-top: 15px;
+    font-size: .78rem; color: #8ba9c9; line-height: 1.5; border-left: 4px solid #90caf9;
+  }
 </style>
 </head>
 <body>
-
-<div id="emoji-bg"></div>
-
 <div class="wrap">
   <div class="header">
     <img src="Logo.jpeg" alt="Logo" class="logo-img">
     <div class="shop-name">💙 Erin Shop 💙</div>
-    <div class="shop-sub">Welcome to Erin Shop na ka ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้ นอกจากนี้สอบถามได้นะคะ</div>
-    
+    <div class="shop-sub">Welcome to Erin Shop na ka ทางร้านขายแอพพรีเมียม สติ๊กเกอร์ไลน์ ราคาถูก และอื่น ๆ สอบถามได้เลยนะคะ</div>
     <div class="badge-container">
       <div class="badge-item">📱 แอปพรีเมียม</div>
       <div class="badge-item">🌈 สติกเกอร์</div>
       <div class="badge-item">📸 แอปแต่งรูป</div>
     </div>
+    <div style="text-align: center;"><div class="status-pill"><span class="dot"></span>เปิดรับงานอยู่นะคะ 🫧</div></div>
   </div>
 
   <div class="card">
     <div class="ct">💚 สติกเกอร์ | ธีม | อิโมจิ | เมโลดี้</div>
-    <div class="price-row"><span class="coin-text">50 Coins</span> <span class="price-tag-blue">24 ฿</span></div>
-    <div class="price-row"><span class="coin-text">85 Coins</span> <span class="price-tag-blue">41 ฿</span></div>
-    <div class="price-row"><span class="coin-text">100 Coins</span> <span class="price-tag-blue">48 ฿</span></div>
-    <div class="price-row"><span class="coin-text">150 Coins</span> <span class="price-tag-blue">72 ฿</span></div>
-    <div style="display: flex; gap: 6px; margin-top: 15px; flex-wrap: wrap;">
-      <span style="background:var(--blue-light); padding:4px 10px; border-radius:10px; font-size:.72rem;">สติกเกอร์</span>
-      <span style="background:var(--blue-light); padding:4px 10px; border-radius:10px; font-size:.72rem;">ธีมไลน์</span>
-      <span style="background:var(--blue-light); padding:4px 10px; border-radius:10px; font-size:.72rem;">อิโมจิ</span>
-      <span style="background:var(--blue-light); padding:4px 10px; border-radius:10px; font-size:.72rem;">เมโลดี้</span>
+    <div class="price-row"><span>50 Coins</span> <span class="price-val">24 ฿</span></div>
+    <div class="price-row"><span>85 Coins</span> <span class="price-val">41 ฿</span></div>
+    <div class="price-row"><span>100 Coins</span> <span class="price-val">48 ฿</span></div>
+    <div class="price-row"><span>150 Coins</span> <span class="price-val">72 ฿</span></div>
+    <div class="tags">
+      <span class="tag">สติกเกอร์</span><span class="tag">ธีมไลน์</span>
+      <span class="tag">อิโมจิ</span><span class="tag">เมโลดี้</span>
     </div>
-    <div style="font-size: 0.72rem; color: var(--textl); margin-top: 12px;">📎 รบกวนส่งแบบลิงก์เท่านั้น เพื่อความรวดเร็วและถูกต้องค่ะ</div>
+    <div class="note">⚠️ หมายเหตุ: รบกวนส่งแบบลิงก์เท่านั้น เพื่อความรวดเร็วและถูกต้องค่ะ</div>
   </div>
-  <div class="cat-title">🎬 หมวดหมู่แอปดูหนัง</div>
+  <div style="font-size: 1.05rem; font-weight: 700; color: var(--blue-dark); margin: 25px 0 15px; padding: 10px 18px; background: #fff; border-radius: 15px; display: inline-block; box-shadow: 0 4px 10px var(--shadow);">
+    ✨ หมวดหมู่แอปพรีเมียม
+  </div>
 
   <div class="card">
     <div class="ct">🏰 Disney+ Hotstar</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>[ หาร 4 ]</b><br>
       1 วัน 25 ฿ | 3 วัน 35 ฿ | 7 วัน 55 ฿ | 30 วัน 110 ฿<br>
       <b>[ หาร 5 ]</b><br>
       7 วัน 45 ฿ | 30 วัน 95 ฿
     </div>
-    <div style="background: rgba(144, 202, 249, 0.1); border-left: 3px solid var(--blue-dark); padding: 10px 12px; font-size: .78rem; color: var(--textl); border-radius: 12px;">
+    <div class="note">
       ⚠️ หมายเหตุ: รับชมพร้อมกันได้ 4 อุปกรณ์ / แจ้งอุปกรณ์ที่เข้าใช้งานให้ตรง หากไม่ตรงยึดจอ / พร้อมกดภายใน 5 นาที / เคลมกรณีมีแคปประกัน / รับชมได้เฉพาะในไทย / ดูในทีวี +10 ฿
     </div>
   </div>
 
   <div class="card">
     <div class="ct">🍿 Viu Premium</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>หาร 4 :</b> 7 วัน 20 ฿ | 30 วัน 25 ฿<br>
       <b>หาร 3 :</b> 30 วัน 35 ฿ | <b>หาร 2 :</b> 30 วัน 45 ฿<br>
       <b>ยกแอค 30 วัน :</b> 60 ฿
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: เลือกแพ็กเกจตามอุปกรณ์ที่ใช้งานจริงนะคะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">🎬 WeTV</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>7 วัน :</b> 20 ฿ (หาร 4)<br>
       <b>30 วัน :</b> 35 ฿ (หาร 4) | 45 ฿ (หาร 3) | 55 ฿ (หาร 2)<br>
       <b>ยกแอค 30 วัน :</b> 85 ฿
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: เคลมได้ตลอดอายุการใช้งานหากทำตามเงื่อนไขร้านค่ะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">🌟 iQIYI (Gold/Diamond)</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>Gold 30 วัน :</b> 35 ฿ (หาร 4) | 45 ฿ (หาร 3) | 55 ฿ (หาร 2)<br>
       <b>Diamond 4K 30 วัน :</b> 55 ฿ (หาร 5) | 65 ฿ (หาร 4)
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: รองรับการดูแบบ 4K สำหรับ Diamond แจ้งเมลในการสมัครนะคะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">👑 Prime Video</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
-      <b>7 วัน :</b> 25-40 ฿ (ตามจำนวนคนหาร)<br>
-      <b>30 วัน :</b> 50-80 ฿ | ยกแอค 110 ฿
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
+      <b>7 วัน :</b> 25 ฿ (หาร 6) | 40 ฿ (หาร 3)<br>
+      <b>30 วัน :</b> 50 ฿ (หาร 6) | 80 ฿ (หาร 3) | ยกแอค 110 ฿
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: หากโดนเด้งแจ้งเคลมได้ทันทีค่ะ พร้อมดูแลตลอดการใช้งาน
     </div>
   </div>
-
   <div class="card">
     <div class="ct">🎬 MonoMax</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text);">
-      7 วัน 35 ฿ | 30 วัน 45-80 ฿
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
+      7 วัน 35 ฿ | 30 วัน 45-80 ฿ (ตามแพ็กเกจ)
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: รับชมหนังดีซีรีส์ดังพากย์ไทยมาเต็มค่ะ
     </div>
   </div>
 
   <div class="card">
-    <div class="ct">🦁 CH3+</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text);">
+    <div class="ct">🦁 CH3+ (ช่อง 3 พลัส)</div>
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>30 วัน :</b> 60 ฿ (หาร 2) | 90 ฿ (ยกแอค)
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: ดูละครย้อนหลังแบบไม่มีโฆษณาคั่นนะคะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">📺 OneD</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text);">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>30 วัน :</b> 60 ฿ (หาร 2) | 95 ฿ (ยกแอค)
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: รับชมคอนเทนต์จากช่อง One31 และ GMM25 แบบพรีเมียมค่ะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">🎬 แอปแดงดำ</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text);">
-      1 วัน 15 ฿ | 30 วัน 110-180 ฿
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
+      1 วัน 15 ฿ | 30 วัน 110-180 ฿ (สอบถามแพ็กเกจปัจจุบัน)
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: สอบถามสถานะแอปก่อนโอนเงินทุกครั้งนะคะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">🎞️ HBO Max</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text);">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       7 วัน เริ่ม 30 ฿ | 30 วัน เริ่ม 65-115 ฿
     </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: คุณภาพความคมชัดระดับ HD/4K ตามแพ็กเกจค่ะ
+    </div>
   </div>
-  <div class="cat-title">🎧 หมวดหมู่แอปฟังเพลง</div>
+  <div style="font-size: 1.05rem; font-weight: 700; color: var(--blue-dark); margin: 25px 0 15px; padding: 10px 18px; background: #fff; border-radius: 15px; display: inline-block; box-shadow: 0 4px 10px var(--shadow);">
+    🎧 หมวดหมู่แอปฟังเพลง
+  </div>
 
   <div class="card">
     <div class="ct">🎵 Spotify Premium</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>เมลร้าน :</b> 30 วัน 35 ฿ | <b>เมลลูกค้า :</b> 30 วัน 40 ฿
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: ฟังเพลงแบบไม่มีโฆษณาคั่น คุณภาพเสียงระดับ High Definition ค่ะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">🎵 Youtube Premium (แบบไม่ต่อเมล)</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>เมลลูกค้า :</b> 20 ฿ | <b>เมลร้าน :</b> 30 ฿<br>
       <b>แพ็คบุคคล :</b> เริ่มต้น 40 ฿
     </div>
-    <div style="background: rgba(144, 202, 249, 0.1); border-left: 3px solid var(--blue-dark); padding: 10px 12px; font-size: .78rem; color: var(--textl); border-radius: 12px;">
+    <div class="note">
       ⚠️ หมายเหตุ: กรณีเมลลูกค้า ลูกค้าต้องนำเมลมาเปลี่ยนเองค่ะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">🎶 Line Melody</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text);">
-      <b>ราคาเหมา :</b> <span class="price-tag-blue">45 ฿</span> ทุกเพลง
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main);">
+      <b>ราคาเหมา :</b> <span style="color:var(--blue-dark); font-weight:700;">45 ฿</span> ทุกเพลง
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: เลือกเพลงที่ชอบแล้วส่งลิงก์มาได้เลยนะคะ
     </div>
   </div>
 
-  <div class="cat-title">✂️ หมวดหมู่แอปตัดต่อ</div>
-
-  <div class="card">
-    <div class="ct">🎬 CapCut Pro (มือถือ / ไอแพด)</div>
-    <div style="margin-bottom: 15px;">
-      <div style="font-size:.88rem; font-weight:600; color:var(--blue-dark); margin-bottom:5px;">🐰 𓈒 หาร 2 𓈒 🌸</div>
-      <div style="font-size:.85rem; line-height:1.8; color:var(--text); padding-left: 10px;">
-        01 วัน ✿ 35 ฿ | 03 วัน ✿ 45 ฿<br>
-        07 วัน ✿ 65 ฿ | 30 วัน ✿ 110 ฿
-      </div>
-    </div>
-    <div>
-      <div style="font-size:.88rem; font-weight:600; color:var(--blue-dark); margin-bottom:5px;">🍀 ֺ หาร 3 𓈒 ✋🏻</div>
-      <div style="font-size:.85rem; line-height:1.8; color:var(--text); padding-left: 10px;">
-        01 วัน ✿ 25 ฿ | 03 วัน ✿ 35 ฿<br>
-        07 วัน ✿ 55 ฿ | 30 วัน ✿ 90 ฿
-      </div>
-    </div>
+  <div style="font-size: 1.05rem; font-weight: 700; color: var(--blue-dark); margin: 25px 0 15px; padding: 10px 18px; background: #fff; border-radius: 15px; display: inline-block; box-shadow: 0 4px 10px var(--shadow);">
+    ✂️ หมวดหมู่แอปตัดต่อ (CapCut)
   </div>
 
   <div class="card">
-    <div class="ct">💻 CapCut Pro (เข้าคอม PC)</div>
-    <div style="font-size:.88rem; font-weight:600; color:var(--blue-dark); margin-bottom:5px;">🐬 ִ หาร 2 ♡</div>
-    <div style="font-size:.85rem; line-height:1.8; color:var(--text); padding-left: 10px; margin-bottom: 10px;">
-      01 วัน ✿ 35 ฿ | 03 วัน ✿ 50 ฿<br>
-      07 วัน ✿ 60 ฿ | 30 วัน ✿ 130 ฿
+    <div class="ct">🎬 CapCut Pro</div>
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
+      <b>เริ่มต้น 25 ฿ (มีทั้งมือถือและคอม)</b>
     </div>
-    <div style="background: rgba(144, 202, 249, 0.1); border-left: 3px solid var(--blue-dark); padding: 10px 12px; font-size: .78rem; color: var(--textl); border-radius: 12px;">
-      💻 รองรับการใช้งานผ่าน PC / แจ้งอุปกรณ์ที่เข้าใช้งานให้ชัดเจนนะคะ
+    <div style="margin-bottom: 12px;">
+      <div style="font-size:.85rem; font-weight:600; color:var(--blue-dark);">• มือถือ / ไอแพด</div>
+      <div style="font-size:.8rem; padding-left: 10px; color:var(--text-sub);">
+        หาร 2 : 1 วัน 35 | 30 วัน 110 ฿<br>
+        หาร 3 : 1 วัน 25 | 30 วัน 90 ฿
+      </div>
+    </div>
+    <div style="margin-bottom: 12px;">
+      <div style="font-size:.85rem; font-weight:600; color:var(--blue-dark);">• คอม PC</div>
+      <div style="font-size:.8rem; padding-left: 10px; color:var(--text-sub);">
+        หาร 2 : 1 วัน 35 | 30 วัน 130 ฿
+      </div>
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: เลือกแพ็กเกจตามอุปกรณ์ที่ใช้งานจริง
     </div>
   </div>
-  <div class="cat-title">📸 หมวดหมู่แอปแต่งรูป</div>
+  <div style="font-size: 1.05rem; font-weight: 700; color: var(--blue-dark); margin: 25px 0 15px; padding: 10px 18px; background: #fff; border-radius: 15px; display: inline-block; box-shadow: 0 4px 10px var(--shadow);">
+    📸 หมวดหมู่แอปแต่งรูป
+  </div>
 
   <div class="card">
     <div class="ct">📸 Meitu VIP / SVIP</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text); margin-bottom:10px;">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>หาร 3 :</b> 30 วัน 45 ฿ | 90 วัน 115 ฿<br>
       <b>หาร 2 :</b> 30 วัน 65 ฿ | 90 วัน 145 ฿<br>
       <b>ยกแอค :</b> 30 วัน 110 ฿
+    </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: แต่งรูปสวยด้วยฟีเจอร์ VIP แบบจัดเต็ม เคลมได้ตลอดอายุการใช้งานค่ะ
     </div>
   </div>
 
   <div class="card">
     <div class="ct">✨ BeautyCam VIP</div>
-    <div style="font-size:.88rem; line-height:1.8; color:var(--text);">
+    <div style="font-size:.88rem; line-height:1.8; color:var(--text-main); margin-bottom:10px;">
       <b>หาร 3 :</b> 30 วัน 45 ฿ | 90 วัน 110 ฿<br>
       <b>หาร 2 :</b> 30 วัน 60 ฿ | 90 วัน 135 ฿
     </div>
+    <div class="note">
+      ⚠️ หมายเหตุ: ปรับหน้าสวย เนียนใส สไตล์เกาหลี ญี่ปุ่น ต้องแอปนี้เลยค่ะ
+    </div>
   </div>
 
-  <style>
-    .step-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.88rem; color: var(--text); }
-    .step-num { 
-      background: var(--blue-medium); color: #fff; width: 24px; height: 24px; 
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-      font-weight: 600; font-size: 0.75rem; flex-shrink: 0;
-    }
-  </style>
+  <div class="card">
+    <div class="ct">💫 แอปแต่งรูปอื่น ๆ</div>
+    <div style="font-size:.85rem; color:var(--text-main);">
+      • Remini (ปรับภาพชัด)<br>
+      • Lightroom (คุมโทนสี)<br>
+      • Canva Pro (ออกแบบกราฟิก)
+    </div>
+    <div class="note">⚠️ หมายเหตุ: สอบถามราคาแพ็กเกจปัจจุบันทางแชทได้เลยนะเจ้าคะ</div>
+  </div>
+
   <div class="card">
     <div class="ct">📋 ขั้นตอน & เงื่อนไขการสั่งซื้อ</div>
+    <style>
+      .step-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+      .step-circle { 
+        background: #90caf9; color: #fff; width: 22px; height: 22px; 
+        border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+        font-weight: 700; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px;
+      }
+      .step-txt { font-size: 0.88rem; color: var(--text-main); line-height: 1.5; }
+    </style>
     <div style="margin-top: 10px;">
-      <div class="step-item"><div class="step-num">1</div> ทักแชทสอบถามคิวงาน</div>
-      <div class="step-item"><div class="step-num">2</div> แจ้งสินค้าที่ต้องการ</div>
-      <div class="step-item"><div class="step-num">3</div> รอทางร้านเช็คสินค้าให้สักครู่</div>
-      <div class="step-item"><div class="step-num">4</div> เมื่อแจ้งว่า “พร้อมส่ง” โอนเงิน และรอรับสินค้าได้เลยค่ะ 💙</div>
+      <div class="step-row">
+        <div class="step-circle">1</div>
+        <div class="step-txt"><b>ทักแชท</b> เพื่อเช็คคิวและสถานะสินค้า</div>
+      </div>
+      <div class="step-row">
+        <div class="step-circle">2</div>
+        <div class="step-txt"><b>แจ้งสินค้า</b> ที่คุณลูกค้าต้องการสั่งซื้อ</div>
+      </div>
+      <div class="step-row">
+        <div class="step-circle">3</div>
+        <div class="step-txt"><b>รอทางร้านเช็ค</b> เมื่อแจ้งว่า “พร้อมส่ง” สามารถโอนเงินได้เลยค่ะ</div>
+      </div>
+      <div class="step-row">
+        <div class="step-circle">4</div>
+        <div class="step-txt"><b>รอรับสินค้า</b> และใช้งานพรีเมียมได้ทันที 💙</div>
+      </div>
     </div>
-    <div style="background: #fff; border: 1px solid var(--blue-light); padding: 12px; border-radius: 15px; margin-top: 15px; display: flex; align-items: center; gap: 10px;">
-      <span style="font-size: 1.1rem;">💳</span>
-      <div style="font-size: 0.8rem; color: var(--text);">
-        <b>การชำระเงิน:</b> รับโอนผ่านธนาคาร และ วอเลท (ไม่บวกเพิ่ม)
+    <div style="background: #f1f8ff; padding: 12px; border-radius: 15px; margin-top: 15px; border: 1px dashed #90caf9;">
+      <div style="font-size: 0.8rem; color: var(--blue-dark); text-align: center;">
+        💳 <b>การชำระเงิน:</b> รับโอนธนาคาร และ วอเลท (ไม่บวกเพิ่ม)
       </div>
     </div>
   </div>
+  <div class="card">
+    <div class="ct">📱 ช่องทางการติดต่อ</div>
+    
+    <div style="background: #fdfdfd; border: 1px solid #f0f7ff; border-radius: 18px; padding: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 15px;">
+      <div style="font-size: 1.5rem;">📱</div>
+      <div>
+        <div style="font-size: 0.75rem; color: var(--text-sub);">Line ID:</div>
+        <div style="font-size: 0.95rem; font-weight: 600; color: var(--blue-dark);">@355tmjpr (มี @)</div>
+      </div>
+    </div>
+
+    <a href="https://lin.ee/EBW88DH" target="_blank" style="text-decoration: none;">
+      <div style="background: #fdfdfd; border: 1px solid #f0f7ff; border-radius: 18px; padding: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 15px;">
+        <div style="font-size: 1.5rem;">🔗</div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-sub);">Link:</div>
+          <div style="font-size: 0.85rem; font-weight: 500; color: var(--blue-dark); text-decoration: underline;">lin.ee/EBW88DH</div>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.facebook.com/share/1DveZBFdqz/" target="_blank" style="text-decoration: none;">
+      <div style="background: #fdfdfd; border: 1px solid #f0f7ff; border-radius: 18px; padding: 15px; display: flex; align-items: center; gap: 15px;">
+        <div style="font-size: 1.5rem;">💙</div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-sub);">Credit:</div>
+          <div style="font-size: 0.85rem; font-weight: 500; color: var(--blue-dark);">เช็คเครดิตการขายได้ที่นี่ค่ะ</div>
+        </div>
+      </div>
+    </a>
+  </div>
 
   <a href="https://lin.ee/EBW88DH" target="_blank" style="text-decoration: none;">
-    <div style="background: linear-gradient(135deg, #f48fb1 0%, #a5d6a7 100%); color: #fff; padding: 16px; border-radius: 50px; text-align: center; font-weight: 600; font-size: 1.05rem; margin: 20px 0; box-shadow: 0 6px 15px rgba(244,143,177,0.3); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; gap: 10px;">
+    <div style="background: linear-gradient(135deg, #a5d6a7 0%, #90caf9 100%); color: #fff; padding: 18px; border-radius: 50px; text-align: center; font-weight: 600; font-size: 1.1rem; margin: 30px 0; box-shadow: 0 8px 20px rgba(144,202,249,0.3); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; gap: 10px;">
       💚 ติดต่อสอบถามจิ้มเลย!
     </div>
   </a>
 
-  <div class="card">
-    <div class="ct">📱 ช่องทางติดต่อ</div>
-    <a href="https://lin.ee/EBW88DH" target="_blank" style="text-decoration:none; display:block; background:#fff; border-radius:15px; padding:12px; margin-bottom:10px; border:1px solid #eee; display:flex; align-items:center; gap:12px;">
-      <div style="font-size:1.5rem;">💚</div>
-      <div>
-        <div style="font-size:.85rem; font-weight:600; color:var(--text);">LINE Official</div>
-        <div style="font-size:.72rem; color:var(--textl);">@355tmjpr (มี @) · ทักแชทสั่งซื้อ</div>
-      </div>
-    </a>
-    <a href="https://www.facebook.com/share/1DveZBFdqz/" target="_blank" style="text-decoration:none; display:block; background:#fff; border-radius:15px; padding:12px; border:1px solid #eee; display:flex; align-items:center; gap:12px;">
-      <div style="font-size:1.5rem;">📘</div>
-      <div>
-        <div style="font-size:.85rem; font-weight:600; color:var(--text);">Facebook Credit</div>
-        <div style="font-size:.72rem; color:var(--textl);">คลิกเพื่อดูเครดิตการขายของร้าน</div>
-      </div>
-    </a>
-  </div>
-
-  <div style="text-align: center; color: var(--textl); font-size: 0.72rem; margin-top: 20px; line-height: 1.6;">
-    * ราคามีการปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อนะคะ *<br><br>
-    ขอบคุณสำหรับความไว้วางใจที่ให้ Erin Shop ดูแลนะคะ 💙
-  </div>
-
-  <div class="footer" style="text-align:center; padding: 20px 0 40px; font-size:.72rem; color:var(--textl); opacity: 0.8;">
-    made with 💙 · <b>Erin Shop</b> · 2026
+  <div style="text-align: center; padding: 20px 0 50px;">
+    <div style="font-size: 0.72rem; color: var(--text-sub); line-height: 1.8;">
+      * ราคามีการปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อนะคะ *<br>
+      ขอบคุณที่ไว้วางใจให้ <b>Erin Shop</b> ดูแลนะเจ้าคะ 🫶🏻✨
+    </div>
+    
+    <div style="margin-top: 25px; font-size: 0.65rem; color: var(--text-sub); letter-spacing: 1px; opacity: 0.8;">
+      DESIGNED BY ERIN SHOP · 2026
+    </div>
   </div>
 
 </div> <script>
-  // Stable floating emojis
-  const bg = document.getElementById('emoji-bg');
-  const emojis = ['💙', '☁️', '✨', '🎀', '🫧'];
-  function createEmoji() {
-    const el = document.createElement('div');
-    el.className = 'float-em';
-    el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    el.style.left = Math.random() * 100 + 'vw';
-    el.style.fontSize = (Math.random() * 20 + 10) + 'px';
-    el.style.duration = (Math.random() * 5 + 5) + 's';
-    el.style.animationDuration = el.style.duration;
-    bg.appendChild(el);
-    setTimeout(() => el.remove(), parseFloat(el.style.duration) * 1000);
+  // ระบบพื้นหลังไอคอนลอย (Emoji Background)
+  const bgLayer = document.createElement('div');
+  bgLayer.style.position = 'fixed';
+  bgLayer.style.top = '0';
+  bgLayer.style.left = '0';
+  bgLayer.style.width = '100%';
+  bgLayer.style.height = '100%';
+  bgLayer.style.pointerEvents = 'none';
+  bgLayer.style.zIndex = '-1';
+  bgLayer.style.overflow = 'hidden';
+  document.body.appendChild(bgLayer);
+
+  const icons = ['💙', '☁️', '✨', '🫧', '🍦', '🎀'];
+  function createIcon() {
+    const icon = document.createElement('div');
+    icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+    icon.style.position = 'absolute';
+    icon.style.left = Math.random() * 100 + 'vw';
+    icon.style.top = '110vh';
+    icon.style.fontSize = (Math.random() * 15 + 10) + 'px';
+    icon.style.opacity = '0.3';
+    icon.style.transition = 'transform ' + (Math.random() * 5 + 10) + 's linear';
+    bgLayer.appendChild(icon);
+
+    setTimeout(() => {
+      icon.style.transform = 'translateY(-120vh) rotate(' + (Math.random() * 360) + 'deg)';
+    }, 100);
+
+    setTimeout(() => {
+      icon.remove();
+    }, 15000);
   }
-  setInterval(createEmoji, 1500);
+  setInterval(createIcon, 2000);
 </script>
+
 </body>
 </html>
