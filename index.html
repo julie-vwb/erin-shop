@@ -11,6 +11,8 @@
     --blue2: #BBDEFB;
     --blue3: #4FC3F7;
     --blue4: #29B6F6;
+    --pink-price: #FFC2D1;
+    --pink-text: #FB6CC1;
     --text: #455A64;
     --textl: #78909C;
     --bg-grad: linear-gradient(160deg, #E3F2FD 0%, #FFFFFF 50%, #E1F5FE 100%);
@@ -104,6 +106,36 @@
     font-size:.72rem; color:var(--blue4); font-weight:500;
   }
 
+  .status-bar {
+    margin: 20px auto;
+    padding: 12px;
+    width: 90%;
+    border: 2px dashed var(--blue3);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4CAF50;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
   .card {
     background: var(--white); backdrop-filter:blur(12px);
     border:1.5px solid rgba(187, 222, 251, 0.3);
@@ -115,6 +147,85 @@
 
   .ct { font-size:.98rem; font-weight:600; color:var(--blue4); margin-bottom:13px; display:flex; align-items:center; gap:8px; }
   .ct .ic { font-size:1.15rem; }
+
+  /* Steps Card Enhancement based on Reference Image */
+  .step-container {
+    padding: 5px 2px;
+  }
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .step-num {
+    width: 26px;
+    height: 26px;
+    background: var(--blue3);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(79, 195, 247, 0.3);
+  }
+  .step-text { 
+    font-size: 0.9rem; 
+    line-height: 1.6; 
+    color: var(--text); 
+    font-weight: 500;
+  }
+
+  /* Payment Info Box inside Card */
+  .payment-box {
+    background: #fff;
+    border: 1px solid var(--blue2);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--text);
+  }
+  .payment-box b { color: var(--blue4); }
+  .payment-box img { width: 22px; height: auto; }
+
+  /* Price List Styling */
+  .price-list { list-style: none; margin-top: 10px; }
+  .price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--blue2);
+  }
+  .price-item:last-child { border-bottom: none; }
+  .price-label { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+  .price-tag {
+    background: var(--pink-price);
+    color: var(--pink-text);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 65px;
+    text-align: center;
+  }
+  .note-msg {
+    margin-top: 15px;
+    font-size: 0.78rem;
+    color: var(--textl);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1.4;
+  }
 
   .div { text-align:center; color:var(--blue2); font-size:.85rem; letter-spacing:7px; margin:4px 0 14px; }
 
@@ -144,8 +255,6 @@
 
   .footer { text-align:center; padding:16px 0 8px; font-size:.73rem; color:var(--textl); }
 
-  .note { font-size: 0.75rem; color: #ef5350; margin-top: 10px; font-style: italic; }
-
   @keyframes fadeUp { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
 </style>
 </head>
@@ -171,104 +280,132 @@
       Welcome to Erin Shop na ka ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้ นอกจากนี้สอบถามได้นะคะ
     </div>
     <div class="badges">
-      <span class="badge">💎 แอพพรีเมี่ยม</span>
-      <span class="badge">🎨 แอพแต่งรูป</span>
-      <span class="badge">🎬 แอพตัดต่อ</span>
+      <span class="badge">💎 แอปพรีเมี่ยม</span>
+      <span class="badge">🎨 แอปแต่งรูป</span>
+      <span class="badge">🎬 แอปตัดต่อ</span>
     </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="status-dot"></div>
+    พร้อมรับออเดอร์นะคะ 🎀
   </div>
 
   <div class="div">✦ · · ✦ · · ✦</div>
 
   <div class="card">
-    <div class="ct"><span class="ic">📋</span> ขั้นตอน & เงื่อนไข</div>
-    <div style="font-size:.85rem;line-height:1.8;">
-      <b>💰 วิธีชำระเงิน :</b> รับทั้งธนาคาร และ วอเลทไม่บวกเพิ่มค่ะ<br>
-      <b>🛒 ขั้นตอนการสั่ง :</b><br>
-      1. ทักแชทแจ้งสินค้าที่ต้องการ<br>
-      2. รอทางร้านเช็คสินค้าสักครู่<br>
-      3. ทางร้านแจ้งพร้อมส่ง ลูกค้าโอนเงิน<br>
-      4. รอรับสินค้าได้เลยค่ะ
-      <div class="note">** หมายเหตุ ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า</div>
+    <div class="ct"><span class="ic">📋</span> ขั้นตอน & เงื่อนไขการสั่งซื้อ</div>
+    <div class="step-container">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text">ทักแชทสอบถาม</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text">แจ้งสินค้าที่ต้องการ</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text">รอทางร้านเช็คสินค้าให้สักครู่</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-text">เมื่อแจ้งว่า “พร้อมส่ง” โอนเงิน และรอรับสินค้าได้เลยค่ะ 💙</div>
+      </div>
+      
+      <div class="payment-box">
+        <span>💳</span>
+        <div><b>การชำระเงิน:</b> รับโอนผ่านธนาคาร และ วอลเลท (ไม่มีบวกเพิ่ม)</div>
+      </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="ct"><span class="ic">📺</span> รายการแอพความบันเทิง</div>
-    <a href="https://drive.google.com/file/d/1RTK8yVvNXbo1RIZ-ur4X2UgGFy7qhOMn/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🎞️</span>
-      <div><div class="lnk-name">Bill Bill</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1TO7EEIey7gO9LZp2yAvtbVP6A6MonJnq/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">📺</span>
-      <div><div class="lnk-name">CH3+</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1PdkpIV-8O0MkavuiZKTYYa5TJ0QyIJc_/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🏰</span>
-      <div><div class="lnk-name">Disney+</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/16k6pJMYEiI0cqRw1N9POtsJ9NWrtjVp8/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🎬</span>
-      <div><div class="lnk-name">HBO Max</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1Fe_H8k8IjV_QGKGyzMFYbKJoAHj1lNq_/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🥢</span>
-      <div><div class="lnk-name">iQIYI</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1Cki_AYYJxET2uTnDwBrE1DQMsVLKsJp8/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🍿</span>
-      <div><div class="lnk-name">Monomax</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1RLBw8zGxAtj2FKdqM7PjIGWgPEldbIG0/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🎥</span>
-      <div><div class="lnk-name">Netflix</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1u8R2ptRP66o64q0O8qjBkmFAg0lqmVpB/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">📱</span>
-      <div><div class="lnk-name">One D</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1WkFvEjPyGQsxCXlMVzHE6SILaMWn3vSk/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">💙</span>
-      <div><div class="lnk-name">Prime Video</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/11oWeHg7sSF_M-paWAGdHBqf0pMgwBr82/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🌟</span>
-      <div><div class="lnk-name">Viu</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1PFmDiX46DjnKKK_KJg9jX7I-xXbCNsFT/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🟢</span>
-      <div><div class="lnk-name">WeTV</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
-    <a href="https://drive.google.com/file/d/1ybPC7lWUq12EWUFznkFb8dqdCWBYkFim/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🏮</span>
-      <div><div class="lnk-name">Youku</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
-    </a>
+    <div class="ct"><span class="ic">💚</span> สติกเกอร์ | ธีม | อีโมจิ | เมโลดี้</div>
+    <div class="price-list">
+      <div class="price-item">
+        <span class="price-label">40 Coins</span>
+        <span class="price-tag">20 ฿</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">50 Coins</span>
+        <span class="price-tag">25 ฿</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">70 Coins</span>
+        <span class="price-tag">35 ฿</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">85 Coins</span>
+        <span class="price-tag">45 ฿</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">100 Coins</span>
+        <span class="price-tag">50 ฿</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">150 Coins</span>
+        <span class="price-tag">75 ฿</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">Melody</span>
+        <span class="price-tag">45 ฿</span>
+      </div>
+    </div>
+    <div class="note-msg">
+      <span>📎</span> รบกวนส่งแบบลิ้งค์เท่านั้น เพื่อความถูกต้องและรวดเร็วค่ะ
+    </div>
   </div>
 
   <div class="card">
-    <div class="ct"><span class="ic">🎨</span> แอพแต่งรูป & ตัดต่อ & อื่นๆ</div>
+    <div class="ct"><span class="ic">💎</span> แอปพรีเมี่ยม</div>
     <a href="https://drive.google.com/file/d/1RPMYEDgwirYFEG3xDUIBeLsJ0KFO97YL/view?usp=drivesdk" class="lnk" target="_blank">
       <span class="lnk-ic">🖌️</span>
       <div><div class="lnk-name">Canva</div><div class="lnk-desc">ออกแบบกราฟิกมือโปร</div></div>
     </a>
+    <a href="https://drive.google.com/file/d/1RLBw8zGxAtj2FKdqM7PjIGWgPEldbIG0/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🎥</span>
+      <div><div class="lnk-name">Netflix</div><div class="lnk-desc">ภาพยนตร์และซีรีส์</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1ywu8paBCoowEpmkYzPPgraFDg_Zb2Sls/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🎧</span>
+      <div><div class="lnk-name">YouTube Premium</div><div class="lnk-desc">ฟังเพลงไม่มีโฆษณา</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1PdkpIV-8O0MkavuiZKTYYa5TJ0QyIJc_/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🏰</span>
+      <div><div class="lnk-name">Disney+</div><div class="lnk-desc">สตรีมมิ่งดิสนีย์</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1Fe_H8k8IjV_QGKGyzMFYbKJoAHj1lNq_/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🥢</span>
+      <div><div class="lnk-name">iQIYI</div><div class="lnk-desc">ซีรีส์จีน/เกาหลี</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/11oWeHg7sSF_M-paWAGdHBqf0pMgwBr82/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🌟</span>
+      <div><div class="lnk-name">Viu</div><div class="lnk-desc">ซีรีส์เกาหลีซับไทย</div></div>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="ct"><span class="ic">🎨</span> แอปแต่งรูป</div>
     <a href="https://drive.google.com/file/d/19SVDJ7FI2-qXf9Qv70ZYb-IFhF9wwjcH/view?usp=drivesdk" class="lnk" target="_blank">
       <span class="lnk-ic">✨</span>
       <div><div class="lnk-name">Beauty Cam</div><div class="lnk-desc">แต่งรูปสวยใส</div></div>
     </a>
     <a href="https://drive.google.com/file/d/1upNByZqAlF6I2X8neZMrbuMznqjD-4wi/view?usp=drivesdk" class="lnk" target="_blank">
       <span class="lnk-ic">🌸</span>
-      <div><div class="lnk-name">Meitu</div><div class="lnk-desc">แอพแต่งรูปยอดฮิต</div></div>
+      <div><div class="lnk-name">Meitu</div><div class="lnk-desc">แอปแต่งรูปยอดฮิต</div></div>
     </a>
     <a href="https://drive.google.com/file/d/1_OGU0wVzmXQvxv6dIgSiYwzu_WBCYGxG/view?usp=drivesdk" class="lnk" target="_blank">
       <span class="lnk-ic">😉</span>
       <div><div class="lnk-name">Wink</div><div class="lnk-desc">ปรับชัดวิดีโอ/แต่งรูป</div></div>
     </a>
-    <a href="https://drive.google.com/file/d/1ywu8paBCoowEpmkYzPPgraFDg_Zb2Sls/view?usp=drivesdk" class="lnk" target="_blank">
-      <span class="lnk-ic">🎵</span>
-      <div><div class="lnk-name">YouTube Premium</div><div class="lnk-desc">ฟังเพลงไม่มีโฆษณา</div></div>
-    </a>
+  </div>
+
+  <div class="card">
+    <div class="ct"><span class="ic">🎬</span> แอปตัดต่อ</div>
     <a href="https://drive.google.com/file/d/10tnqLVCovDi9O6gF9QxU0IVJWIbsk-e6/view?usp=drivesdk" class="lnk" target="_blank">
       <span class="lnk-ic">✂️</span>
-      <div><div class="lnk-name">Capcut</div><div class="lnk-desc">ตัดต่อวิดีโอขั้นเทพ</div></div>
+      <div><div class="lnk-name">CapCut</div><div class="lnk-desc">ตัดต่อวิดีโอขั้นเทพ</div></div>
     </a>
   </div>
 
@@ -286,13 +423,14 @@
 
   <div class="cta-wrap">
     <a href="https://lin.ee/EBW88DH" class="cta-btn" target="_blank">
-      💙 ติดต่อสั่งซื้อสินค้า
+      💙 ติดต่อสอบถามจิ้มเลย!
     </a>
   </div>
 
   <div class="footer">
-    <div>ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า</div>
-    <div style="margin-top:5px; opacity:0.7;">Erin Shop · Premium App Store</div>
+    <div style="font-size: 0.7rem; margin-bottom: 8px;">* ราคาอาจมีการปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อนะคะ *</div>
+    <div>ขอบคุณสำหรับความไว้วางใจให้ Erin Shop ดูแลนะคะ 💙</div>
+    <div style="margin-top:5px; opacity:0.7;">made with 💙 · Erin Shop · 2026</div>
   </div>
 </div>
 </body>
