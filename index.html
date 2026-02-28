@@ -1,477 +1,299 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erin Shop - Sticker & Premium App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #a2d2ff;
-            --soft-blue: #cff4ff;
-            --deep-blue: #5a9bd5;
-            --pink-accent: #ff85a2;
-            --glass: rgba(255, 255, 255, 0.5);
-            --glass-border: rgba(255, 255, 255, 0.7);
-            --glow-blue: rgba(162, 210, 255, 0.6);
-            --pill-gradient: linear-gradient(90deg, #a2d2ff 0%, #bde0fe 100%);
-            --bg-gradient: linear-gradient(180deg, #e6f7ff 0%, #ffffff 100%);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erin Shop 🎀</title>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue1: #E3F2FD;
+    --blue2: #BBDEFB;
+    --blue3: #4FC3F7;
+    --blue4: #29B6F6;
+    --text: #455A64;
+    --textl: #78909C;
+    --bg-grad: linear-gradient(160deg, #E3F2FD 0%, #FFFFFF 50%, #E1F5FE 100%);
+    --white: rgba(255, 255, 255, 0.85);
+  }
+  
+  * { margin:0; padding:0; box-sizing:border-box; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Mitr', sans-serif;
-        }
+  body {
+    font-family: 'Mitr', sans-serif;
+    background: var(--bg-grad);
+    min-height: 100vh;
+    color: var(--text);
+    overflow-x: hidden;
+  }
 
-        body {
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            color: #4a5568;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
+  body::before {
+    content: '';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(187, 222, 251, 0.4) 0%, transparent 45%),
+      radial-gradient(circle at 85% 85%, rgba(129, 212, 250, 0.2) 0%, transparent 45%);
+    pointer-events:none; z-index:0;
+  }
 
-        .floating-emoji {
-            position: fixed;
-            z-index: -1;
-            font-size: 20px;
-            animation: floatAnim 6s ease-in-out infinite;
-            pointer-events: none;
-            opacity: 0.7;
-        }
+  .sp { position:fixed; pointer-events:none; z-index:0; animation:fl 5s ease-in-out infinite; opacity:0.6; color: var(--blue3); }
+  .sp:nth-child(1){top:4%;left:5%;font-size:22px;}
+  .sp:nth-child(2){top:12%;right:8%;font-size:14px;animation-delay:1s;}
+  .sp:nth-child(3){top:38%;left:2%;font-size:12px;animation-delay:2s;}
+  .sp:nth-child(4){top:55%;right:4%;font-size:20px;animation-delay:.5s;}
+  .sp:nth-child(5){bottom:22%;left:7%;font-size:16px;animation-delay:1.5s;}
+  @keyframes fl {0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-14px) rotate(8deg);}}
 
-        @keyframes floatAnim {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
+  .wrap { max-width:480px; margin:0 auto; padding:16px 14px 60px; position:relative; z-index:1; }
 
-        /* Hero Section */
-        .hero {
-            width: 100%;
-            max-width: 500px;
-            padding: 50px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+  .header { text-align:center; padding:35px 0 20px; animation:fadeUp .7s ease both; }
 
-        .logo-wrap {
-            position: relative;
-            margin-bottom: 25px;
-        }
+  .logo-wrapper {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo-img {
+    width: 180px; 
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    outline: 2px solid var(--blue2);
+    box-shadow: 0 8px 25px rgba(187, 222, 251, 0.4);
+    background: #fff;
+    position: relative;
+    z-index: 2;
+  }
+  .logo-emoji {
+    position: absolute;
+    font-size: 1.5rem;
+    z-index: 1;
+    animation: floatEmoji 3s ease-in-out infinite;
+  }
+  .e1 { top: -10px; left: -10px; animation-delay: 0s; }
+  .e2 { top: -10px; right: -10px; animation-delay: 0.5s; }
+  .e3 { bottom: 10px; left: -20px; animation-delay: 1s; }
+  .e4 { bottom: 10px; right: -20px; animation-delay: 1.5s; }
 
-        .logo-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 0 25px var(--glow-blue);
-            position: relative;
-            z-index: 2;
-        }
+  @keyframes floatEmoji {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+  }
 
-        .logo-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 130px;
-            height: 130px;
-            background: var(--primary-blue);
-            filter: blur(20px);
-            border-radius: 50%;
-            z-index: 1;
-            opacity: 0.5;
-        }
+  .shop-name {
+    font-size:2.4rem; font-weight:700;
+    color: var(--blue4);
+    letter-spacing:1px;
+    text-shadow: 2px 2px 4px rgba(79, 195, 247, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .shop-sub { font-size:.85rem; color:var(--textl); margin-top:8px; line-height:1.7; padding: 0 20px; }
 
-        .shop-name {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: var(--deep-blue);
-            margin-bottom: 5px;
-        }
+  .badges { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:11px; }
+  .badge {
+    background:#fff; border:1.5px solid var(--blue2);
+    border-radius:20px; padding:4px 13px;
+    font-size:.72rem; color:var(--blue4); font-weight:500;
+  }
 
-        /* Status Bar (ใหม่ตามรูป) */
-        .status-bar {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px dashed #ffb7c5;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(255, 183, 197, 0.2);
-            position: relative;
-        }
+  .card {
+    background: var(--white); backdrop-filter:blur(12px);
+    border:1.5px solid rgba(187, 222, 251, 0.3);
+    border-radius:22px; padding:20px 18px; margin-bottom:14px;
+    box-shadow:0 4px 18px rgba(79, 195, 247, 0.1);
+    position:relative; overflow:hidden;
+    animation:fadeUp .6s ease both;
+  }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #4ade80;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #4ade80;
-        }
+  .ct { font-size:.98rem; font-weight:600; color:var(--blue4); margin-bottom:13px; display:flex; align-items:center; gap:8px; }
+  .ct .ic { font-size:1.15rem; }
 
-        .status-heart {
-            position: absolute;
-            right: -5px;
-            top: -5px;
-            font-size: 18px;
-        }
+  .div { text-align:center; color:var(--blue2); font-size:.85rem; letter-spacing:7px; margin:4px 0 14px; }
 
-        .hero-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            padding: 30px 25px;
-            border-radius: 40px;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
+  .lnk {
+    display:flex; align-items:center; gap:10px;
+    background:linear-gradient(135deg,#ffffff,#f0f9ff);
+    border:1.5px solid rgba(187, 222, 251, 0.2); border-radius:14px;
+    padding:12px 14px; text-decoration:none; color:var(--text);
+    font-size:.84rem; transition:all .2s; margin-bottom:9px;
+  }
+  .lnk:hover { transform:translateX(4px); border-color: var(--blue3); background: #fff; }
+  .lnk-ic { font-size:1.3rem; flex-shrink:0; }
+  .lnk-name { font-weight:600; font-size:.88rem; color:var(--blue4); margin-bottom:2px; }
+  .lnk-desc { font-size:.75rem; color:var(--textl); }
 
-        .shop-intro {
-            font-size: 0.9rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            color: #666;
-        }
+  .cta-wrap { text-align:center; padding:8px 0; }
+  .cta-btn {
+    display:inline-block; width:100%; max-width:300px;
+    background:linear-gradient(135deg, var(--blue3), var(--blue4));
+    color:#fff; font-family: 'Mitr', sans-serif;
+    font-size:1rem; font-weight:500; padding:14px 36px;
+    border-radius:50px; text-decoration:none;
+    box-shadow:0 8px 24px rgba(79, 195, 247, 0.3);
+    transition:all .3s;
+  }
+  .cta-btn:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(79, 195, 247, 0.4); }
 
-        .pill-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+  .footer { text-align:center; padding:16px 0 8px; font-size:.73rem; color:var(--textl); }
 
-        .pill-link {
-            background: white;
-            padding: 8px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--deep-blue);
-            font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
+  .note { font-size: 0.75rem; color: #ef5350; margin-top: 10px; font-style: italic; }
 
-        /* Section Containers */
-        .section-container {
-            width: 100%;
-            max-width: 500px;
-            padding: 0 20px 40px;
-        }
-
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            margin-bottom: 20px;
-        }
-
-        .sticker-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 1.05rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-            color: #444;
-        }
-
-        .sticker-header span { color: #cbd5e0; font-weight: 300; }
-
-        .price-table { width: 100%; margin-bottom: 25px; }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1.5px dotted rgba(0,0,0,0.1);
-        }
-
-        .price-row:last-child { border-bottom: none; }
-
-        .price-pill {
-            background: var(--pill-gradient);
-            color: white;
-            width: 90px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* App Item Styles */
-        .app-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .app-row-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-            padding: 5px 0;
-        }
-
-        .app-info-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .app-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .app-name-text {
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: #444;
-        }
-
-        .click-more {
-            font-size: 0.75rem;
-            color: var(--pink-accent);
-            font-weight: 400;
-        }
-    </style>
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
+</style>
 </head>
 <body>
+<div class="sp">💎</div>
+<div class="sp">☁️</div>
+<div class="sp">❄️</div>
+<div class="sp">✨</div>
+<div class="sp">💧</div>
 
-    <div class="floating-emoji" style="top: 5%; left: 8%;">💙</div>
-    <div class="floating-emoji" style="top: 15%; right: 10%; animation-delay: 1s;">✨</div>
-    <div class="floating-emoji" style="bottom: 20%; left: 5%; animation-delay: 2s;">🧁</div>
-    <div class="floating-emoji" style="bottom: 10%; right: 8%; animation-delay: 3s;">🎀</div>
+<div class="wrap">
+  <div class="header">
+    <div class="logo-wrapper">
+      <span class="logo-emoji e1">💎</span>
+      <span class="logo-emoji e2">☁️</span>
+      <span class="logo-emoji e3">✨</span>
+      <span class="logo-emoji e4">🎀</span>
+      <img src="Logo.jpeg" alt="Erin Shop Logo" class="logo-img">
+    </div>
+    
+    <div class="shop-name">Erin Shop</div>
+    <div class="shop-sub">
+      Welcome to Erin Shop na ka ทางร้านขายแอพรี แอพแต่งรูป แอพตัดต่อ สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้ นอกจากนี้สอบถามได้นะคะ
+    </div>
+    <div class="badges">
+      <span class="badge">💎 แอพพรีเมี่ยม</span>
+      <span class="badge">🎨 แอพแต่งรูป</span>
+      <span class="badge">🎬 แอพตัดต่อ</span>
+    </div>
+  </div>
 
-    <section class="hero">
-        <div class="logo-wrap">
-            <div class="logo-glow"></div>
-            <img src="Logo.jpeg" alt="Erin Shop Logo" class="logo-img">
-            <div class="floating-emoji" style="top: -10px; right: -15px;">☁️</div>
-        </div>
-        
-        <h1 class="shop-name">Erin Shop</h1>
+  <div class="div">✦ · · ✦ · · ✦</div>
 
-        <div class="status-bar">
-            <div class="status-dot"></div>
-            <span>เปิดรับคิวอยู่นะคะ ทักสอบถามคิวได้เลยค่ะ 💬✨</span>
-            <span class="status-heart">💙</span>
-        </div>
+  <div class="card">
+    <div class="ct"><span class="ic">📋</span> ขั้นตอน & เงื่อนไข</div>
+    <div style="font-size:.85rem;line-height:1.8;">
+      <b>💰 วิธีชำระเงิน :</b> รับทั้งธนาคาร และ วอเลทไม่บวกเพิ่มค่ะ<br>
+      <b>🛒 ขั้นตอนการสั่ง :</b><br>
+      1. ทักแชทแจ้งสินค้าที่ต้องการ<br>
+      2. รอทางร้านเช็คสินค้าสักครู่<br>
+      3. ทางร้านแจ้งพร้อมส่ง ลูกค้าโอนเงิน<br>
+      4. รอรับสินค้าได้เลยค่ะ
+      <div class="note">** หมายเหตุ ราคามีปรับขึ้นลงค่ะ กรุณาสอบถามก่อนสั่งซื้อน้า</div>
+    </div>
+  </div>
 
-        <div class="hero-card">
-            <p class="shop-intro">Welcome to Erin Shop na ka 💙<br>ทางร้านขายแอพพรีเมียม แอพแต่งรูป แอพตัดต่อ สติ๊กเกอร์ ธีมไลน์ อิโมจิ เมโลดี้ นอกจากนี้สามารถสอบถามเพิ่มเติมได้เลยนะคะ ✨</p>
-            
-            <div class="pill-group">
-                <a href="#premium-app" class="pill-link">🎬 แอพพรีเมียม</a>
-                <a href="#sticker-section" class="pill-link">🌈 สติกเกอร์ไลน์</a>
-                <a href="#sticker-section" class="pill-link">🎨 ธีมไลน์</a>
-            </div>
-        </div>
-    </section>
+  <div class="card">
+    <div class="ct"><span class="ic">📺</span> รายการแอพความบันเทิง</div>
+    <a href="https://drive.google.com/file/d/1RTK8yVvNXbo1RIZ-ur4X2UgGFy7qhOMn/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🎞️</span>
+      <div><div class="lnk-name">Bill Bill</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1TO7EEIey7gO9LZp2yAvtbVP6A6MonJnq/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">📺</span>
+      <div><div class="lnk-name">CH3+</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1PdkpIV-8O0MkavuiZKTYYa5TJ0QyIJc_/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🏰</span>
+      <div><div class="lnk-name">Disney+</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/16k6pJMYEiI0cqRw1N9POtsJ9NWrtjVp8/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🎬</span>
+      <div><div class="lnk-name">HBO Max</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1Fe_H8k8IjV_QGKGyzMFYbKJoAHj1lNq_/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🥢</span>
+      <div><div class="lnk-name">iQIYI</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1Cki_AYYJxET2uTnDwBrE1DQMsVLKsJp8/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🍿</span>
+      <div><div class="lnk-name">Monomax</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1RLBw8zGxAtj2FKdqM7PjIGWgPEldbIG0/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🎥</span>
+      <div><div class="lnk-name">Netflix</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1u8R2ptRP66o64q0O8qjBkmFAg0lqmVpB/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">📱</span>
+      <div><div class="lnk-name">One D</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1WkFvEjPyGQsxCXlMVzHE6SILaMWn3vSk/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">💙</span>
+      <div><div class="lnk-name">Prime Video</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/11oWeHg7sSF_M-paWAGdHBqf0pMgwBr82/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🌟</span>
+      <div><div class="lnk-name">Viu</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1PFmDiX46DjnKKK_KJg9jX7I-xXbCNsFT/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🟢</span>
+      <div><div class="lnk-name">WeTV</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1ybPC7lWUq12EWUFznkFb8dqdCWBYkFim/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🏮</span>
+      <div><div class="lnk-name">Youku</div><div class="lnk-desc">คลิกเพื่อดูรายละเอียด</div></div>
+    </a>
+  </div>
 
-    <section class="section-container">
-        <div id="sticker-section" class="glass-card">
-            <div class="sticker-header">
-                💙 สติกเกอร์ <span>|</span> ธีม <span>|</span> อีโมจิ <span>|</span> เมโลดี้
-            </div>
-            <div class="price-table">
-                <div class="price-row"><div class="item-name">40 Coins</div><div class="price-pill">20 บาท</div></div>
-                <div class="price-row"><div class="item-name">50 Coins</div><div class="price-pill">25 บาท</div></div>
-                <div class="price-row"><div class="item-name">70 Coins</div><div class="price-pill">35 บาท</div></div>
-                <div class="price-row"><div class="item-name">85 Coins</div><div class="price-pill">45 บาท</div></div>
-                <div class="price-row"><div class="item-name">100 Coins</div><div class="price-pill">50 บาท</div></div>
-                <div class="price-row"><div class="item-name">150 Coins</div><div class="price-pill">75 บาท</div></div>
-                <div class="price-row"><div class="item-name">🎵 Melody</div><div class="price-pill">45 บาท</div></div>
-            </div>
-            <div class="bottom-pills">
-                <div class="small-pill">สติกเกอร์</div>
-                <div class="small-pill">ธีมไลน์</div>
-                <div class="small-pill">อีโมจิ</div>
-                <div class="small-pill">เมโลดี้</div>
-            </div>
-        </div>
+  <div class="card">
+    <div class="ct"><span class="ic">🎨</span> แอพแต่งรูป & ตัดต่อ & อื่นๆ</div>
+    <a href="https://drive.google.com/file/d/1RPMYEDgwirYFEG3xDUIBeLsJ0KFO97YL/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🖌️</span>
+      <div><div class="lnk-name">Canva</div><div class="lnk-desc">ออกแบบกราฟิกมือโปร</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/19SVDJ7FI2-qXf9Qv70ZYb-IFhF9wwjcH/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">✨</span>
+      <div><div class="lnk-name">Beauty Cam</div><div class="lnk-desc">แต่งรูปสวยใส</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1upNByZqAlF6I2X8neZMrbuMznqjD-4wi/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🌸</span>
+      <div><div class="lnk-name">Meitu</div><div class="lnk-desc">แอพแต่งรูปยอดฮิต</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1_OGU0wVzmXQvxv6dIgSiYwzu_WBCYGxG/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">😉</span>
+      <div><div class="lnk-name">Wink</div><div class="lnk-desc">ปรับชัดวิดีโอ/แต่งรูป</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1ywu8paBCoowEpmkYzPPgraFDg_Zb2Sls/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">🎵</span>
+      <div><div class="lnk-name">YouTube Premium</div><div class="lnk-desc">ฟังเพลงไม่มีโฆษณา</div></div>
+    </a>
+    <a href="https://drive.google.com/file/d/10tnqLVCovDi9O6gF9QxU0IVJWIbsk-e6/view?usp=drivesdk" class="lnk" target="_blank">
+      <span class="lnk-ic">✂️</span>
+      <div><div class="lnk-name">Capcut</div><div class="lnk-desc">ตัดต่อวิดีโอขั้นเทพ</div></div>
+    </a>
+  </div>
 
-        <div id="premium-app" class="glass-card">
-            <div class="section-title">🎬 แอพพรีเมียม</div>
-            <div class="app-list">
-                <a href="https://drive.google.com/file/d/1RTK8yVvNXbo1RIZ-ur4X2UgGFy7qhOMn/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Bilibili.png" class="app-icon" alt="Bilibili">
-                        <span class="app-name-text">Bill Bill</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1TO7EEIey7gO9LZp2yAvtbVP6A6MonJnq/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/CH3Plus.png" class="app-icon" alt="CH3+">
-                        <span class="app-name-text">CH3+</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1PdkpIV-8O0MkavuiZKTYYa5TJ0QyIJc_/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/DisneyPlus.png" class="app-icon" alt="Disney+">
-                        <span class="app-name-text">Disney+</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/16k6pJMYEiI0cqRw1N9POtsJ9NWrtjVp8/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/HBOMax.png" class="app-icon" alt="HBO Max">
-                        <span class="app-name-text">HBO Max</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1Fe_H8k8IjV_QGKGyzMFYbKJoAHj1lNq_/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/iQIYI.png" class="app-icon" alt="iQIYI">
-                        <span class="app-name-text">iQIYI</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1Cki_AYYJxET2uTnDwBrE1DQMsVLKsJp8/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Monomax.png" class="app-icon" alt="Monomax">
-                        <span class="app-name-text">Monomax</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1RLBw8zGxAtj2FKdqM7PjIGWgPEldbIG0/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Netflix.png" class="app-icon" alt="Netflix">
-                        <span class="app-name-text">Netflix</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1u8R2ptRP66o64q0O8qjBkmFAg0lqmVpB/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/OneD.png" class="app-icon" alt="OneD">
-                        <span class="app-name-text">OneD</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1WkFvEjPyGQsxCXlMVzHE6SILaMWn3vSk/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/PrimeVideo.png" class="app-icon" alt="Prime Video">
-                        <span class="app-name-text">Prime Video</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/11oWeHg7sSF_M-paWAGdHBqf0pMgwBr82/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Viu.png" class="app-icon" alt="Viu">
-                        <span class="app-name-text">Viu</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1PFmDiX46DjnKKK_KJg9jX7I-xXbCNsFT/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/WeTV.png" class="app-icon" alt="WeTV">
-                        <span class="app-name-text">WeTV</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1ybPC7lWUq12EWUFznkFb8dqdCWBYkFim/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Youku.png" class="app-icon" alt="Youku">
-                        <span class="app-name-text">Youku</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1RPMYEDgwirYFEG3xDUIBeLsJ0KFO97YL/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Canva.png" class="app-icon" alt="Canva">
-                        <span class="app-name-text">Canva</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/19SVDJ7FI2-qXf9Qv70ZYb-IFhF9wwjcH/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/BeautyCam.png" class="app-icon" alt="Beauty Cam">
-                        <span class="app-name-text">Beauty Cam</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1upNByZqAlF6I2X8neZMrbuMznqjD-4wi/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Meitu.png" class="app-icon" alt="Meitu">
-                        <span class="app-name-text">Meitu</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1_OGU0wVzmXQvxv6dIgSiYwzu_WBCYGxG/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/Wink.png" class="app-icon" alt="Wink">
-                        <span class="app-name-text">Wink</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1ywu8paBCoowEpmkYzPPgraFDg_Zb2Sls/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/YouTube.png" class="app-icon" alt="YouTube">
-                        <span class="app-name-text">YouTube</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-                <a href="https://drive.google.com/file/d/10tnqLVCovDi9O6gF9QxU0IVJWIbsk-e6/view?usp=drivesdk" class="app-row-item">
-                    <div class="app-info-left">
-                        <img src="https://img5.pic.in.th/file/secure-sv1/CapCut.png" class="app-icon" alt="CapCut">
-                        <span class="app-name-text">CapCut</span>
-                    </div>
-                    <span class="click-more">คลิกเพื่อดูลายละเอียดเพิ่มเติม →</span>
-                </a>
-            </div>
-        </div>
+  <div class="card">
+    <div class="ct"><span class="ic">📱</span> ช่องทางติดต่อ</div>
+    <a href="https://lin.ee/EBW88DH" class="lnk" target="_blank">
+      <span class="lnk-ic">💬</span>
+      <div><div class="lnk-name">Line Official</div><div class="lnk-desc">@355tmjpr (มี @)</div></div>
+    </a>
+    <a href="https://www.facebook.com/share/1DveZBFdqz/?mibextid=wwXIfr" class="lnk" target="_blank">
+      <span class="lnk-ic">⭐</span>
+      <div><div class="lnk-name">เครดิต (Credit)</div><div class="lnk-desc">ตรวจสอบรีวิวความปลอดภัย</div></div>
+    </a>
+  </div>
 
-        <div class="glass-card">
-            <div class="section-title">🛒 ขั้นตอนสั่งซื้อ</div>
-            <div class="step-item"><div class="step-num">1</div><span>เลือกสินค้า (แอพ หรือ สติกเกอร์)</span></div>
-            <div class="step-item"><div class="step-num">2</div><span>ทักแชท</span></div>
-            <div class="step-item"><div class="step-num">3</div><span>แจ้งสินค้าที่ต้องการ</span></div>
-            <div class="step-item"><div class="step-num">4</div><span>รอทางร้านเช็คสินค้า</span></div>
-            <div class="step-item"><div class="step-num">5</div><span>ทางร้านแจ้งพร้อมส่ง</span></div>
-            <div class="step-item"><div class="step-num">6</div><span>ลูกค้าโอนเงิน</span></div>
-            <div class="step-item"><div class="step-num">7</div><span>รอรับสินค้าได้เลยค่ะ</span></div>
-            
-            <div style="margin-top: 25px; border-top: 1px dashed var(--primary-blue); padding-top: 20px;">
-                <p style="font-size: 0.9rem; text-align: center; color: var(--deep-blue); font-weight: 500;">💳 วิธีชำระเงิน</p>
-                <p style="font-size: 0.85rem; text-align: center; margin-top: 5px;">รับโอนผ่านธนาคาร / รับวอเลท (ไม่บวกเพิ่ม)</p>
-            </div>
-        </div>
+  <div class="cta-wrap">
+    <a href="https://lin.ee/EBW88DH" class="cta-btn" target="_blank">
+      💙 ติดต่อสั่งซื้อสินค้า
+    </a>
+  </div>
 
-        <div style="text-align: center; padding: 10px;">
-            <p style="font-size: 0.8rem; color: #ff85a2; margin-bottom: 15px;">📌 ราคามีการปรับขึ้นลง กรุณาสอบถามก่อนสั่งซื้อ</p>
-            <a href="https://lin.ee/EBW88DH" class="contact-btn">ติดต่อสั่งซื้อ @355tmjpr</a>
-            <p class="footer-msg">ขอบคุณสำหรับออเดอร์นะคะ 💙 ไว้มาอุดหนุนกันอีกน้า 🎀✨</p>
-        </div>
-    </section>
-
+  <div class="footer">
+    <div>ขอบคุณสำหรับออเดอร์นะคะ ไว้มาอุดหนุนกันอีกน้า</div>
+    <div style="margin-top:5px; opacity:0.7;">Erin Shop · Premium App Store</div>
+  </div>
+</div>
 </body>
 </html>
